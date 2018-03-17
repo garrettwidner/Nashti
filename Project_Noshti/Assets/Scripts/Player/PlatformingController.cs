@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent (typeof(Controller2D))]
-public class Player : MonoBehaviour 
+public class PlatformingController : MonoBehaviour 
 {
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
         //print("Gravity: " + gravity + " Jump Velocity: " + maxJumpVelocity);
 
         playerActions = PlayerActions.CreateWithDefaultBindings();
-        //print(timeToWallUnstick);
     }
 
     private void Update()

@@ -3,17 +3,17 @@ using InControl;
 
 public class PlayerActions : PlayerActionSet 
 {
-
-
     public PlayerAction Jump;
-    public PlayerAction Dismount;
-    public PlayerAction Run;
+    public PlayerAction Attack;
+    public PlayerAction GripLeft;
+    public PlayerAction GripRight;
+
+    public PlayerAction Pause;
+
     public PlayerAction Left;
     public PlayerAction Right;
     public PlayerAction Up;
     public PlayerAction Down;
-    public PlayerAction HoldPosition;
-    public PlayerAction HoldRotation;
     public PlayerTwoAxisAction Move;
 
     /// <summary>
@@ -31,14 +31,16 @@ public class PlayerActions : PlayerActionSet
     public PlayerActions()
     {
         Jump = CreatePlayerAction("Jump");
-        Dismount = CreatePlayerAction("Dismount");
-        Run = CreatePlayerAction("Run");
+        Attack = CreatePlayerAction("Attack");
+        GripLeft = CreatePlayerAction("Grip Left");
+        GripRight = CreatePlayerAction("Grip Right");
+
+        Pause = CreatePlayerAction("Pause");
+
         Left = CreatePlayerAction("Move Left");
         Right = CreatePlayerAction("Move Right");
         Up = CreatePlayerAction("Move Up");
         Down = CreatePlayerAction("Move Down");
-        HoldPosition = CreatePlayerAction("Hold Position");
-        HoldRotation = CreatePlayerAction("Hold Rotation");
         Move = CreateTwoAxisPlayerAction(Left, Right, Down, Up);
     }
 
@@ -47,39 +49,44 @@ public class PlayerActions : PlayerActionSet
         PlayerActions playerActions = new PlayerActions();
 
         playerActions.Jump.AddDefaultBinding(InputControlType.Action1);
-        playerActions.Jump.AddDefaultBinding(Key.K);
+        playerActions.Jump.AddDefaultBinding(Key.Space);
 
-        playerActions.Dismount.AddDefaultBinding(InputControlType.Action2);
-        playerActions.Dismount.AddDefaultBinding(Key.L);
+        playerActions.Attack.AddDefaultBinding(InputControlType.Action4);
+        playerActions.Attack.AddDefaultBinding(Key.L);
 
-        playerActions.Run.AddDefaultBinding(InputControlType.Action3);
-        playerActions.Run.AddDefaultBinding(Key.J);
+        playerActions.GripLeft.AddDefaultBinding(InputControlType.Action3);
+        playerActions.GripLeft.AddDefaultBinding(InputControlType.LeftTrigger);
+        playerActions.GripLeft.AddDefaultBinding(InputControlType.LeftBumper);
+        playerActions.GripLeft.AddDefaultBinding(Key.J);
+
+        playerActions.GripRight.AddDefaultBinding(InputControlType.Action2);
+        playerActions.GripRight.AddDefaultBinding(InputControlType.RightTrigger);
+        playerActions.GripRight.AddDefaultBinding(InputControlType.RightBumper);
+        playerActions.GripRight.AddDefaultBinding(Key.K);
+
+        playerActions.Pause.AddDefaultBinding(InputControlType.Command);
+        playerActions.Pause.AddDefaultBinding(Key.Return);
 
         playerActions.Left.AddDefaultBinding(Key.LeftArrow);
-        playerActions.Right.AddDefaultBinding(Key.RightArrow);
-        playerActions.Up.AddDefaultBinding(Key.UpArrow);
-        playerActions.Down.AddDefaultBinding(Key.DownArrow);
-
         playerActions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
-        playerActions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
-        playerActions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
-        playerActions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
-
         playerActions.Left.AddDefaultBinding(InputControlType.DPadLeft);
-        playerActions.Right.AddDefaultBinding(InputControlType.DPadRight);
-        playerActions.Up.AddDefaultBinding(InputControlType.DPadUp);
-        playerActions.Down.AddDefaultBinding(InputControlType.DPadDown);
-
-        playerActions.Up.AddDefaultBinding(Key.W);
-        playerActions.Down.AddDefaultBinding(Key.S);
         playerActions.Left.AddDefaultBinding(Key.A);
+
+        playerActions.Right.AddDefaultBinding(Key.RightArrow);
+        playerActions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
+        playerActions.Right.AddDefaultBinding(InputControlType.DPadRight);
         playerActions.Right.AddDefaultBinding(Key.D);
 
-        playerActions.HoldPosition.AddDefaultBinding(Key.N);
-        playerActions.HoldPosition.AddDefaultBinding(InputControlType.RightTrigger);
+        playerActions.Up.AddDefaultBinding(Key.UpArrow);
+        playerActions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
+        playerActions.Up.AddDefaultBinding(InputControlType.DPadUp);
+        playerActions.Up.AddDefaultBinding(Key.W);
 
-        playerActions.HoldRotation.AddDefaultBinding(Key.N);
-        playerActions.HoldRotation.AddDefaultBinding(InputControlType.LeftTrigger);
+
+        playerActions.Down.AddDefaultBinding(Key.DownArrow);
+        playerActions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
+        playerActions.Down.AddDefaultBinding(InputControlType.DPadDown);
+        playerActions.Down.AddDefaultBinding(Key.S);
 
         playerActions.ListenOptions.IncludeUnknownControllers = true;
         playerActions.ListenOptions.MaxAllowedBindings = 4;

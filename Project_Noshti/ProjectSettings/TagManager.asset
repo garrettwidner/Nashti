@@ -38,21 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Overground
-    uniqueID: 1502868787
-    locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
-  - name: Player
-    uniqueID: 1801152075
-    locked: 0
-  - name: Enemy
-    uniqueID: 1999281619
+  - name: Background
+    uniqueID: 275102237
     locked: 0
   - name: Foreground
     uniqueID: 409674601
     locked: 0
-  - name: Background
-    uniqueID: 275102237
+  - name: Enemy
+    uniqueID: 1999281619
+    locked: 0
+  - name: Player
+    uniqueID: 1801152075
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Overground
+    uniqueID: 1502868787
     locked: 0

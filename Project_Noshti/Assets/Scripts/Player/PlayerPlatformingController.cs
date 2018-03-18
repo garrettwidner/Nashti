@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent (typeof(Controller2D))]
-public class PlatformingController : MonoBehaviour 
+public class PlayerPlatformingController : MonoBehaviour 
 {
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;

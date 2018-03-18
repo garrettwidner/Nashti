@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ab3f697fb6dc7487dac26bef49137c5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,7 +211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &564006538
 GameObject:
@@ -271,7 +271,7 @@ TilemapRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ab3f697fb6dc7487dac26bef49137c5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5258,7 +5258,7 @@ Transform:
   - {fileID: 564006539}
   - {fileID: 1761915843}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &898469951
 GameObject:
@@ -5315,7 +5315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1044454784
 GameObject:
@@ -5361,7 +5361,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ab3f697fb6dc7487dac26bef49137c5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5411,11 +5411,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1044454784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -1, z: 0.13964844}
+  m_LocalPosition: {x: -2.5, y: -2, z: 0.13964844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1054660852
 GameObject:
@@ -5496,9 +5496,9 @@ MonoBehaviour:
   minJumpHeight: 0.7
   timeToJumpApex: 0.3
   moveSpeed: 3.5
-  wallJumpClimb: {x: 0, y: 0}
-  wallJumpOff: {x: 3, y: 10}
-  wallLeap: {x: 7, y: 12}
+  wallJumpClimb: {x: 3, y: 8}
+  wallJumpOff: {x: 3, y: 8}
+  wallLeap: {x: 7, y: 11}
   wallSlideSpeedMax: 2
   wallStickTime: 0.25
 --- !u!212 &1054660856
@@ -5515,7 +5515,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ab3f697fb6dc7487dac26bef49137c5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5532,8 +5532,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1801152075
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300064, guid: 2681978377803a543b97f2eebf81c455, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5556,7 +5556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1084536223
 GameObject:
@@ -5602,7 +5602,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ab3f697fb6dc7487dac26bef49137c5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5652,11 +5652,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1084536223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -1, z: 0.13964844}
+  m_LocalPosition: {x: -3, y: -1.5, z: 0.13964844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1761915842
 GameObject:
@@ -5674,7 +5674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1761915843
 Transform:
   m_ObjectHideFlags: 0
@@ -5702,7 +5702,7 @@ TilemapRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ab3f697fb6dc7487dac26bef49137c5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6740,6 +6740,8 @@ GameObject:
   - component: {fileID: 1910996150}
   - component: {fileID: 1910996149}
   - component: {fileID: 1910996148}
+  - component: {fileID: 1910996153}
+  - component: {fileID: 1910996152}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6781,7 +6783,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6810,3 +6812,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1910996152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1910996147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88f1386dd63147198d003daff00d37d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenResolution: {x: 256, y: 144}
+  internalResolution: {x: 256, y: 144}
+  upscaledResolution: {x: 320, y: 240}
+  smooth: 1
+  forceSquarePixels: 0
+  pixels: {x: 256, y: 144}
+  pixelsPerUnit: 32
+  finalBlitStretch: {x: 1, y: 1}
+  mainCamera: {fileID: 1910996150}
+  mainCanvas: {fileID: 0}
+--- !u!114 &1910996153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1910996147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e2749c8a9d0534cb48d8bf94c3ff27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1054660853}
+  verticalOffset: 0
+  lookAheadDistX: 0.35
+  lookSmoothTimeX: 0.2
+  verticalSmoothTime: 0.05
+  focusAreaSize: {x: 1, y: 2.1}

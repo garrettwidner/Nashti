@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent (typeof(Controller2D))]
-public class PlayerPlatformingController : MonoBehaviour 
+public class PlayerPlatformingController : PlayerMovementController 
 {
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -28,7 +28,6 @@ public class PlayerPlatformingController : MonoBehaviour
     private float velocityXSmoothing;
 
     Controller2D controller;
-    private PlayerActions playerActions;
 
     private void Start()
     {
@@ -37,15 +36,16 @@ public class PlayerPlatformingController : MonoBehaviour
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
-
         //print("Gravity: " + gravity + " Jump Velocity: " + maxJumpVelocity);
-
-        playerActions = PlayerActions.CreateWithDefaultBindings();
     }
 
     private void Update()
     {
-        //Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (!isSetUp || !isInControl)
+        {
+            return;
+        }
+
         Vector2 input = new Vector2(playerActions.Move.X, playerActions.Move.Y);
         //print(input.ToString("f4"));
 
@@ -86,7 +86,7 @@ public class PlayerPlatformingController : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (playerActions.Jump.WasPressed)
         {
             if (wallSliding)
             {
@@ -112,7 +112,7 @@ public class PlayerPlatformingController : MonoBehaviour
 
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (playerActions.Jump.WasReleased)
         {
             if (velocity.y > minJumpVelocity)
             {

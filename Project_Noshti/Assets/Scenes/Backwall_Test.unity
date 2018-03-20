@@ -5426,6 +5426,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1054660857}
   - component: {fileID: 1054660856}
+  - component: {fileID: 1054660859}
+  - component: {fileID: 1054660858}
   - component: {fileID: 1054660855}
   - component: {fileID: 1054660854}
   - component: {fileID: 1054660853}
@@ -5558,6 +5560,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1054660858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054660852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74d586343497694d9689b2682c1d6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1054660859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054660852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca470922f890a7a4d863bb273c39b21e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingController: {fileID: 1054660858}
+  platformingController: {fileID: 1054660855}
+  startingState: 1
 --- !u!1 &1084536223
 GameObject:
   m_ObjectHideFlags: 0

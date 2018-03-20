@@ -42,6 +42,54 @@ public class Grip : MonoBehaviour
             }
         }
 
+        public bool HasRightSide
+        {
+            get
+            {
+                if(upperRight != null || lowerRight != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool HasLeftSide
+        {
+            get
+            {
+                if(upperLeft != null || lowerLeft != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool HasUpperSide
+        {
+            get
+            {
+                if(upperLeft != null || upperRight != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool HasLowerSide
+        {
+            get
+            {
+                if(lowerLeft != null || lowerRight != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
         public int GripCount
         {
             get
@@ -96,21 +144,22 @@ public class Grip : MonoBehaviour
         public void DebugSquare()
         {
             float sideLength = 0.1f;
+            float visibleTime = 1f;
             if (upperLeft != null)
             {
-                SuperDebugger.DrawPlusAtPoint(upperLeft.transform.position, Color.yellow, sideLength);
+                SuperDebugger.DrawPlusAtPoint(upperLeft.transform.position, Color.yellow, sideLength, visibleTime);
             }
             if (upperRight != null)
             {
-                SuperDebugger.DrawPlusAtPoint(upperRight.transform.position, Color.magenta, sideLength);
+                SuperDebugger.DrawPlusAtPoint(upperRight.transform.position, Color.magenta, sideLength, visibleTime);
             }
             if (lowerLeft != null)
             {
-                SuperDebugger.DrawPlusAtPoint(lowerLeft.transform.position, Color.cyan, sideLength);
+                SuperDebugger.DrawPlusAtPoint(lowerLeft.transform.position, Color.cyan, sideLength, visibleTime);
             }
             if (lowerRight != null)
             {
-                SuperDebugger.DrawPlusAtPoint(lowerRight.transform.position, Color.white, sideLength);
+                SuperDebugger.DrawPlusAtPoint(lowerRight.transform.position, Color.white, sideLength, visibleTime);
             }
         }
 

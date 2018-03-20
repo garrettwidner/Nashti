@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class GripProximityChecker : MonoBehaviour
+public class GripChecker : MonoBehaviour
 {
     //[SerializeField] private LayerMask gripLayer;
 
@@ -171,6 +171,70 @@ public class GripProximityChecker : MonoBehaviour
         }
 
         return newGripSquare;
+    }
+
+    /// <summary>
+    /// Returns the grip square in the given direction. If at least one Grip isn't found in that direction, returns a null Square.
+    /// </summary>
+    /// <param name="startingSquare"></param>
+    /// <param name="direction"></param>
+    /// <param name="gripLayer"></param>
+    /// <returns></returns>
+    public static Grip.Square FindGripSquareInDirection(Grip.Square startingSquare, Vector2 direction, LayerMask gripLayer)
+    {
+        direction.Normalize();
+        if(direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
+        {
+            Debug.LogWarning("Given direction must be a cardinal direction");
+            return new Grip.Square();
+        }
+
+        if(direction == Vector2.up)
+        {
+            if(startingSquare.upperLeft != null)
+            {
+                return PopulateGripSquare(startingSquare.upperLeft, Vector2.right, Vector2.up, gripLayer);
+            }
+            else if(startingSquare.upperRight != null)
+            {
+                return PopulateGripSquare(startingSquare.upperRight, Vector2.left, Vector2.up, gripLayer);
+            }
+        }
+        else if(direction == Vector2.right)
+        {
+            if(startingSquare.upperRight != null)
+            {
+                return PopulateGripSquare(startingSquare.upperRight, Vector2.right, Vector2.down, gripLayer);
+            }
+            else if(startingSquare.lowerRight != null)
+            {
+                return PopulateGripSquare(startingSquare.lowerRight, Vector2.right, Vector2.up, gripLayer);
+            }
+        }
+        else if(direction == Vector2.down)
+        {
+            if(startingSquare.lowerRight != null)
+            {
+                return PopulateGripSquare(startingSquare.lowerRight, Vector2.left, Vector2.down, gripLayer);
+            }
+            else if(startingSquare.lowerLeft != null)
+            {
+                return PopulateGripSquare(startingSquare.lowerLeft, Vector2.right, Vector2.down, gripLayer);
+            }
+        }
+        else if(direction == Vector2.left)
+        {
+            if(startingSquare.lowerLeft != null)
+            {
+                return PopulateGripSquare(startingSquare.lowerLeft, Vector2.left, Vector2.up, gripLayer);
+            }
+            else if(startingSquare.upperLeft != null)
+            {
+                return PopulateGripSquare(startingSquare.upperLeft, Vector2.left, Vector2.down, gripLayer);
+            }
+        }
+
+        return new Grip.Square();
     }
 
 }

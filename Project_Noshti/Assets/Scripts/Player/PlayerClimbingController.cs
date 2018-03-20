@@ -14,54 +14,119 @@ public class PlayerClimbingController : PlayerMovementController
 
     [SerializeField] private LayerMask gripLayer;
 
+    private Grip.Square currentConnectedSquare;
+
     public bool ConnectIfPossible(bool rightHandIsConnecting)
     {
-        //First checks the hand being used to see if it can connect. 
         if(rightHandIsConnecting)
         {
-            Grip rightHand = GripProximityChecker.CheckProximity(rightHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
+            Grip rightHand = GripChecker.CheckProximity(rightHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
             if(rightHand != null)
             {
-                Grip.Square foundSquare = GripProximityChecker.PopulateGripSquare(rightHand, Vector2.left, Vector2.down, gripLayer);
+                Grip.Square foundSquare = GripChecker.PopulateGripSquare(rightHand, Vector2.left, Vector2.down, gripLayer);
                 if (foundSquare.GripCount >= 2)
                 {
-                    ConnectToWall(foundSquare);
+                    MoveToSquare(foundSquare);
                     return true;
                 }
             }
         }
         else
         {
-            Grip leftHand = GripProximityChecker.CheckProximity(leftHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
+            Grip leftHand = GripChecker.CheckProximity(leftHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
             if(leftHand != null)
             {
-                Grip.Square foundSquare = GripProximityChecker.PopulateGripSquare(leftHand, Vector2.right, Vector2.down, gripLayer);
+                Grip.Square foundSquare = GripChecker.PopulateGripSquare(leftHand, Vector2.right, Vector2.down, gripLayer);
                 if(foundSquare.GripCount >= 2)
                 {
-                    ConnectToWall(foundSquare);
+                    MoveToSquare(foundSquare);
                     return true;
                 }
             }
         }
 
-        //If so, checks to find another hold in the same square. If so, returns true
-        //and connects to the found grip points.
-
         return false;
-    }
-
-    private void ConnectToWall(Grip.Square gripSquare)
-    {
-        gripSquare.DebugSquare();
-        transform.position = gripSquare.Center;
     }
 
     private void Update()
     {
-        if (!isSetUp || !isInControl)
+        if (!isSetUp || !isControllingMovement)
         {
             return;
         }
+
+        if (playerActions.Up.WasPressed)
+        {
+            MoveInDirection(Vector2.up);
+        }
+        else if (playerActions.Right.WasPressed)
+        {
+            MoveInDirection(Vector2.right);
+        }
+        else if (playerActions.Down.WasPressed)
+        {
+            MoveInDirection(Vector2.down);
+        }
+        else if (playerActions.Left.WasPressed)
+        {
+            MoveInDirection(Vector2.left);
+        }
+    }
+
+    private void MoveInDirection(Vector2 direction)
+    {
+        if(direction == Vector2.up)
+        {
+            //Technically this must be true for upwards direction- remove this in later version?
+            if(currentConnectedSquare.HasUpperSide)
+            {
+                Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
+                if(newGripSquare.HasUpperSide)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+        }
+        else if(direction == Vector2.right)
+        {
+            if(currentConnectedSquare.HasRightSide)
+            {
+                Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
+                if(newGripSquare.HasRightSide)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+        }
+        else if(direction == Vector2.down)
+        {
+            if (currentConnectedSquare.HasLowerSide)
+            {
+                Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
+                if (newGripSquare.HasLowerSide)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+        }
+        else if(direction == Vector2.left)
+        {
+            if (currentConnectedSquare.HasLeftSide)
+            {
+                Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
+                if (newGripSquare.HasLeftSide)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+        }
+    }
+
+    private void MoveToSquare(Grip.Square newSquare)
+    {
+        newSquare.DebugSquare();
+        transform.position = newSquare.Center;
+        currentConnectedSquare = newSquare;
     }
 
 }

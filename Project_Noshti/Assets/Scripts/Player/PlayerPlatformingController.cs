@@ -41,7 +41,7 @@ public class PlayerPlatformingController : PlayerMovementController
 
     private void Update()
     {
-        if (!isSetUp || !isInControl)
+        if (!isSetUp || !isControllingMovement)
         {
             return;
         }

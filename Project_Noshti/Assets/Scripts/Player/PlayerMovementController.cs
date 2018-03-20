@@ -6,23 +6,23 @@ public abstract class PlayerMovementController : MonoBehaviour
 {
     protected PlayerActions playerActions;
     protected bool isSetUp = false;
-    protected bool isInControl = false;
+    protected bool isControllingMovement = false;
 
     public virtual void RunSetup(bool isInControlAtStart, PlayerActions actions)
     {
         playerActions = actions;
         isSetUp = true;
-        isInControl = isInControlAtStart;
+        isControllingMovement = isInControlAtStart;
     }
 
     public virtual void ReceiveControl()
     {
-        isInControl = true;
+        isControllingMovement = true;
     }
 
     public virtual void LoseControl()
     {
-        isInControl = false;
+        isControllingMovement = false;
     }
 
 }

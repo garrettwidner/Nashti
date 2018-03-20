@@ -15,4 +15,14 @@ public abstract class PlayerMovementController : MonoBehaviour
         isInControl = isInControlAtStart;
     }
 
+    public virtual void ReceiveControl()
+    {
+        isInControl = true;
+    }
+
+    public virtual void LoseControl()
+    {
+        isInControl = false;
+    }
+
 }

@@ -56,19 +56,49 @@ public class PlayerStateManager : MonoBehaviour
     {
         //Switch from climb to platform if jump is pressed and can jump. 
         //Also trigger jump if necessary.
+        if(CurrentState == State.Climbing)
+        {
+            if(playerActions.Jump.WasPressed)
+            {
+                SwitchToPlatforming();
+            }
+        }
 
         //Switch from platform to climb if grip is pressed near a valid grip area.
-
+        if(CurrentState == State.Platforming)
+        {
+            if(playerActions.GripRight.IsPressed)
+            {
+                if (climbingController.ConnectIfPossible(true))
+                {
+                    SwitchToClimbing();
+                }
+            }
+            if(playerActions.GripLeft.IsPressed)
+            {
+                if(climbingController.ConnectIfPossible(false))
+                {
+                    SwitchToClimbing();
+                }
+            }
+            
+        }
     }
 
     private void SwitchToClimbing()
     {
-
+        print("PlayerStateManager Switched to CLIMBING state");
+        currentState = State.Climbing;
+        climbingController.ReceiveControl();
+        platformingController.LoseControl();
     }
 
     private void SwitchToPlatforming()
     {
-
+        print("PlayerStateManager Switched to PLATFORMING state");
+        currentState = State.Platforming;
+        platformingController.ReceiveControl();
+        climbingController.LoseControl();
     }
 
 

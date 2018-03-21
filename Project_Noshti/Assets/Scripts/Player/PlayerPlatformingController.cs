@@ -6,6 +6,7 @@ public class PlayerPlatformingController : PlayerMovementController
 {
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
+    public float maxBackWallJumpHeight = 4f;
     public float timeToJumpApex = 0.4f;
     public float moveSpeed = 6;
 
@@ -24,8 +25,12 @@ public class PlayerPlatformingController : PlayerMovementController
     private float gravity;
     private float maxJumpVelocity;
     private float minJumpVelocity;
+    private float maxBackWallJumpVelocity;
+    private float backWallGravity;
     private Vector3 velocity;
     private float velocityXSmoothing;
+
+    private bool shouldJumpNextFrame = false;
 
     Controller2D controller;
 
@@ -36,7 +41,14 @@ public class PlayerPlatformingController : PlayerMovementController
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+        backWallGravity = -(2 * maxBackWallJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+        maxBackWallJumpVelocity = Mathf.Abs(backWallGravity) * timeToJumpApex;
         //print("Gravity: " + gravity + " Jump Velocity: " + maxJumpVelocity);
+    }
+
+    public void JumpNextFrame()
+    {
+        shouldJumpNextFrame = true;
     }
 
     private void Update()
@@ -86,7 +98,7 @@ public class PlayerPlatformingController : PlayerMovementController
 
 
 
-        if (playerActions.Jump.WasPressed)
+        if (playerActions.Jump.WasPressed || shouldJumpNextFrame)
         {
             if (wallSliding)
             {
@@ -111,6 +123,10 @@ public class PlayerPlatformingController : PlayerMovementController
                 velocity.y = maxJumpVelocity;
 
             }
+            if(shouldJumpNextFrame)
+            {
+                velocity.y = maxBackWallJumpVelocity;
+            }
         }
         if (playerActions.Jump.WasReleased)
         {
@@ -128,6 +144,13 @@ public class PlayerPlatformingController : PlayerMovementController
             velocity.y = 0;
         }
 
+        shouldJumpNextFrame = false;
+    }
+
+    public override void LoseControl()
+    {
+        base.LoseControl();
+        velocity = Vector2.zero;
     }
 
 

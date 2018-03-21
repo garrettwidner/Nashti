@@ -16,6 +16,9 @@ public class PlayerClimbingController : PlayerMovementController
 
     private Grip.Square currentConnectedSquare;
 
+    private bool isLeaning = false;
+    private Vector2 leaningDirection;
+
     public bool ConnectIfPossible(bool rightHandIsConnecting)
     {
         if(rightHandIsConnecting)
@@ -55,29 +58,74 @@ public class PlayerClimbingController : PlayerMovementController
             return;
         }
 
-        if (playerActions.Up.WasPressed)
+        UpdateLeaningStatus();
+
+        if(isLeaning && playerActions.GripLeft.WasPressed)
         {
-            MoveInDirection(Vector2.up);
+            MoveInLeaningDirectionIfPossible(false);
         }
-        else if (playerActions.Right.WasPressed)
+        else if(isLeaning && playerActions.GripRight.WasPressed)
         {
-            MoveInDirection(Vector2.right);
-        }
-        else if (playerActions.Down.WasPressed)
-        {
-            MoveInDirection(Vector2.down);
-        }
-        else if (playerActions.Left.WasPressed)
-        {
-            MoveInDirection(Vector2.left);
+            MoveInLeaningDirectionIfPossible(true);
         }
     }
 
-    private void MoveInDirection(Vector2 direction)
+    private void UpdateLeaningStatus()
     {
-        if(direction == Vector2.up)
+        Vector2 cardinalInput = new Vector2(playerActions.Move.X, playerActions.Move.Y).ClosestCardinalDirection();
+        cardinalInput.Normalize();
+
+        if (cardinalInput == Vector2.up)
         {
-            //Technically this must be true for upwards direction- remove this in later version?
+            isLeaning = true;
+            leaningDirection = Vector2.up;
+        }
+        else if (cardinalInput == Vector2.right)
+        {
+            isLeaning = true;
+            leaningDirection = Vector2.right;
+        }
+        else if (cardinalInput == Vector2.down)
+        {
+            isLeaning = true;
+            leaningDirection = Vector2.down;
+        }
+        else if (cardinalInput == Vector2.left)
+        {
+            isLeaning = true;
+            leaningDirection = Vector2.left;
+        }
+        else
+        {
+            isLeaning = false;
+            leaningDirection = Vector2.zero;
+        }
+    }
+
+    private void MoveInLeaningDirectionIfPossible(bool rightGripWasChosen)
+    {
+        Vector2 direction = leaningDirection;
+        Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
+
+        if (direction == Vector2.up)
+        {
+            //is there a handhold in the chosen direction?
+            if (rightGripWasChosen)
+            {
+                if(newGripSquare.upperRight != null)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+            else
+            {
+                if (newGripSquare.upperLeft != null)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+
+            /*
             if(currentConnectedSquare.HasUpperSide)
             {
                 Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
@@ -86,39 +134,85 @@ public class PlayerClimbingController : PlayerMovementController
                     MoveToSquare(newGripSquare);
                 }
             }
+            */
         }
         else if(direction == Vector2.right)
         {
+            if(rightGripWasChosen)
+            {
+                if(newGripSquare.lowerRight != null)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+            else
+            {
+                if(newGripSquare.upperRight != null)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+            /*
             if(currentConnectedSquare.HasRightSide)
             {
-                Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
                 if(newGripSquare.HasRightSide)
                 {
                     MoveToSquare(newGripSquare);
                 }
             }
+            */
         }
         else if(direction == Vector2.down)
         {
+            if(rightGripWasChosen)
+            {
+                if(newGripSquare.lowerRight != null)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+            else
+            {
+                if(newGripSquare.lowerLeft != null)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+            /*
             if (currentConnectedSquare.HasLowerSide)
             {
-                Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
                 if (newGripSquare.HasLowerSide)
                 {
                     MoveToSquare(newGripSquare);
                 }
             }
+            */
         }
         else if(direction == Vector2.left)
         {
+            if(rightGripWasChosen)
+            {
+                if(newGripSquare.upperLeft != null)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+            else
+            {
+                if(newGripSquare.lowerLeft != null)
+                {
+                    MoveToSquare(newGripSquare);
+                }
+            }
+            /*
             if (currentConnectedSquare.HasLeftSide)
             {
-                Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
                 if (newGripSquare.HasLeftSide)
                 {
                     MoveToSquare(newGripSquare);
                 }
             }
+            */
         }
     }
 
@@ -127,6 +221,13 @@ public class PlayerClimbingController : PlayerMovementController
         newSquare.DebugSquare();
         transform.position = newSquare.Center;
         currentConnectedSquare = newSquare;
+    }
+
+    public override void LoseControl()
+    {
+        base.LoseControl();
+        isLeaning = false;
+        leaningDirection = Vector2.zero;
     }
 
 }

@@ -99,6 +99,8 @@ public class PlayerStateManager : MonoBehaviour
         currentState = State.Platforming;
         platformingController.ReceiveControl();
         climbingController.LoseControl();
+
+        platformingController.JumpNextFrame();
     }
 
 

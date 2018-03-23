@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerClimbingController : PlayerMovementController
+public class PlayerClimbingControllerAlternate : PlayerMovementController
 {
     [SerializeField] private Transform leftHandConnectionPoint;
     [SerializeField] private Transform rightHandConnectionPoint;
@@ -60,13 +60,38 @@ public class PlayerClimbingController : PlayerMovementController
 
         UpdateLeaningStatus();
 
-        if(isLeaning && playerActions.GripLeft.WasPressed)
+        if(isLeaning && playerActions.WasPressedGripVector != Vector2.zero)
         {
-            MoveInLeaningDirectionIfPossible(false);
-        }
-        else if(isLeaning && playerActions.GripRight.WasPressed)
-        {
-            MoveInLeaningDirectionIfPossible(true);
+            Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, leaningDirection, gripLayer);
+
+            if (leaningDirection == Vector2.up)
+            {
+                if(playerActions.HorizontalAxisGripWasPressed)
+                {
+                    MoveUpIfPossible(newGripSquare);
+                }
+            }
+            else if(leaningDirection == Vector2.right)
+            {
+                if(playerActions.VerticalAxisGripWasPressed)
+                {
+                    MoveRightIfPossible(newGripSquare);
+                }
+            }
+            else if(leaningDirection == Vector2.down)
+            {
+                if (playerActions.HorizontalAxisGripWasPressed)
+                {
+                    MoveDownIfPossible(newGripSquare);
+                }
+            }
+            else if (leaningDirection == Vector2.left)
+            {
+                if (playerActions.VerticalAxisGripWasPressed)
+                {
+                    MoveLeftIfPossible(newGripSquare);
+                }
+            }
         }
     }
 
@@ -102,97 +127,98 @@ public class PlayerClimbingController : PlayerMovementController
         }
     }
 
-    private void MoveInLeaningDirectionIfPossible(bool rightGripWasChosen)
+    private void MoveUpIfPossible(Grip.Square newGripSquare)
     {
-        Vector2 direction = leaningDirection;
-        Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
+        if(playerActions.GripLeft.WasPressed)
+        {
+            if(newGripSquare.upperLeft != null)
+            {
+                MoveToSquare(newGripSquare);
+            }
+        }
+        else if(playerActions.GripRight.WasPressed)
+        {
+            if(newGripSquare.upperRight != null)
+            {
+                MoveToSquare(newGripSquare);
+            }
+        }
+    }
 
-        if (direction == Vector2.up)
+    private void MoveRightIfPossible(Grip.Square newGripSquare)
+    {
+        if(playerActions.GripUp.WasPressed)
         {
-            //is there a handhold in the chosen direction?
-            if (rightGripWasChosen)
-            {
-                if(newGripSquare.upperRight != null)
-                {
-                    MoveToSquare(newGripSquare);
-                }
-            }
-            else
-            {
-                if (newGripSquare.upperLeft != null)
-                {
-                    MoveToSquare(newGripSquare);
-                }
-            }
-        }
-        else if(direction == Vector2.right)
-        {
-            //Edge case for movement back and forth across a single column of Grips
-            if (newGripSquare.lowerLeft != null && newGripSquare.upperLeft != null && !newGripSquare.HasRightSide) 
+            if(newGripSquare.upperRight != null)
             {
                 MoveToSquare(newGripSquare);
             }
-            else if (rightGripWasChosen)
-            {
-                if (newGripSquare.lowerRight != null)
-                {
-                    MoveToSquare(newGripSquare);
-                }
-                else if (newGripSquare.lowerLeft != null && newGripSquare.upperLeft != null && newGripSquare.upperRight == null)
-                {
-                    MoveToSquare(newGripSquare);
-                }
-            }
-            else
-            {
-                if(newGripSquare.upperRight != null)
-                {
-                    MoveToSquare(newGripSquare);
-                }
-            }
-        }
-        else if(direction == Vector2.down)
-        {
-            //Edge case for movement down when there are no footholds
-            if (newGripSquare.upperLeft != null && newGripSquare.upperRight != null && !newGripSquare.HasBottomSide)
+            else if(newGripSquare.upperLeft != null && newGripSquare.lowerLeft != null && !newGripSquare.HasRightSide)
             {
                 MoveToSquare(newGripSquare);
             }
-            else if (rightGripWasChosen)
-            {
-                if(newGripSquare.lowerRight != null)
-                {
-                    MoveToSquare(newGripSquare);
-                }
-            }
-            else
-            {
-                if(newGripSquare.lowerLeft != null)
-                {
-                    MoveToSquare(newGripSquare);
-                }
-            }
         }
-        else if(direction == Vector2.left)
+        else if(playerActions.GripDown.WasPressed)
         {
-            //Edge case for movement down when there are no footholds
-            if (newGripSquare.upperRight != null && newGripSquare.lowerRight != null && !newGripSquare.HasLeftSide)
+            if(newGripSquare.lowerRight != null)
             {
                 MoveToSquare(newGripSquare);
             }
-            else if (rightGripWasChosen)
+            else if (newGripSquare.upperLeft != null && newGripSquare.lowerLeft != null && !newGripSquare.HasRightSide)
             {
-                if(newGripSquare.upperLeft != null)
-                {
-                    MoveToSquare(newGripSquare);
-                }
+                MoveToSquare(newGripSquare);
             }
-            else
+        }
+    }
+
+    private void MoveDownIfPossible(Grip.Square newGripSquare)
+    {
+        if(playerActions.GripLeft.WasPressed)
+        {
+            if(newGripSquare.lowerLeft != null)
             {
-                if(newGripSquare.lowerLeft != null)
-                {
-                    MoveToSquare(newGripSquare);
-                }
+                MoveToSquare(newGripSquare);
+            }
+            else if(newGripSquare.upperLeft != null && newGripSquare.upperRight != null && !newGripSquare.HasBottomSide)
+            {
+                MoveToSquare(newGripSquare);
+            }
+        }
+        else if(playerActions.GripRight.WasPressed)
+        {
+            if(newGripSquare.lowerRight != null)
+            {
+                MoveToSquare(newGripSquare);
+            }
+            else if (newGripSquare.upperLeft != null && newGripSquare.upperRight != null && !newGripSquare.HasBottomSide)
+            {
+                MoveToSquare(newGripSquare);
+            }
+        }
+    }
+
+    private void MoveLeftIfPossible(Grip.Square newGripSquare)
+    {
+        if(playerActions.GripUp.WasPressed)
+        {
+            if(newGripSquare.upperLeft != null)
+            {
+                MoveToSquare(newGripSquare);
+            }
+            else if(newGripSquare. upperRight != null && newGripSquare.lowerRight != null && !newGripSquare.HasLeftSide)
+            {
+                MoveToSquare(newGripSquare);
+            }
+        }
+        else if(playerActions.GripDown.WasPressed)
+        {
+            if (newGripSquare.lowerLeft != null)
+            {
+                MoveToSquare(newGripSquare);
+            }
+            else if (newGripSquare.upperRight != null && newGripSquare.lowerRight != null && !newGripSquare.HasLeftSide)
+            {
+                MoveToSquare(newGripSquare);
             }
         }
     }

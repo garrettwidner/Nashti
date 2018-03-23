@@ -12,8 +12,11 @@ using UnityEngine;
 public class PlayerStateManager : MonoBehaviour
 {
     [SerializeField] private PlayerClimbingController climbingController;
+    [SerializeField] private PlayerClimbingControllerAlternate alternateClimbingController;
     [SerializeField] private PlayerPlatformingController platformingController;
     [SerializeField] private State startingState;
+
+    public bool useAlternateClimbingController;
 
     private State currentState = State.Platforming;
     public State CurrentState
@@ -28,7 +31,14 @@ public class PlayerStateManager : MonoBehaviour
 
     private void Awake()
     {
-        playerActions = PlayerActions.CreateWithDefaultBindings();
+        if(useAlternateClimbingController)
+        {
+            playerActions = PlayerActions.CreateWithTestBinding1();
+        }
+        else
+        {
+            playerActions = PlayerActions.CreateWithDefaultBindings();
+        }
         RunSetupsBasedOnStartingState();
     }
 
@@ -37,11 +47,25 @@ public class PlayerStateManager : MonoBehaviour
         switch (startingState)
         {
             case State.Climbing:
-                climbingController.RunSetup(true, playerActions);
+                if(useAlternateClimbingController)
+                {
+                    alternateClimbingController.RunSetup(true, playerActions);
+                }
+                else
+                {
+                    climbingController.RunSetup(true, playerActions);
+                }
                 platformingController.RunSetup(false, playerActions);
                 break;
             case State.Platforming:
-                climbingController.RunSetup(false, playerActions);
+                if (useAlternateClimbingController)
+                {
+                    alternateClimbingController.RunSetup(false, playerActions);
+                }
+                else
+                {
+                    climbingController.RunSetup(false, playerActions);
+                }
                 platformingController.RunSetup(true, playerActions);
                 break;
         }
@@ -67,20 +91,41 @@ public class PlayerStateManager : MonoBehaviour
         //Switch from platform to climb if grip is pressed near a valid grip area.
         if(CurrentState == State.Platforming)
         {
-            if(playerActions.GripRight.IsPressed)
+            if(useAlternateClimbingController)
             {
-                if (climbingController.ConnectIfPossible(true))
+                if (playerActions.GripRight.IsPressed)
                 {
-                    SwitchToClimbing();
+                    if (alternateClimbingController.ConnectIfPossible(true))
+                    {
+                        SwitchToClimbing();
+                    }
+                }
+                if (playerActions.GripLeft.IsPressed)
+                {
+                    if (alternateClimbingController.ConnectIfPossible(false))
+                    {
+                        SwitchToClimbing();
+                    }
                 }
             }
-            if(playerActions.GripLeft.IsPressed)
+            else
             {
-                if(climbingController.ConnectIfPossible(false))
+                if (playerActions.GripRight.IsPressed)
                 {
-                    SwitchToClimbing();
+                    if (climbingController.ConnectIfPossible(true))
+                    {
+                        SwitchToClimbing();
+                    }
+                }
+                if (playerActions.GripLeft.IsPressed)
+                {
+                    if (climbingController.ConnectIfPossible(false))
+                    {
+                        SwitchToClimbing();
+                    }
                 }
             }
+            
             
         }
     }
@@ -89,7 +134,14 @@ public class PlayerStateManager : MonoBehaviour
     {
         //print("PlayerStateManager Switched to CLIMBING state");
         currentState = State.Climbing;
-        climbingController.ReceiveControl();
+        if(useAlternateClimbingController)
+        {
+            alternateClimbingController.ReceiveControl();
+        }
+        else
+        {
+            climbingController.ReceiveControl();
+        }
         platformingController.LoseControl();
     }
 
@@ -97,8 +149,15 @@ public class PlayerStateManager : MonoBehaviour
     {
         //print("PlayerStateManager Switched to PLATFORMING state");
         currentState = State.Platforming;
+        if (useAlternateClimbingController)
+        {
+            alternateClimbingController.LoseControl();
+        }
+        else
+        {
+            climbingController.LoseControl();
+        }
         platformingController.ReceiveControl();
-        climbingController.LoseControl();
 
         platformingController.JumpNextFrame();
     }

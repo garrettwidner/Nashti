@@ -78,7 +78,7 @@ public class Grip : MonoBehaviour
             }
         }
 
-        public bool HasLowerSide
+        public bool HasBottomSide
         {
             get
             {

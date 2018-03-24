@@ -53,11 +53,6 @@ public class PlayerPlatformingController : PlayerMovementController
 
     private void Update()
     {
-        if(playerActions.Jump.WasPressed)
-        {
-            print("Jump pressed");
-        }
-
         if (!isSetUp || !isControllingMovement)
         {
             return;
@@ -105,8 +100,6 @@ public class PlayerPlatformingController : PlayerMovementController
 
         if (playerActions.Jump.WasPressed || shouldJumpNextFrame)
         {
-            print("PlatformingController received jump input");
-
             if (wallSliding)
             {
                 if (wallDirX == input.x)

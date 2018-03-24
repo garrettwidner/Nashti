@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Grip : MonoBehaviour
 {
-    public const float WIDTH_BETWEEN_GRIPS = .5f;
-    public const float GRIP_WIDTH = .1f;
-    public const float HALF_GRIP_WIDTH = .05f;
+    public const float WIDTH_BETWEEN_GRIPS = .25f;
+    public const float GRIP_WIDTH = .05f;
+    public const float HALF_GRIP_WIDTH = .025f;
 
     [SerializeField]
     [Range(1,10)]

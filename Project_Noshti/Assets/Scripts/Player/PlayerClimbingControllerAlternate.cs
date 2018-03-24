@@ -18,6 +18,13 @@ public class PlayerClimbingControllerAlternate : PlayerMovementController
 
     private bool isLeaning = false;
     private Vector2 leaningDirection;
+    public Vector2 LeaningDirection
+    {
+        get
+        {
+            return leaningDirection;
+        }
+    }
 
     public bool ConnectIfPossible(bool rightHandIsConnecting)
     {

@@ -54,6 +54,18 @@ public class Grip : MonoBehaviour
             }
         }
 
+        public bool HasFullRightSide
+        {
+            get
+            {
+                if (upperRight != null && lowerRight != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
         public bool HasLeftSide
         {
             get
@@ -66,11 +78,35 @@ public class Grip : MonoBehaviour
             }
         }
 
-        public bool HasUpperSide
+        public bool HasFullLeftSide
+        {
+            get
+            {
+                if (upperLeft != null && lowerLeft != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool HasTopSide
         {
             get
             {
                 if(upperLeft != null || upperRight != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool HasFullTopSide
+        {
+            get
+            {
+                if (upperLeft != null && upperRight != null)
                 {
                     return true;
                 }
@@ -83,6 +119,18 @@ public class Grip : MonoBehaviour
             get
             {
                 if(lowerLeft != null || lowerRight != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool HasFullBottomSide
+        {
+            get
+            {
+                if (lowerLeft != null && lowerRight != null)
                 {
                     return true;
                 }

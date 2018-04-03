@@ -218,4 +218,10 @@ public class PlayerClimbingController : PlayerMovementController
         leaningDirection = Vector2.zero;
     }
 
+    public class ProximalSquare
+    {
+        public Grip.Square square;
+        public bool isJumpNecessary;
+    }
+
 }

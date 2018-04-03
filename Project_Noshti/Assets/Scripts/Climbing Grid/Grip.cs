@@ -14,7 +14,7 @@ public class Grip : MonoBehaviour
     [SerializeField]
     private Type type;
     [SerializeField]
-    private BoxCollider2D boxCollider;
+    private BoxCollider2D boxCollider = null;
 
     public enum Type
     {
@@ -22,6 +22,22 @@ public class Grip : MonoBehaviour
         Sidewall,
         Ladder
     };
+
+    public bool IsNull
+    {
+        get
+        {
+            return boxCollider == null;
+        }
+    }
+
+    public bool IsInstantiated
+    {
+        get
+        {
+            return boxCollider != null;
+        }
+    }
 
     public struct Square
     {
@@ -135,6 +151,14 @@ public class Grip : MonoBehaviour
                     return true;
                 }
                 return false;
+            }
+        }
+
+        public bool IsConnectible
+        {
+            get
+            {
+                return GripCount >= 2;
             }
         }
 

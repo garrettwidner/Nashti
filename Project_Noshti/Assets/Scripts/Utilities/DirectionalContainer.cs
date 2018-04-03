@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DirectionalContainer
 {
+    [System.Serializable]
     public class Cardinal<T>
     {
         public T up;
@@ -12,6 +13,7 @@ public class DirectionalContainer
         public T left;
     }
 
+    [System.Serializable]
     public class Ordinal<T>
     {
         public T upperRight;

@@ -9,6 +9,8 @@ public class PlayerClimbingController : PlayerMovementController
     [SerializeField] private Transform leftFootConnectionPoint;
     [SerializeField] private Transform rightFootConnectionPoint;
 
+    private DirectionalContainer.Cardinal<ProximalSquare> potentialMovements; 
+
     [SerializeField] private float limbToGripConnectionProximity = .5f;
     [SerializeField] private float limbToLimbDistance = .5f;
 
@@ -30,20 +32,21 @@ public class PlayerClimbingController : PlayerMovementController
     {
         if(rightHandIsConnecting)
         {
-            Grip rightHand = GripChecker.CheckProximity(rightHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
+            Grip rightHand = GripChecker.CheckAreaForGrip(rightHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
             if(rightHand != null)
             {
                 Grip.Square foundSquare = GripChecker.PopulateGripSquare(rightHand, Vector2.left, Vector2.down, gripLayer);
                 if (foundSquare.GripCount >= 2)
                 {
                     MoveToSquare(foundSquare);
+
                     return true;
                 }
             }
         }
         else
         {
-            Grip leftHand = GripChecker.CheckProximity(leftHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
+            Grip leftHand = GripChecker.CheckAreaForGrip(leftHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
             if(leftHand != null)
             {
                 Grip.Square foundSquare = GripChecker.PopulateGripSquare(leftHand, Vector2.right, Vector2.down, gripLayer);
@@ -75,6 +78,11 @@ public class PlayerClimbingController : PlayerMovementController
         {
             MoveInLeaningDirectionIfPossible(true);
         }
+    }
+
+    private void FindPotentialMovements(Grip.Square currentSquare)
+    {
+
     }
 
     private void UpdateLeaningStatus()
@@ -112,7 +120,7 @@ public class PlayerClimbingController : PlayerMovementController
     private void MoveInLeaningDirectionIfPossible(bool rightGripWasChosen)
     {
         Vector2 direction = leaningDirection;
-        Grip.Square newGripSquare = GripChecker.FindGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
+        Grip.Square newGripSquare = GripChecker.FindConnectedGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
 
         if (direction == Vector2.up)
         {

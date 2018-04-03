@@ -5,17 +5,15 @@ using UnityEngine;
 
 public class GripChecker : MonoBehaviour
 {
-    //[SerializeField] private LayerMask gripLayer;
-
     /// <summary>
     /// Returns closest grip point if found in proximity. If none found, returns null.
     /// </summary>
     /// <param name="center"></param>
-    /// <param name="proximalRadius"></param>
+    /// <param name="checkRadius"></param>
     /// <returns></returns>
-    public static Grip CheckProximity(Vector2 center, float proximalRadius, LayerMask gripLayer)
+    public static Grip CheckAreaForGrip(Vector2 center, float checkRadius, LayerMask gripLayer)
     {
-        Collider2D[] foundColliders = Physics2D.OverlapCircleAll(center, proximalRadius, gripLayer);
+        Collider2D[] foundColliders = Physics2D.OverlapCircleAll(center, checkRadius, gripLayer);
         if(foundColliders != null)
         {
             Collider2D closest = null;
@@ -63,6 +61,14 @@ public class GripChecker : MonoBehaviour
         return collider2;
     }
 
+    /// <summary>
+    /// Populates a grip square from one of its given grips. Takes the directions the other grips can be found in.
+    /// </summary>
+    /// <param name="startGrip"></param>
+    /// <param name="hDirection"></param>
+    /// <param name="vDirection"></param>
+    /// <param name="gripLayer"></param>
+    /// <returns></returns>
     public static Grip.Square PopulateGripSquare(Grip startGrip, Vector2 hDirection, Vector2 vDirection, LayerMask gripLayer)
     {
         hDirection.Normalize();
@@ -180,7 +186,7 @@ public class GripChecker : MonoBehaviour
     /// <param name="direction"></param>
     /// <param name="gripLayer"></param>
     /// <returns></returns>
-    public static Grip.Square FindGripSquareInDirection(Grip.Square startingSquare, Vector2 direction, LayerMask gripLayer)
+    public static Grip.Square FindConnectedGripSquareInDirection(Grip.Square startingSquare, Vector2 direction, LayerMask gripLayer)
     {
         direction.Normalize();
         if(direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
@@ -236,5 +242,80 @@ public class GripChecker : MonoBehaviour
 
         return new Grip.Square();
     }
+    
+    /*
+    /// <summary>
+    /// Finds first connectible grip square in the given direction from startingSquare. JumpLength measured in single grips.
+    /// </summary>
+    /// <param name="startingSquare"></param>
+    /// <param name="direction"></param>
+    /// <param name="gripLayer"></param>
+    /// <param name="jumpLength"></param>
+    /// <returns></returns>
+    private Grip.Square FindGripSquareAfterJump(Grip.Square startingSquare, Vector2 direction, LayerMask gripLayer, int jumpLength)
+    {
+        direction.Normalize();
+        if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
+        {
+            Debug.LogWarning("Given direction must be a cardinal direction");
+            return new Grip.Square();
+        }
+
+        if (direction == Vector2.up)
+        {
+            bool foundGripsAreInSameSquare = false;
+            //Check from upper left handHold
+            Grip leftStart = startingSquare.upperLeft;
+            for(int i = 1; i <= jumpLength; i++)
+            {
+                Vector2 checkPosition = (Vector2)leftStart.transform.position + (Vector2.up * i);
+                Grip foundGrip = CheckAreaForGrip(checkPosition, Grip.HALF_GRIP_WIDTH, gripLayer);
+                if(foundGrip != null)
+                {
+                    break;
+                }
+            }
+           
+        }
+        else if (direction == Vector2.right)
+        {
+            
+        }
+        else if (direction == Vector2.down)
+        {
+            
+        }
+        else if (direction == Vector2.left)
+        {
+ 
+        }
+    }
+    */
+
+    /// <summary>
+    /// Checks in the given direction and returns the first grip found. Returns an uninitialized Grip if none is found.
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <param name="startPosition"></param>
+    /// <param name="gripLayer"></param>
+    /// <param name="gripsToSkip"></param>
+    /// <param name="jumpLength"></param>
+    /// <returns></returns>
+    private Grip FindJumpableGripInDirection(Vector2 direction, Vector2 startPosition, LayerMask gripLayer, int gripsToSkip, int jumpLength)
+    {
+        Grip foundGrip = new Grip();
+        for(int i = 1 + gripsToSkip; i < jumpLength; i++)
+        {
+            Vector2 checkPosition = startPosition + (direction * i);
+            foundGrip = CheckAreaForGrip(checkPosition, Grip.HALF_GRIP_WIDTH, gripLayer);
+            if (foundGrip != null)
+            {
+                break;
+            }
+        }
+
+        return foundGrip;
+    }
+    
 
 }

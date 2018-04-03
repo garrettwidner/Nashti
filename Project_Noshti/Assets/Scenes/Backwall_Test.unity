@@ -12147,7 +12147,6 @@ GameObject:
   - component: {fileID: 1054660856}
   - component: {fileID: 1054660859}
   - component: {fileID: 1054660858}
-  - component: {fileID: 1054660860}
   - component: {fileID: 1054660855}
   - component: {fileID: 1054660854}
   - component: {fileID: 1054660853}
@@ -12318,30 +12317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbingController: {fileID: 1054660858}
-  alternateClimbingController: {fileID: 1054660860}
   platformingController: {fileID: 1054660855}
   startingState: 1
-  useAlternateClimbingController: 0
---- !u!114 &1054660860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1054660852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a430a95112ffc51478b798408e8d2d8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandConnectionPoint: {fileID: 1130195026}
-  rightHandConnectionPoint: {fileID: 1558280123}
-  leftFootConnectionPoint: {fileID: 246694546}
-  rightFootConnectionPoint: {fileID: 349693998}
-  limbToGripConnectionProximity: 0.2
-  limbToLimbDistance: 0.25
-  gripLayer:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!1001 &1063762407
 Prefab:
   m_ObjectHideFlags: 0
@@ -13359,8 +13336,8 @@ Transform:
   - {fileID: 188248447}
   - {fileID: 923848861}
   - {fileID: 768051177}
-  - {fileID: 1530947892}
   - {fileID: 1431124772}
+  - {fileID: 1530947892}
   - {fileID: 108234708}
   - {fileID: 1469328552}
   - {fileID: 1280858995}

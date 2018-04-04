@@ -264,18 +264,15 @@ public class GripChecker : MonoBehaviour
         if (direction == Vector2.up)
         {
             bool foundGripsAreInSameSquare = false;
-            //Check from upper left handHold
-            Grip leftStart = startingSquare.upperLeft;
-            for(int i = 1; i <= jumpLength; i++)
+            
+            Grip foundLeft = FindJumpableGripInDirection(startingSquare.upperLeft.transform.position, Vector2.up, gripLayer, jumpLength);
+            Grip foundRight = FindJumpableGripInDirection(startingSquare.upperRight.transform.position, Vector2.up, gripLayer, jumpLength);
+            if(!foundLeft.IsNull && !foundRight.IsNull)
             {
-                Vector2 checkPosition = (Vector2)leftStart.transform.position + (Vector2.up * i);
-                Grip foundGrip = CheckAreaForGrip(checkPosition, Grip.HALF_GRIP_WIDTH, gripLayer);
-                if(foundGrip != null)
-                {
-                    break;
-                }
+                
             }
-           
+
+
         }
         else if (direction == Vector2.right)
         {
@@ -301,14 +298,14 @@ public class GripChecker : MonoBehaviour
     /// <param name="gripsToSkip"></param>
     /// <param name="jumpLength"></param>
     /// <returns></returns>
-    private Grip FindJumpableGripInDirection(Vector2 direction, Vector2 startPosition, LayerMask gripLayer, int gripsToSkip, int jumpLength)
+    private Grip FindJumpableGripInDirection(Vector2 startPosition, Vector2 direction, LayerMask gripLayer, int jumpLength, int gripsToSkip = 0)
     {
         Grip foundGrip = new Grip();
         for(int i = 1 + gripsToSkip; i < jumpLength; i++)
         {
             Vector2 checkPosition = startPosition + (direction * i);
             foundGrip = CheckAreaForGrip(checkPosition, Grip.HALF_GRIP_WIDTH, gripLayer);
-            if (foundGrip != null)
+            if (!foundGrip.IsNull)
             {
                 break;
             }

@@ -31,11 +31,41 @@ public class Grip : MonoBehaviour
         }
     }
 
-    public bool IsInstantiated
+    public bool IsInSameSquareAs(Grip grip)
     {
-        get
+        float xDifference = transform.position.x - grip.transform.position.x;
+        float yDifference = transform.position.y - grip.transform.position.y;
+
+        bool xIsInSquare = IsDifferenceWithinSquareBounds(xDifference);
+        bool yIsInSquare = IsDifferenceWithinSquareBounds(yDifference);
+
+        if (xIsInSquare == true && yIsInSquare == true)
         {
-            return boxCollider != null;
+            return true;
+        }
+        return false;
+    }
+
+    private bool IsDifferenceWithinSquareBounds(float positionalDifference)
+    {
+        float minLeeway = HALF_GRIP_WIDTH;
+        float maxLeeway = WIDTH_BETWEEN_GRIPS + HALF_GRIP_WIDTH;
+
+        if (Mathf.Abs(positionalDifference) > minLeeway)
+        {
+
+            if (Mathf.Abs(positionalDifference) < maxLeeway)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
         }
     }
 
@@ -219,19 +249,19 @@ public class Grip : MonoBehaviour
             float visibleTime = 1f;
             if (upperLeft != null)
             {
-                SuperDebugger.DrawPlusAtPoint(upperLeft.transform.position, Color.yellow, sideLength, visibleTime);
+                SuperDebugger.DrawPlus(upperLeft.transform.position, Color.yellow, sideLength, visibleTime);
             }
             if (upperRight != null)
             {
-                SuperDebugger.DrawPlusAtPoint(upperRight.transform.position, Color.magenta, sideLength, visibleTime);
+                SuperDebugger.DrawPlus(upperRight.transform.position, Color.magenta, sideLength, visibleTime);
             }
             if (lowerLeft != null)
             {
-                SuperDebugger.DrawPlusAtPoint(lowerLeft.transform.position, Color.cyan, sideLength, visibleTime);
+                SuperDebugger.DrawPlus(lowerLeft.transform.position, Color.cyan, sideLength, visibleTime);
             }
             if (lowerRight != null)
             {
-                SuperDebugger.DrawPlusAtPoint(lowerRight.transform.position, Color.white, sideLength, visibleTime);
+                SuperDebugger.DrawPlus(lowerRight.transform.position, Color.white, sideLength, visibleTime);
             }
         }
 

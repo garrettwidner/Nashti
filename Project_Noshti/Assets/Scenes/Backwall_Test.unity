@@ -16194,6 +16194,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4143780391869712, guid: 557dc23a635dd054bbf952599d848a7c,
     type: 2}
   m_PrefabInternal: {fileID: 674317902}
+--- !u!1 &1665803017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1665803019}
+  - component: {fileID: 1665803018}
+  m_Layer: 0
+  m_Name: Grip Square Debugger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1665803018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1665803017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34584122735d60d409b4bf9394833c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grip1: {fileID: 1967228149}
+  grip2: {fileID: 1794638548}
+--- !u!4 &1665803019
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1665803017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.7234187, y: 0.20314753, z: 0.35636383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1665824409
 Prefab:
   m_ObjectHideFlags: 0
@@ -17768,6 +17810,12 @@ MonoBehaviour:
   quality: 8
   type: 0
   boxCollider: {fileID: 0}
+--- !u!114 &1794638548 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114008527538385480, guid: fed96dd5509fcb840977c65e7ad13210,
+    type: 2}
+  m_PrefabInternal: {fileID: 1417695597}
+  m_Script: {fileID: 11500000, guid: ed5b0e3e753e3044a872caf9ee738eb3, type: 3}
 --- !u!1 &1800368635
 GameObject:
   m_ObjectHideFlags: 0
@@ -19271,6 +19319,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4143780391869712, guid: 557dc23a635dd054bbf952599d848a7c,
     type: 2}
   m_PrefabInternal: {fileID: 1632149009}
+--- !u!114 &1967228149 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114008527538385480, guid: fed96dd5509fcb840977c65e7ad13210,
+    type: 2}
+  m_PrefabInternal: {fileID: 2035459798}
+  m_Script: {fileID: 11500000, guid: ed5b0e3e753e3044a872caf9ee738eb3, type: 3}
 --- !u!1001 &1982284795
 Prefab:
   m_ObjectHideFlags: 0

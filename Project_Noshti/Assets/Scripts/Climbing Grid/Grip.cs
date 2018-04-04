@@ -31,6 +31,26 @@ public class Grip : MonoBehaviour
         }
     }
 
+    public bool IsHorizontallyInLineWith(Grip grip)
+    {
+        float yDifference = transform.position.y - grip.transform.position.y;
+        if(Mathf.Abs(yDifference) >= HALF_GRIP_WIDTH)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public bool IsVerticallyInLineWith(Grip grip)
+    {
+        float xDifference = transform.position.x - grip.transform.position.x;
+        if (Mathf.Abs(xDifference) >= HALF_GRIP_WIDTH)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public bool IsInSameSquareAs(Grip grip)
     {
         float xDifference = transform.position.x - grip.transform.position.x;
@@ -69,7 +89,7 @@ public class Grip : MonoBehaviour
         }
     }
 
-    public struct Square
+    public class Square
     {
         public Grip upperLeft;
         public Grip upperRight;
@@ -265,12 +285,60 @@ public class Grip : MonoBehaviour
             }
         }
 
+        /// <summary>
+        /// Creates a Grip.Square with the given 
+        /// </summary>
+        /// <param name="upLeft"></param>
+        /// <param name="upRight"></param>
+        /// <param name="lowLeft"></param>
+        /// <param name="lowRight"></param>
         public Square(Grip upLeft, Grip upRight, Grip lowLeft, Grip lowRight)
         {
             upperLeft = upLeft;
             upperRight = upRight;
             lowerLeft = lowLeft;
             lowerRight = lowRight;
+        }
+
+        /// <summary>
+        /// Populates a grip square if given two grips from the square.
+        /// </summary>
+        /// <param name="grip1"></param>
+        /// <param name="grip2"></param>
+        public Square(Grip grip1, Grip grip2, Vector2 precedingDirection)
+        {
+            precedingDirection.Normalize();
+            if (precedingDirection != Vector2.left && precedingDirection != Vector2.right && precedingDirection != Vector2.up && precedingDirection != Vector2.down)
+            {
+                Debug.LogWarning("Given direction must be a cardinal direction");
+                upperLeft = null;
+                upperRight = null;
+                lowerLeft = null;
+                lowerRight = null;
+                return;
+            }
+
+            bool isHorizontallyInline = grip1.IsHorizontallyInLineWith(grip2);
+            bool isVerticallyInline = grip1.IsVerticallyInLineWith(grip2);
+
+            if(precedingDirection == Vector2.left || precedingDirection == Vector2.right)
+            {
+
+            }
+            else if(precedingDirection == Vector2.up || precedingDirection == Vector2.down)
+            {
+
+            }
+
+        }
+        
+
+        public Square()
+        {
+            upperLeft = null;
+            upperRight = null;
+            lowerLeft = null;
+            lowerRight = null;
         }
     }
 }

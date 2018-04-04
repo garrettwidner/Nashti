@@ -246,6 +246,7 @@ public class GripChecker : MonoBehaviour
     /*
     /// <summary>
     /// Finds first connectible grip square in the given direction from startingSquare. JumpLength measured in single grips.
+    /// If no square is found within the given bounds, returns a null Grip.Square.
     /// </summary>
     /// <param name="startingSquare"></param>
     /// <param name="direction"></param>
@@ -270,6 +271,10 @@ public class GripChecker : MonoBehaviour
             if(!foundLeft.IsNull && !foundRight.IsNull)
             {
                 
+            }
+            else
+            {
+
             }
 
 

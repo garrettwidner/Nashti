@@ -131,7 +131,7 @@ public class GripSquareDebugger : MonoBehaviour
 
     private void CheckDirectionalAdjacency(Vector2 direction)
     {
-        SuperDebugger.DrawPlus(startGrip.FindAdjacentGrip(direction, gripLayer).transform.position, Color.red, .2f, .5f);
+        SuperDebugger.DrawPlus(startGrip.FindAdjacent(direction, gripLayer).transform.position, Color.red, .2f, .5f);
     }
 
 

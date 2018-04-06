@@ -69,14 +69,14 @@ public class PlayerStateManager : MonoBehaviour
         {
             if (playerActions.GripRight.IsPressed)
             {
-                if (climbingController.ConnectIfPossible(true))
+                if (climbingController.ConnectAtHandsIfPossible(true))
                 {
                     SwitchToClimbing();
                 }
             }
             if (playerActions.GripLeft.IsPressed)
             {
-                if (climbingController.ConnectIfPossible(false))
+                if (climbingController.ConnectAtHandsIfPossible(false))
                 {
                     SwitchToClimbing();
                 }

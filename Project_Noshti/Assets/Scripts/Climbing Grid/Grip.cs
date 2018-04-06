@@ -52,8 +52,8 @@ public class Grip : MonoBehaviour
         float xDifference = transform.position.x - grip.transform.position.x;
         float yDifference = transform.position.y - grip.transform.position.y;
 
-        bool xIsInSquare = IsPositionDifferenceWithinSquareBounds(xDifference);
-        bool yIsInSquare = IsPositionDifferenceWithinSquareBounds(yDifference);
+        bool xIsInSquare = IsPositionDifferenceWithinBoundsOfSquare(xDifference);
+        bool yIsInSquare = IsPositionDifferenceWithinBoundsOfSquare(yDifference);
 
         if (xIsInSquare == true && yIsInSquare == true)
         {
@@ -62,7 +62,57 @@ public class Grip : MonoBehaviour
         return false;
     }
 
-    private bool IsPositionDifferenceWithinSquareBounds(float positionalDifference)
+    public static Grip Find(Vector2 center, float checkRadius, LayerMask gripLayer)
+    {
+        Collider2D[] foundColliders = Physics2D.OverlapCircleAll(center, checkRadius, gripLayer);
+        if (foundColliders != null)
+        {
+            Collider2D closest = null;
+
+            //Find closest collider with a GripPoint component
+            foreach (Collider2D collider in foundColliders)
+            {
+                Grip foundGrip = collider.GetComponent<Grip>();
+                if (foundGrip != null)
+                {
+                    if (closest == null)
+                    {
+                        closest = collider;
+                    }
+                    else
+                    {
+                        closest = FindClosestCollider(center, collider, closest);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Object " + collider.name + " on Grip layer missing GripPoint component. Omitted from CheckProximity() results");
+                }
+            }
+
+            if (closest != null)
+            {
+                return closest.GetComponent<Grip>();
+            }
+        }
+
+        return null;
+    }
+
+    private static Collider2D FindClosestCollider(Vector2 start, Collider2D collider1, Collider2D collider2)
+    {
+        float distanceTo1 = Vector2.Distance(start, collider1.transform.position);
+        float distanceTo2 = Vector2.Distance(start, collider2.transform.position);
+
+        if (distanceTo1 < distanceTo2)
+        {
+            return collider1;
+        }
+
+        return collider2;
+    }
+
+    private bool IsPositionDifferenceWithinBoundsOfSquare(float positionalDifference)
     {
         float minLeeway = HALF_GRIP_WIDTH;
         float maxLeeway = WIDTH_BETWEEN_GRIPS + HALF_GRIP_WIDTH;
@@ -90,7 +140,7 @@ public class Grip : MonoBehaviour
     /// </summary>
     /// <param name="direction"></param>
     /// <returns></returns>
-    public Grip FindAdjacentGrip(Vector2 direction, LayerMask gripLayer)
+    public Grip FindAdjacent(Vector2 direction, LayerMask gripLayer)
     {
         direction.Normalize();
         if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
@@ -448,7 +498,7 @@ public class Grip : MonoBehaviour
 
 
         /// <summary>
-        /// Populates a grip square if given two grips at the 'bottom' of the square, with the bottom being the first encountered 
+        /// Creates a Grip.Square if given two grips at the 'bottom' of the square, with the bottom being the first grips encountered 
         /// when travelling along the movingDirection
         /// </summary>
         /// <param name="grip1"></param>
@@ -495,15 +545,15 @@ public class Grip : MonoBehaviour
                 {
                     lowerRight = rightMost;
                     lowerLeft = (grip1 == rightMost) ? grip2 : grip1;
-                    upperRight = lowerRight.FindAdjacentGrip(Vector2.up, gripLayer);
-                    upperLeft = lowerLeft.FindAdjacentGrip(Vector2.up, gripLayer);
+                    upperRight = lowerRight.FindAdjacent(Vector2.up, gripLayer);
+                    upperLeft = lowerLeft.FindAdjacent(Vector2.up, gripLayer);
                 }
                 else
                 {
                     upperRight = rightMost;
                     upperLeft = (grip1 == rightMost) ? grip2 : grip1;
-                    lowerRight = upperRight.FindAdjacentGrip(Vector2.down, gripLayer);
-                    lowerLeft = upperLeft.FindAdjacentGrip(Vector2.down, gripLayer);
+                    lowerRight = upperRight.FindAdjacent(Vector2.down, gripLayer);
+                    lowerLeft = upperLeft.FindAdjacent(Vector2.down, gripLayer);
                 }
             }
             else if(verticallyInline)
@@ -512,15 +562,15 @@ public class Grip : MonoBehaviour
                 {
                     upperLeft = topMost;
                     lowerLeft = (grip1 == topMost) ? grip2 : grip1;
-                    upperRight = upperLeft.FindAdjacentGrip(Vector2.right, gripLayer);
-                    lowerRight = lowerLeft.FindAdjacentGrip(Vector2.right, gripLayer);
+                    upperRight = upperLeft.FindAdjacent(Vector2.right, gripLayer);
+                    lowerRight = lowerLeft.FindAdjacent(Vector2.right, gripLayer);
                 }
                 else
                 {
                     upperRight = topMost;
                     lowerRight = (grip1 == topMost) ? grip2 : grip1;
-                    upperLeft = upperRight.FindAdjacentGrip(Vector2.left, gripLayer);
-                    lowerLeft = lowerRight.FindAdjacentGrip(Vector2.left, gripLayer);
+                    upperLeft = upperRight.FindAdjacent(Vector2.left, gripLayer);
+                    lowerLeft = lowerRight.FindAdjacent(Vector2.left, gripLayer);
                 }
             }
             //Diagonal
@@ -530,122 +580,75 @@ public class Grip : MonoBehaviour
                 {
                     upperRight = topMost;
                     lowerLeft = (grip1 == topMost) ? grip2 : grip1;
-                    upperLeft = upperRight.FindAdjacentGrip(Vector2.left, gripLayer);
-                    lowerRight = lowerLeft.FindAdjacentGrip(Vector2.right, gripLayer);
+                    upperLeft = upperRight.FindAdjacent(Vector2.left, gripLayer);
+                    lowerRight = lowerLeft.FindAdjacent(Vector2.right, gripLayer);
                 }
                 else
                 {
                     upperLeft = topMost;
                     lowerRight = (grip1 == topMost) ? grip2 : grip1;
-                    upperRight = upperLeft.FindAdjacentGrip(Vector2.right, gripLayer);
-                    lowerLeft = lowerRight.FindAdjacentGrip(Vector2.left, gripLayer);
+                    upperRight = upperLeft.FindAdjacent(Vector2.right, gripLayer);
+                    lowerLeft = lowerRight.FindAdjacent(Vector2.left, gripLayer);
                 }
             }
         }
-        
-        /*
-        /// <summary>
-        /// Populates a grip square if given two grips at the 'bottom' of the square, with the bottom being the first encountered 
-        /// when travelling along the movingDirection
-        /// </summary>
-        /// <param name="grip1"></param>
-        /// <param name="grip2"></param>
-        public Square(Grip grip1, Grip grip2, Vector2 movingDirection, LayerMask gripLayer)
+
+        public Square FindAdjacentSquareInDirection(Vector2 direction, LayerMask gripLayer)
         {
-            movingDirection.Normalize();
-            if (movingDirection != Vector2.left && movingDirection != Vector2.right && movingDirection != Vector2.up && movingDirection != Vector2.down)
+            direction.Normalize();
+            if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
             {
                 Debug.LogWarning("Given direction must be a cardinal direction");
-                upperLeft = null;
-                upperRight = null;
-                lowerLeft = null;
-                lowerRight = null;
-                return;
+                return new Square();
             }
 
-            if(!grip1.IsInSameSquareAs(grip2))
+            if (direction == Vector2.up)
             {
-                Debug.LogWarning("Grips given for constructor are not in same square");
-                upperLeft = null;
-                upperRight = null;
-                lowerLeft = null;
-                lowerRight = null;
-                return;
-            }
-
-            bool horizontallyInline = grip1.IsHorizontallyInLineWith(grip2);
-            bool verticallyInline = grip1.IsVerticallyInLineWith(grip2);
-            Grip topMost = new Grip();
-            Grip rightMost = new Grip();
-
-            if(!horizontallyInline)
-            {
-                topMost = (grip1.transform.position.y > grip2.transform.position.y) ? grip1 : grip2;
-            }
-            if(!verticallyInline)
-            {
-                rightMost = (grip1.transform.position.x > grip2.transform.position.x) ? grip1 : grip2;
-            }
-
-            if (movingDirection == Vector2.up)
-            {
-                if(horizontallyInline)
+                if (upperLeft != null)
                 {
-                    lowerRight = rightMost;
-                    lowerLeft = (grip1 == rightMost) ? grip2 : grip1;
-                    upperRight = lowerRight.FindAdjacentGrip(Vector2.up, gripLayer);
-                    upperLeft = lowerLeft.FindAdjacentGrip(Vector2.up, gripLayer);
+                    return new Square(upperLeft, Vector2.right, Vector2.up, gripLayer);
                 }
-                else
+                else if (upperRight != null)
                 {
-                    if(topMost == rightMost)
-                    {
-                        upperRight = topMost;
-                        lowerLeft = (grip1 == topMost) ? grip2 : grip1;
-                        upperLeft = lowerLeft.FindAdjacentGrip(Vector2.up, gripLayer);
-                        lowerRight = upperRight.FindAdjacentGrip(Vector2.down, gripLayer);
-                    }
-                    else
-                    {
-                        upperLeft = topMost;
-                        lowerRight = rightMost;
-                        upperRight = rightMost.FindAdjacentGrip(Vector2.up, gripLayer);
-                        lowerLeft = upperLeft.FindAdjacentGrip(Vector2.down, gripLayer);
-                    }
+                    return new Square(upperRight, Vector2.left, Vector2.up, gripLayer);
                 }
             }
-            else if(movingDirection == Vector2.right)
+            else if (direction == Vector2.right)
             {
-                if(verticallyInline)
+                if (upperRight != null)
                 {
-                    upperLeft = topMost;
-                    lowerLeft = (upperLeft == grip1) ? grip2 : grip1;
-                    upperRight = upperLeft.FindAdjacentGrip(Vector2.right, gripLayer);
-                    lowerRight = lowerLeft.FindAdjacentGrip(Vector2.right, gripLayer);
+                    return new Square(upperRight, Vector2.right, Vector2.down, gripLayer);
                 }
-                else
+                else if (lowerRight != null)
                 {
-                    if (topMost == rightMost)
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
+                    return new Square(lowerRight, Vector2.right, Vector2.up, gripLayer);
                 }
             }
-            else if(movingDirection == Vector2.down)
+            else if (direction == Vector2.down)
             {
-
+                if (lowerRight != null)
+                {
+                    return new Square(lowerRight, Vector2.left, Vector2.down, gripLayer);
+                }
+                else if (lowerLeft != null)
+                {
+                    return new Square(lowerLeft, Vector2.right, Vector2.down, gripLayer);
+                }
             }
-            else if (movingDirection == Vector2.left)
+            else if (direction == Vector2.left)
             {
-
+                if (lowerLeft != null)
+                {
+                    return new Square(lowerLeft, Vector2.left, Vector2.up, gripLayer);
+                }
+                else if (upperLeft != null)
+                {
+                    return new Square(upperLeft, Vector2.left, Vector2.down, gripLayer);
+                }
             }
 
+            return new Square();
         }
-        */
 
 
         public Square()

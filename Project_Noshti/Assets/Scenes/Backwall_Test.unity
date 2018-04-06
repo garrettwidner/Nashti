@@ -13055,7 +13055,7 @@ Transform:
   - {fileID: 804944848}
   - {fileID: 1035969862}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1100558569
 Prefab:
@@ -13866,7 +13866,7 @@ Transform:
   - {fileID: 1478924003}
   - {fileID: 1551808496}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1237437915 stripped
 Transform:
@@ -16849,7 +16849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1665803018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16871,7 +16871,7 @@ MonoBehaviour:
   horizontalDirection: 1
   dualGrip1: {fileID: 1351353001}
   dualGrip2: {fileID: 510528651}
-  movingDirection: 0
+  movingDirection: 1
   startGrip: {fileID: 510528651}
 --- !u!4 &1665803019
 Transform:
@@ -16884,7 +16884,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1665824409
 Prefab:

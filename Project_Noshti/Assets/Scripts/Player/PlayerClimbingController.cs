@@ -28,14 +28,14 @@ public class PlayerClimbingController : PlayerMovementController
         }
     }
 
-    public bool ConnectIfPossible(bool rightHandIsConnecting)
+    public bool ConnectAtHandsIfPossible(bool rightHandIsConnecting)
     {
         if(rightHandIsConnecting)
         {
-            Grip rightHand = GripChecker.CheckAreaForGrip(rightHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
+            Grip rightHand = Grip.Find(rightHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
             if(rightHand != null)
             {
-                Grip.Square foundSquare = GripChecker.PopulateGripSquare(rightHand, Vector2.left, Vector2.down, gripLayer);
+                Grip.Square foundSquare = new Grip.Square(rightHand, Vector2.left, Vector2.down, gripLayer);
                 if (foundSquare.GripCount >= 2)
                 {
                     MoveToSquare(foundSquare);
@@ -46,10 +46,10 @@ public class PlayerClimbingController : PlayerMovementController
         }
         else
         {
-            Grip leftHand = GripChecker.CheckAreaForGrip(leftHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
+            Grip leftHand = Grip.Find(leftHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
             if(leftHand != null)
             {
-                Grip.Square foundSquare = GripChecker.PopulateGripSquare(leftHand, Vector2.right, Vector2.down, gripLayer);
+                Grip.Square foundSquare = new Grip.Square(leftHand, Vector2.right, Vector2.down, gripLayer);
                 if(foundSquare.GripCount >= 2)
                 {
                     MoveToSquare(foundSquare);
@@ -120,7 +120,7 @@ public class PlayerClimbingController : PlayerMovementController
     private void MoveInLeaningDirectionIfPossible(bool rightGripWasChosen)
     {
         Vector2 direction = leaningDirection;
-        Grip.Square newGripSquare = GripChecker.FindConnectedGripSquareInDirection(currentConnectedSquare, direction, gripLayer);
+        Grip.Square newGripSquare = currentConnectedSquare.FindAdjacentSquareInDirection(leaningDirection, gripLayer);
 
         if (direction == Vector2.up)
         {

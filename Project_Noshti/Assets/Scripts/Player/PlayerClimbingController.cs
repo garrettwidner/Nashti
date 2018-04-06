@@ -32,7 +32,7 @@ public class PlayerClimbingController : PlayerMovementController
     {
         if(rightHandIsConnecting)
         {
-            Grip rightHand = Grip.Find(rightHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
+            Grip rightHand = Grip.CheckLocationForGrip(rightHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
             if(rightHand != null)
             {
                 Grip.Square foundSquare = new Grip.Square(rightHand, Vector2.left, Vector2.down, gripLayer);
@@ -46,7 +46,7 @@ public class PlayerClimbingController : PlayerMovementController
         }
         else
         {
-            Grip leftHand = Grip.Find(leftHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
+            Grip leftHand = Grip.CheckLocationForGrip(leftHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
             if(leftHand != null)
             {
                 Grip.Square foundSquare = new Grip.Square(leftHand, Vector2.right, Vector2.down, gripLayer);
@@ -77,6 +77,10 @@ public class PlayerClimbingController : PlayerMovementController
         else if(isLeaning && playerActions.GripRight.WasPressed)
         {
             MoveInLeaningDirectionIfPossible(true);
+        }
+        else if(isLeaning && playerActions.Jump.WasPressed)
+        {
+
         }
     }
 
@@ -217,6 +221,8 @@ public class PlayerClimbingController : PlayerMovementController
         newSquare.DebugSquare();
         transform.position = newSquare.Center;
         currentConnectedSquare = newSquare;
+
+        FindPotentialMovements(newSquare);
     }
 
     public override void LoseControl()

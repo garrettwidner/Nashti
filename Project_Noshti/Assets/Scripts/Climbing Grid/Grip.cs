@@ -201,6 +201,68 @@ public class Grip : MonoBehaviour
         return foundGrip;
     }
 
+    /// <summary>
+    /// Returns the first Grip found if moving in movingDirection. Returns null Grip if neither grip is closer.
+    /// </summary>
+    /// <param name="movingDirection"></param>
+    /// <param name="grip1"></param>
+    /// <param name="grip2"></param>
+    /// <returns></returns>
+    public static Grip DetermineClosestGripInMovingDirection(Vector2 movingDirection, Grip grip1, Grip grip2)
+    {
+        movingDirection.Normalize();
+        if (movingDirection != Vector2.left && movingDirection != Vector2.right && movingDirection != Vector2.up && movingDirection != Vector2.down)
+        {
+            Debug.LogWarning("Given direction must be a cardinal direction");
+            return new Grip();
+        }
+
+        if (movingDirection == Vector2.up)
+        {
+            if (grip1.IsHorizontallyInLineWith(grip2))
+            {
+                return new Grip();
+            }
+            else
+            {
+                return (grip1.transform.position.y < grip2.transform.position.y) ? grip1 : grip2;
+            }
+        }
+        else if (movingDirection == Vector2.right)
+        {
+            if (grip1.IsVerticallyInLineWith(grip2))
+            {
+                return new Grip();
+            }
+            else
+            {
+                return (grip1.transform.position.x < grip2.transform.position.y) ? grip1 : grip2;
+            }
+        }
+        else if (movingDirection == Vector2.down)
+        {
+            if (grip1.IsHorizontallyInLineWith(grip2))
+            {
+                return new Grip();
+            }
+            else
+            {
+                return (grip1.transform.position.y > grip2.transform.position.y) ? grip1 : grip2;
+            }
+        }
+        else
+        {
+            if (grip1.IsVerticallyInLineWith(grip2))
+            {
+                return new Grip();
+            }
+            else
+            {
+                return (grip1.transform.position.x > grip2.transform.position.y) ? grip1 : grip2;
+            }
+        }
+    }
+
     public class Square
     {
         public Grip upperLeft;
@@ -741,67 +803,7 @@ public class Grip : MonoBehaviour
 
         }
 
-        /// <summary>
-        /// Returns the first Grip found if moving in movingDirection. Returns null Grip if neither grip is closer.
-        /// </summary>
-        /// <param name="movingDirection"></param>
-        /// <param name="grip1"></param>
-        /// <param name="grip2"></param>
-        /// <returns></returns>
-        public Grip FindClosestGripInMovingDirection(Vector2 movingDirection, Grip grip1, Grip grip2)
-        {
-            movingDirection.Normalize();
-            if (movingDirection != Vector2.left && movingDirection != Vector2.right && movingDirection != Vector2.up && movingDirection != Vector2.down)
-            {
-                Debug.LogWarning("Given direction must be a cardinal direction");
-                return new Grip();
-            }
-
-            if(movingDirection == Vector2.up)
-            {
-                if(grip1.IsHorizontallyInLineWith(grip2))
-                {
-                    return new Grip();
-                }
-                else
-                {
-                    return (grip1.transform.position.y < grip2.transform.position.y) ? grip1 : grip2;
-                }
-            }
-            else if(movingDirection == Vector2.right)
-            {
-                if(grip1.IsVerticallyInLineWith(grip2))
-                {
-                    return new Grip();
-                }
-                else
-                {
-                    return (grip1.transform.position.x < grip2.transform.position.y) ? grip1 : grip2;
-                }
-            }
-            else if(movingDirection == Vector2.down)
-            {
-                if (grip1.IsHorizontallyInLineWith(grip2))
-                {
-                    return new Grip();
-                }
-                else
-                {
-                    return (grip1.transform.position.y > grip2.transform.position.y) ? grip1 : grip2;
-                }
-            }
-            else
-            {
-                if (grip1.IsVerticallyInLineWith(grip2))
-                {
-                    return new Grip();
-                }
-                else
-                {
-                    return (grip1.transform.position.x > grip2.transform.position.y) ? grip1 : grip2;
-                }
-            }
-        }
+        
 
         /*
         public Square FindFirstSquareInDirection(Vector2 direction, LayerMask gripLayer, int spacesToCheck)
@@ -814,6 +816,8 @@ public class Grip : MonoBehaviour
             int spacesBeforeRightFound = 0;
             Grip leftFound = FindInDirection(leftStart, direction, gripLayer, spacesToCheck, out spacesBeforeLeftFound);
             Grip rightFound = FindInDirection(rightStart, direction, gripLayer, spacesToCheck, out spacesBeforeRightFound);
+
+            // use DetermineClosestGripInMovingDirection()
         }
         */
 

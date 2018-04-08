@@ -805,7 +805,7 @@ public class Grip : MonoBehaviour
 
         
 
-        /*
+        
         public Square FindFirstSquareInDirection(Vector2 direction, LayerMask gripLayer, int spacesToCheck)
         {
             Grip leftStart = FindLeftSelectingSquareGivenDirection(direction);
@@ -817,9 +817,14 @@ public class Grip : MonoBehaviour
             Grip leftFound = FindInDirection(leftStart, direction, gripLayer, spacesToCheck, out spacesBeforeLeftFound);
             Grip rightFound = FindInDirection(rightStart, direction, gripLayer, spacesToCheck, out spacesBeforeRightFound);
 
+            if(!leftFound.IsNull && !rightFound.IsNull)
+            {
+
+            }
+
             // use DetermineClosestGripInMovingDirection()
         }
-        */
+        
 
 
 

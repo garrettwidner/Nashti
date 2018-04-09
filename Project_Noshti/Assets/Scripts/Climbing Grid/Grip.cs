@@ -191,7 +191,7 @@ public class Grip : MonoBehaviour
         {
            Vector2 checkPosition = (Vector2)startGrip.transform.position + (direction * WIDTH_BETWEEN_GRIPS * i);
            foundGrip = CheckLocationForGrip(checkPosition, HALF_GRIP_WIDTH, gripLayer);
-            if (!foundGrip.IsNull)
+            if (foundGrip != null && !foundGrip.IsNull)
             {
                 spacesBeforeFound = i;
                 break;
@@ -263,6 +263,7 @@ public class Grip : MonoBehaviour
         }
     }
 
+    [System.Serializable]
     public class Square
     {
         public Grip upperLeft;
@@ -804,30 +805,50 @@ public class Grip : MonoBehaviour
         }
 
         
-
-        
         public Square FindFirstSquareInDirection(Vector2 direction, LayerMask gripLayer, int spacesToCheck)
         {
             Grip leftStart = FindLeftSelectingSquareGivenDirection(direction);
             Grip rightStart = FindRightSelectingSquareGivenDirection(direction);
 
-
             int spacesBeforeLeftFound = 0;
             int spacesBeforeRightFound = 0;
+
+            return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+        }
+        
+        private Square IterateThroughSquaresInDirection(Vector2 direction, LayerMask gripLayer, int spacesToCheck, Grip leftStart, Grip rightStart, ref int spacesBeforeLeftFound, ref int spacesBeforeRightFound)
+        {
             Grip leftFound = FindInDirection(leftStart, direction, gripLayer, spacesToCheck, out spacesBeforeLeftFound);
             Grip rightFound = FindInDirection(rightStart, direction, gripLayer, spacesToCheck, out spacesBeforeRightFound);
 
-            if(!leftFound.IsNull && !rightFound.IsNull)
+            if (!leftFound.IsNull && !rightFound.IsNull)
             {
-
+                if (leftFound.IsInSameSquareAs(rightFound))
+                {
+                    return new Square(leftFound, rightFound, direction, gripLayer);
+                }
+                //Grips are not in same square; continue iterating 
+                //Left found first, iterate along left and continue checking
+                else if (spacesBeforeLeftFound < spacesBeforeRightFound)
+                {
+                    int spacesToSkip = spacesBeforeLeftFound;
+                    leftFound = FindInDirection(leftStart, direction, gripLayer, spacesToCheck, out spacesBeforeLeftFound, spacesToSkip);
+                    return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                }
+                //Right found first, iterate along right and continue checking
+                else
+                {
+                    int spacesToSkip = spacesBeforeRightFound;
+                    rightFound = FindInDirection(rightStart, direction, gripLayer, spacesToCheck, out spacesBeforeRightFound, spacesToSkip);
+                    return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                }
             }
-
-            // use DetermineClosestGripInMovingDirection()
+            else
+            {
+                //Can't connect with less than 3; return null square.
+                return new Square();
+            }
         }
-        
-
-
-
 
         public Square()
         {

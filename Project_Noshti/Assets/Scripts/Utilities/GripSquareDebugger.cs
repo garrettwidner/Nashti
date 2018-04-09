@@ -28,6 +28,10 @@ public class GripSquareDebugger : MonoBehaviour
     [Header("Directional Adjacency Check (Press Arrow Keys)")]
     public Grip startGrip;
 
+    [Header("Square In Direction Check (Press Arrow Key and U)")]
+    public Grip.Square startSquare;
+    public int maxSpacesToCheck;
+
     public enum Direction
     {
         Up,
@@ -74,22 +78,48 @@ public class GripSquareDebugger : MonoBehaviour
             CheckDualGripMonodirectionalConstructor();
         }
 
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        /*
+        else if(!Input.GetKey(KeyCode.U))
         {
-            CheckDirectionalAdjacency(Vector2.up);
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                CheckDirectionalAdjacency(Vector2.up);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                CheckDirectionalAdjacency(Vector2.right);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                CheckDirectionalAdjacency(Vector2.down);
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                CheckDirectionalAdjacency(Vector2.left);
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        */
+        
+        else if(Input.GetKey(KeyCode.U))
         {
-            CheckDirectionalAdjacency(Vector2.right);
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                FindGripInDirection(startSquare, Vector2.up, maxSpacesToCheck);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                FindGripInDirection(startSquare, Vector2.right, maxSpacesToCheck);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                FindGripInDirection(startSquare, Vector2.down, maxSpacesToCheck);
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                FindGripInDirection(startSquare, Vector2.left, maxSpacesToCheck);
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            CheckDirectionalAdjacency(Vector2.down);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            CheckDirectionalAdjacency(Vector2.left);
-        }
+        
     }
 
     private void CheckIfGripsInSameSquare()
@@ -131,7 +161,29 @@ public class GripSquareDebugger : MonoBehaviour
 
     private void CheckDirectionalAdjacency(Vector2 direction)
     {
+        Grip adjacentGrip = Grip.FindAdjacentTo(startGrip, direction, gripLayer);
+        if (!adjacentGrip.IsNull)
+        {
+            SuperDebugger.DrawX(adjacentGrip.transform.position, Grip.GRIP_WIDTH, Color.cyan, 1f);
+        }
+        else
+        {
+            print("No adjacent grip found in direction: " + direction);
+        }
+    }
 
+    private void FindGripInDirection(Grip.Square startSquare, Vector2 cDirection, int maxSpacesToCheck)
+    {
+        Grip.Square foundSquare = startSquare.FindFirstSquareInDirection(cDirection, gripLayer, maxSpacesToCheck);
+        if(!foundSquare.IsNull)
+        {
+            foundSquare.DebugSquare();
+            print("Square found in direction : " + cDirection);
+        }
+        else
+        {
+            print("Square -NOT- found in direction : " + cDirection);
+        }
     }
 
 

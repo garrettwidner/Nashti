@@ -10,7 +10,7 @@ public class Grip : MonoBehaviour
 
     [SerializeField] [Range(1,10)] private int quality;
     [SerializeField] private Type type;
-    [SerializeField] private BoxCollider2D boxCollider = null;
+    [SerializeField] private BoxCollider2D boxCollider;
 
     public enum Type
     {
@@ -146,7 +146,7 @@ public class Grip : MonoBehaviour
         if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
         {
             Debug.LogWarning("Given direction must be a cardinal direction");
-            return new Grip();
+            return null;
         }
 
         Vector2 checkLocation = (Vector2)startGrip.transform.position + (direction * WIDTH_BETWEEN_GRIPS);
@@ -163,7 +163,7 @@ public class Grip : MonoBehaviour
             }
         }
 
-        return new Grip();
+        return null;
     }
 
     /// <summary>
@@ -178,7 +178,7 @@ public class Grip : MonoBehaviour
     /// <returns></returns>
     public static Grip FindInDirection(Grip startGrip, Vector2 direction, LayerMask gripLayer, int spacesToCheck, out int spacesBeforeFound, int initialSpacesToSkip = 0)
     {
-        Grip foundGrip = new Grip();
+        Grip foundGrip = null;
         spacesBeforeFound = 0;
 
         if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
@@ -214,14 +214,14 @@ public class Grip : MonoBehaviour
         if (movingDirection != Vector2.left && movingDirection != Vector2.right && movingDirection != Vector2.up && movingDirection != Vector2.down)
         {
             Debug.LogWarning("Given direction must be a cardinal direction");
-            return new Grip();
+            return null;
         }
 
         if (movingDirection == Vector2.up)
         {
             if (grip1.IsHorizontallyInLineWith(grip2))
             {
-                return new Grip();
+                return null;
             }
             else
             {
@@ -232,7 +232,7 @@ public class Grip : MonoBehaviour
         {
             if (grip1.IsVerticallyInLineWith(grip2))
             {
-                return new Grip();
+                return null;
             }
             else
             {
@@ -243,7 +243,7 @@ public class Grip : MonoBehaviour
         {
             if (grip1.IsHorizontallyInLineWith(grip2))
             {
-                return new Grip();
+                return null;
             }
             else
             {
@@ -254,7 +254,7 @@ public class Grip : MonoBehaviour
         {
             if (grip1.IsVerticallyInLineWith(grip2))
             {
-                return new Grip();
+                return null;
             }
             else
             {
@@ -625,8 +625,8 @@ public class Grip : MonoBehaviour
 
             bool horizontallyInline = grip1.IsHorizontallyInLineWith(grip2);
             bool verticallyInline = grip1.IsVerticallyInLineWith(grip2);
-            Grip topMost = new Grip();
-            Grip rightMost = new Grip();
+            Grip topMost = null;
+            Grip rightMost = null;
 
             if (!horizontallyInline)
             {
@@ -754,7 +754,7 @@ public class Grip : MonoBehaviour
             if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
             {
                 Debug.LogWarning("Given direction must be a cardinal direction");
-                return new Grip();
+                return null;
             }
 
             if(direction == Vector2.up)
@@ -782,7 +782,7 @@ public class Grip : MonoBehaviour
             if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
             {
                 Debug.LogWarning("Given direction must be a cardinal direction");
-                return new Grip();
+                return null;
             }
 
             if (direction == Vector2.up)
@@ -813,15 +813,88 @@ public class Grip : MonoBehaviour
             int spacesBeforeLeftFound = 0;
             int spacesBeforeRightFound = 0;
 
-            return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+            Grip leftFound = FindInDirection(leftStart, direction, gripLayer, spacesToCheck, out spacesBeforeLeftFound);
+            Grip rightFound = FindInDirection(rightStart, direction, gripLayer, spacesToCheck, out spacesBeforeRightFound);
+
+            if(leftFound)
+            {
+                SuperDebugger.DrawX(leftFound.transform.position, HALF_GRIP_WIDTH, Color.red, 1f);
+            }
+            if(rightFound)
+            {
+                SuperDebugger.DrawX(rightFound.transform.position, HALF_GRIP_WIDTH, Color.green, 1f);
+            }
+
+            return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+            //return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
         }
-        
+
+        private Square CheckHandholdsAndIterate(Vector2 direction, Grip leftFound, Grip rightFound, LayerMask gripLayer, int spacesToCheck, ref int spacesBeforeLeftFound, ref int spacesBeforeRightFound)
+        {
+            if (spacesBeforeRightFound > spacesToCheck || spacesBeforeLeftFound > spacesToCheck)
+            {
+                return new Square();
+            }
+
+            if (leftFound && rightFound)
+            {
+                if (leftFound.IsInSameSquareAs(rightFound))
+                {
+                    //TODO: Currently returns any two grips in a square; need to specify what types of squares can be connected to.
+                    return new Square(leftFound, rightFound, direction, gripLayer);
+                }
+                else
+                {
+                    //left closest; iterate from left
+                    if (Vector2.Distance(leftFound.transform.position, Center) < Vector2.Distance(rightFound.transform.position, Center))
+                    {
+                        int updatedSpacesToCheck = spacesToCheck - spacesBeforeLeftFound;
+                        leftFound = FindInDirection(leftFound, direction, gripLayer, updatedSpacesToCheck, out spacesBeforeLeftFound);
+                        if(leftFound)
+                        {
+                            SuperDebugger.DrawPlus(leftFound.transform.position, Color.white, HALF_GRIP_WIDTH, .5f);
+                        }
+                        return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                    }
+                    //right closest; iterate from right
+                    else
+                    {
+                        int updatedSpacesToCheck = spacesToCheck - spacesBeforeRightFound;
+                        rightFound = FindInDirection(rightFound, direction, gripLayer, updatedSpacesToCheck, out spacesBeforeRightFound);
+                        if (rightFound)
+                        {
+                            SuperDebugger.DrawPlus(rightFound.transform.position, Color.cyan, HALF_GRIP_WIDTH, .5f);
+                        }
+                        return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                    }
+                }
+            }
+            else
+            {
+                //No grip found in specified bounds.
+                return new Square();
+            }
+
+        }
+
+        int numberCalled = 0;
+        int maxNumberOfCalls = 30;
+
+        /*
         private Square IterateThroughSquaresInDirection(Vector2 direction, LayerMask gripLayer, int spacesToCheck, Grip leftStart, Grip rightStart, ref int spacesBeforeLeftFound, ref int spacesBeforeRightFound)
         {
             Grip leftFound = FindInDirection(leftStart, direction, gripLayer, spacesToCheck, out spacesBeforeLeftFound);
             Grip rightFound = FindInDirection(rightStart, direction, gripLayer, spacesToCheck, out spacesBeforeRightFound);
 
-            if (!leftFound.IsNull && !rightFound.IsNull)
+            numberCalled++;
+            print("IterateThroughSquares called " + numberCalled + " times.");
+            if(numberCalled > maxNumberOfCalls)
+            {
+                numberCalled = 0;
+                return new Square();
+            }
+
+            if (leftFound != null && rightFound != null && !leftFound.IsNull && !rightFound.IsNull)
             {
                 if (leftFound.IsInSameSquareAs(rightFound))
                 {
@@ -833,14 +906,30 @@ public class Grip : MonoBehaviour
                 {
                     int spacesToSkip = spacesBeforeLeftFound;
                     leftFound = FindInDirection(leftStart, direction, gripLayer, spacesToCheck, out spacesBeforeLeftFound, spacesToSkip);
-                    return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                    if(leftFound != null)
+                    {
+                        SuperDebugger.DrawBoxAtPoint(leftFound.transform.position, HALF_GRIP_WIDTH, Color.white, 1.2f);
+                        return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                    }
+                    else
+                    {
+                        return new Square();
+                    }
                 }
                 //Right found first, iterate along right and continue checking
                 else
                 {
                     int spacesToSkip = spacesBeforeRightFound;
                     rightFound = FindInDirection(rightStart, direction, gripLayer, spacesToCheck, out spacesBeforeRightFound, spacesToSkip);
-                    return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                    if(rightFound != null)
+                    {
+                        SuperDebugger.DrawBoxAtPoint(rightFound.transform.position, HALF_GRIP_WIDTH, Color.white, 1.2f);
+                        return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                    }
+                    else
+                    {
+                        return new Square();
+                    }
                 }
             }
             else
@@ -849,6 +938,8 @@ public class Grip : MonoBehaviour
                 return new Square();
             }
         }
+
+    */
 
         public Square()
         {

@@ -78,7 +78,7 @@ public class GripSquareDebugger : MonoBehaviour
             CheckDualGripMonodirectionalConstructor();
         }
 
-        /*
+        
         else if(!Input.GetKey(KeyCode.U))
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -98,7 +98,7 @@ public class GripSquareDebugger : MonoBehaviour
                 CheckDirectionalAdjacency(Vector2.left);
             }
         }
-        */
+        
         
         else if(Input.GetKey(KeyCode.U))
         {
@@ -174,6 +174,7 @@ public class GripSquareDebugger : MonoBehaviour
 
     private void FindGripInDirection(Grip.Square startSquare, Vector2 cDirection, int maxSpacesToCheck)
     {
+        print("FoundGripInDirection called");
         Grip.Square foundSquare = startSquare.FindFirstSquareInDirection(cDirection, gripLayer, maxSpacesToCheck);
         if(!foundSquare.IsNull)
         {

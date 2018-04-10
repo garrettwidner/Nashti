@@ -169,6 +169,7 @@ public class Grip : MonoBehaviour
     /// <summary>
     /// Checkdistance is measured in number of concurrent spaces to check for grips. InitialSpacesToSkip is subtracted from the start of this.
     /// For example, spacesToCheck = 5 and initialSpacesToSkip = 1 would start checking at the second space in the direction.
+    /// spacesBeforeFound returns 
     /// </summary>
     /// <param name="startGrip"></param>
     /// <param name="direction"></param>
@@ -176,10 +177,10 @@ public class Grip : MonoBehaviour
     /// <param name="spacesToCheck"></param>
     /// <param name="initialSpacesToSkip"></param>
     /// <returns></returns>
-    public static Grip FindInDirection(Grip startGrip, Vector2 direction, LayerMask gripLayer, int spacesToCheck, out int spacesBeforeFound, int initialSpacesToSkip = 0)
+    public static Grip FindInDirection(Grip startGrip, Vector2 direction, LayerMask gripLayer, int spacesToCheck, out int spacesSearchedBeforeGripFound, int initialSpacesToSkip = 0)
     {
         Grip foundGrip = null;
-        spacesBeforeFound = 0;
+        spacesSearchedBeforeGripFound = 0;
 
         if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
         {
@@ -193,7 +194,7 @@ public class Grip : MonoBehaviour
            foundGrip = CheckLocationForGrip(checkPosition, HALF_GRIP_WIDTH, gripLayer);
             if (foundGrip != null && !foundGrip.IsNull)
             {
-                spacesBeforeFound = i;
+                spacesSearchedBeforeGripFound = i;
                 break;
             }
         }
@@ -805,18 +806,20 @@ public class Grip : MonoBehaviour
         }
 
         
-        public Square FindFirstSquareInDirection(Vector2 direction, LayerMask gripLayer, int spacesToCheck)
+        public Square FindFirstSquareInDirection(Vector2 direction, LayerMask gripLayer, int spacesToCheck, int minimumGripsInFoundSquare)
         {
+
             Grip leftStart = FindLeftSelectingSquareGivenDirection(direction);
             Grip rightStart = FindRightSelectingSquareGivenDirection(direction);
 
-            int spacesBeforeLeftFound = 0;
-            int spacesBeforeRightFound = 0;
+            int spacesBeforeLeftFound;
+            int spacesBeforeRightFound;
 
             Grip leftFound = FindInDirection(leftStart, direction, gripLayer, spacesToCheck, out spacesBeforeLeftFound);
             Grip rightFound = FindInDirection(rightStart, direction, gripLayer, spacesToCheck, out spacesBeforeRightFound);
 
-            if(leftFound)
+            
+            if (leftFound)
             {
                 SuperDebugger.DrawX(leftFound.transform.position, HALF_GRIP_WIDTH, Color.red, 1f);
             }
@@ -825,20 +828,24 @@ public class Grip : MonoBehaviour
                 SuperDebugger.DrawX(rightFound.transform.position, HALF_GRIP_WIDTH, Color.green, 1f);
             }
 
-            return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
-            //return IterateThroughSquaresInDirection(direction, gripLayer, spacesToCheck, leftStart, rightStart, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+            return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, spacesBeforeLeftFound, spacesBeforeRightFound, minimumGripsInFoundSquare);
         }
 
-        private Square CheckHandholdsAndIterate(Vector2 direction, Grip leftFound, Grip rightFound, LayerMask gripLayer, int spacesToCheck, ref int spacesBeforeLeftFound, ref int spacesBeforeRightFound)
+        private Square CheckHandholdsAndIterate(Vector2 direction, Grip leftFound, Grip rightFound, LayerMask gripLayer, int spacesToCheck, int totalLeftSpacesSearched, int totalRightSpacesSearched, int minimumGripsInSquare)
         {
-            if (spacesBeforeRightFound > spacesToCheck || spacesBeforeLeftFound > spacesToCheck)
+            //print("--------------------");
+            //print("Spaces before left found: " + totalLeftSpacesSearched);
+            //print("Spaces before right found: " + totalRightSpacesSearched);
+
+            if (totalRightSpacesSearched > spacesToCheck || totalLeftSpacesSearched > spacesToCheck)
             {
+                print("RETURNING: Grips not found within " + (spacesToCheck) + " spaces.");
                 return new Square();
             }
 
             if (leftFound && rightFound)
             {
-                if (leftFound.IsInSameSquareAs(rightFound))
+                if (leftFound.IsInSameSquareAs(rightFound) && new Square(leftFound, rightFound, direction, gripLayer).GripCount >= minimumGripsInSquare)
                 {
                     //TODO: Currently returns any two grips in a square; need to specify what types of squares can be connected to.
                     return new Square(leftFound, rightFound, direction, gripLayer);
@@ -848,30 +855,60 @@ public class Grip : MonoBehaviour
                     //left closest; iterate from left
                     if (Vector2.Distance(leftFound.transform.position, Center) < Vector2.Distance(rightFound.transform.position, Center))
                     {
-                        int updatedSpacesToCheck = spacesToCheck - spacesBeforeLeftFound;
-                        leftFound = FindInDirection(leftFound, direction, gripLayer, updatedSpacesToCheck, out spacesBeforeLeftFound);
-                        if(leftFound)
+                        int leftSpacesSearchedThisIteration;
+                        int leftSpacesLeftToCheck = spacesToCheck + 1 - totalLeftSpacesSearched;
+
+                        leftFound = FindInDirection(leftFound, direction, gripLayer, leftSpacesLeftToCheck, out leftSpacesSearchedThisIteration);
+                        totalLeftSpacesSearched += leftSpacesSearchedThisIteration;
+
+                        /*
+                        //Debugging Code
+                        print("Left grip is closest to start; iterating on left.");
+                        print("Left spaces left to check: " + leftSpacesLeftToCheck);
+                        print("Total left spaces searched CHANGED: " + totalLeftSpacesSearched);
+                        if (leftFound)
                         {
-                            SuperDebugger.DrawPlus(leftFound.transform.position, Color.white, HALF_GRIP_WIDTH, .5f);
+                            SuperDebugger.DrawPlus(leftFound.transform.position, Color.red, HALF_GRIP_WIDTH, .5f);
                         }
-                        return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                        */
+
+                        return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, totalLeftSpacesSearched, totalRightSpacesSearched, minimumGripsInSquare);
                     }
                     //right closest; iterate from right
                     else
                     {
-                        int updatedSpacesToCheck = spacesToCheck - spacesBeforeRightFound;
-                        rightFound = FindInDirection(rightFound, direction, gripLayer, updatedSpacesToCheck, out spacesBeforeRightFound);
+                        int rightSpacesSearchedThisIteration;
+                        int rightSpacesLeftToCheck = spacesToCheck + 1 - totalRightSpacesSearched;
+
+                        rightFound = FindInDirection(rightFound, direction, gripLayer, rightSpacesLeftToCheck, out rightSpacesSearchedThisIteration);
+                        totalRightSpacesSearched += rightSpacesSearchedThisIteration;
+                        
+                        /*
+                        //Debugging code
+                        print("Right grip is closest to start; iterating on right");
+                        print("Right spaces left to check: " + rightSpacesLeftToCheck);
+                        print("Total right spaces searched CHANGED: " + totalRightSpacesSearched);
                         if (rightFound)
                         {
-                            SuperDebugger.DrawPlus(rightFound.transform.position, Color.cyan, HALF_GRIP_WIDTH, .5f);
+                            SuperDebugger.DrawPlus(rightFound.transform.position, Color.green, HALF_GRIP_WIDTH, .5f);
                         }
-                        return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, ref spacesBeforeLeftFound, ref spacesBeforeRightFound);
+                        */
+
+                        return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, totalLeftSpacesSearched, totalRightSpacesSearched, minimumGripsInSquare);
                     }
                 }
             }
             else
             {
                 //No grip found in specified bounds.
+                if(leftFound == null)
+                {
+                    print("RETURNING: Left grip not found within " + (spacesToCheck) + " spaces.");
+                }
+                else
+                {
+                    print("RETURNING: Right grip not found within " + (spacesToCheck) + " spaces.");
+                }
                 return new Square();
             }
 

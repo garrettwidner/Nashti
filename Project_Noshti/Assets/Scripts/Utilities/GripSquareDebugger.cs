@@ -31,6 +31,7 @@ public class GripSquareDebugger : MonoBehaviour
     [Header("Square In Direction Check (Press Arrow Key and U)")]
     public Grip.Square startSquare;
     public int maxSpacesToCheck;
+    public int minimumGripsInSquare;
 
     public enum Direction
     {
@@ -175,7 +176,7 @@ public class GripSquareDebugger : MonoBehaviour
     private void FindGripInDirection(Grip.Square startSquare, Vector2 cDirection, int maxSpacesToCheck)
     {
         print("FoundGripInDirection called");
-        Grip.Square foundSquare = startSquare.FindFirstSquareInDirection(cDirection, gripLayer, maxSpacesToCheck);
+        Grip.Square foundSquare = startSquare.FindFirstSquareInDirection(cDirection, gripLayer, maxSpacesToCheck, minimumGripsInSquare);
         if(!foundSquare.IsNull)
         {
             foundSquare.DebugSquare();

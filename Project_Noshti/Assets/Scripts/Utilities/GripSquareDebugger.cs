@@ -120,7 +120,6 @@ public class GripSquareDebugger : MonoBehaviour
                 FindGripInDirection(startSquare, Vector2.left, maxSpacesToCheck);
             }
         }
-        
     }
 
     private void CheckIfGripsInSameSquare()
@@ -134,7 +133,7 @@ public class GripSquareDebugger : MonoBehaviour
     {
         Grip.Square newSquare = new Grip.Square(sGrip, hDirection, vDirection, gripLayer);
         SuperDebugger.DrawBoxAtPoint(sGrip.transform.position, Grip.HALF_GRIP_WIDTH, Color.green, 2f);
-        if(!newSquare.IsNull)
+        if(!newSquare.IsEmpty)
         {
             newSquare.DebugSquare();
         }
@@ -150,7 +149,7 @@ public class GripSquareDebugger : MonoBehaviour
         SuperDebugger.DrawBoxAtPoint(dualGrip1.transform.position, Grip.GRIP_WIDTH, Color.magenta, 2f);
         SuperDebugger.DrawBoxAtPoint(dualGrip2.transform.position, Grip.GRIP_WIDTH, Color.magenta, 2f);
 
-        if (!newSquare.IsNull)
+        if (!newSquare.IsEmpty)
         {
             newSquare.DebugSquare();
         }
@@ -163,7 +162,7 @@ public class GripSquareDebugger : MonoBehaviour
     private void CheckDirectionalAdjacency(Vector2 direction)
     {
         Grip adjacentGrip = Grip.FindAdjacentTo(startGrip, direction, gripLayer);
-        if (!adjacentGrip.IsNull)
+        if (!adjacentGrip.IsEmpty)
         {
             SuperDebugger.DrawX(adjacentGrip.transform.position, Grip.GRIP_WIDTH, Color.cyan, 1f);
         }
@@ -177,7 +176,7 @@ public class GripSquareDebugger : MonoBehaviour
     {
         print("FoundGripInDirection called");
         Grip.Square foundSquare = startSquare.FindFirstSquareInDirection(cDirection, gripLayer, maxSpacesToCheck, minimumGripsInSquare);
-        if(!foundSquare.IsNull)
+        if(!foundSquare.IsEmpty)
         {
             foundSquare.DebugSquare();
             print("Square found in direction : " + cDirection);

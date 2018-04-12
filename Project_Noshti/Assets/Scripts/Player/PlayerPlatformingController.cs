@@ -147,9 +147,9 @@ public class PlayerPlatformingController : PlayerMovementController
         shouldJumpNextFrame = false;
     }
 
-    public override void LoseControl()
+    public override void LoseMovementControl()
     {
-        base.LoseControl();
+        base.LoseMovementControl();
         velocity = Vector2.zero;
     }
 

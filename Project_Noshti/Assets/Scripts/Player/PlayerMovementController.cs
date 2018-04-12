@@ -20,7 +20,7 @@ public abstract class PlayerMovementController : MonoBehaviour
         isControllingMovement = true;
     }
 
-    public virtual void LoseControl()
+    public virtual void LoseMovementControl()
     {
         isControllingMovement = false;
     }

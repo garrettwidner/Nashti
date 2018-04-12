@@ -89,14 +89,14 @@ public class PlayerStateManager : MonoBehaviour
         //print("PlayerStateManager Switched to CLIMBING state");
         currentState = State.Climbing;
         climbingController.ReceiveControl();
-        platformingController.LoseControl();
+        platformingController.LoseMovementControl();
     }
 
     private void SwitchToPlatforming()
     {
         //print("PlayerStateManager Switched to PLATFORMING state");
         currentState = State.Platforming;
-        climbingController.LoseControl();
+        climbingController.LoseMovementControl();
         platformingController.ReceiveControl();
 
         platformingController.JumpNextFrame();

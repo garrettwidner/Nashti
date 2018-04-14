@@ -22,27 +22,58 @@ public class ReticuleDisplayer : MonoBehaviour
             spriteRenderer.enabled = false;
         }
 
+        CardinalContainer<PlayerClimbingController.ProximalSquare> PotentialMovements = climbingController.GetPotentialMovements;
+
         if (climbingController.LeaningDirection == Vector2.up)
         {
-            transform.position = new Vector3(0, distanceFromPlayer, 0) + playerTransform.position;
+            if(!PotentialMovements.up.isJumpNecessary)
+            {
+                transform.position = new Vector3(0, distanceFromPlayer, 0) + playerTransform.position;
+                print("Up jump not necessary");
+            }
+            else
+            {
+                transform.position = PotentialMovements.up.square.Center + (Vector2.up * Grip.WIDTH_BETWEEN_GRIPS / 2);
+            }
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = new Vector3(1, 1, 1);
         }
         else if (climbingController.LeaningDirection == Vector2.right)
         {
-            transform.position = new Vector3(distanceFromPlayer, 0, 0) + playerTransform.position;
+            if (!PotentialMovements.right.isJumpNecessary)
+            {
+                transform.position = new Vector3(distanceFromPlayer, 0 , 0) + playerTransform.position;
+            }
+            else
+            {
+                transform.position = PotentialMovements.right.square.Center + (Vector2.right * Grip.WIDTH_BETWEEN_GRIPS / 2);
+            }
             transform.rotation = Quaternion.Euler(0, 0, -90);
             transform.localScale = new Vector3(1, 1, 1);
         }
         else if (climbingController.LeaningDirection == Vector2.down)
         {
-            transform.position = new Vector3(0, -distanceFromPlayer, 0) + playerTransform.position;
+            if (!PotentialMovements.down.isJumpNecessary)
+            {
+                transform.position = new Vector3(0, -distanceFromPlayer, 0) + playerTransform.position;
+            }
+            else
+            {
+                transform.position = PotentialMovements.down.square.Center + (Vector2.down * Grip.WIDTH_BETWEEN_GRIPS / 2);
+            }
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = new Vector3(1, -1, 1);
         }
         else if (climbingController.LeaningDirection == Vector2.left)
         {
-            transform.position = new Vector3(-distanceFromPlayer, 0, 0) + playerTransform.position;
+            if (!PotentialMovements.left.isJumpNecessary)
+            {
+                transform.position = new Vector3(-distanceFromPlayer, 0, 0) + playerTransform.position;
+            }
+            else
+            {
+                transform.position = PotentialMovements.left.square.Center + (Vector2.left * Grip.WIDTH_BETWEEN_GRIPS / 2);
+            }
             transform.rotation = Quaternion.Euler(0, 0, 90);
             transform.localScale = new Vector3(1, 1, 1);
         }

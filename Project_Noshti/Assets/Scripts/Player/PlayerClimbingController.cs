@@ -9,7 +9,14 @@ public class PlayerClimbingController : PlayerMovementController
     [SerializeField] private Transform leftFootConnectionPoint;
     [SerializeField] private Transform rightFootConnectionPoint;
 
-    private CardinalContainer<ProximalSquare> potentialMovements; 
+    private CardinalContainer<ProximalSquare> potentialMovements;
+    public CardinalContainer<ProximalSquare> GetPotentialMovements
+    {
+        get
+        {
+            return potentialMovements;
+        }
+    }
 
     [SerializeField] private float limbToGripConnectionProximity = .5f;
     [SerializeField] private float limbToLimbDistance = .5f;
@@ -114,28 +121,29 @@ public class PlayerClimbingController : PlayerMovementController
         if(showDebug)
         {
             print("------------");
-            /*
-            if (potentialMovements.up.square.IsNotNull)
+            
+            if (potentialMovements.up.square.IsNotEmpty)
             {
                 print("Up square debugged");
                 potentialMovements.up.square.DebugSquare();
             }
-            if (potentialMovements.right.square.IsNotNull)
+            
+            if (potentialMovements.right.square.IsNotEmpty)
             {
                 print("Right square debugged");
                 potentialMovements.right.square.DebugSquare();
             }
-            if (potentialMovements.down.square.IsNotNull)
+            if (potentialMovements.down.square.IsNotEmpty)
             {
                 print("Down square debugged");
                 potentialMovements.down.square.DebugSquare();
             }
-            */
             if (potentialMovements.left.square.IsNotEmpty)
             {
                 print("Left square debugged");
                 potentialMovements.left.square.DebugSquare();
             }
+            
         }
 
         

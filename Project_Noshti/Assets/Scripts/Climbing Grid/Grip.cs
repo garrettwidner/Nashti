@@ -480,22 +480,22 @@ public class Grip : MonoBehaviour
         public void DebugSquare()
         {
             float sideLength = 0.1f;
-            float visibleTime = 5f;
+            float visibleTime = 1f;
             if (grips.upLeft != null)
             {
-                SuperDebugger.DrawPlus(grips.upLeft.transform.position, Color.yellow, sideLength, visibleTime);
+                SuperDebugger.DrawBoxAtPoint(grips.upLeft.transform.position, sideLength, Color.yellow, visibleTime);
             }
             if (grips.upRight != null)
             {
-                SuperDebugger.DrawPlus(grips.upRight.transform.position, Color.magenta, sideLength, visibleTime);
+                SuperDebugger.DrawBoxAtPoint(grips.upRight.transform.position, sideLength, Color.magenta,  visibleTime);
             }
             if (grips.downLeft != null)
             {
-                SuperDebugger.DrawPlus(grips.downLeft.transform.position, Color.cyan, sideLength, visibleTime);
+                SuperDebugger.DrawBoxAtPoint(grips.downLeft.transform.position, sideLength, Color.cyan, visibleTime);
             }
             if (grips.downRight != null)
             {
-                SuperDebugger.DrawPlus(grips.downRight.transform.position, Color.white, sideLength, visibleTime);
+                SuperDebugger.DrawBoxAtPoint(grips.downRight.transform.position, sideLength, Color.white, visibleTime);
             }
         }
 

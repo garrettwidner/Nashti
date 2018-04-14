@@ -177,7 +177,7 @@ public class Grip : MonoBehaviour
     }
 
     /// <summary>
-    /// Checkdistance is measured in number of concurrent spaces to check for grips. InitialSpacesToSkip is subtracted from the start of this.
+    /// Checkdistance is measured in number of concurrent spaces to check for  InitialSpacesToSkip is subtracted from the start of this.
     /// For example, spacesToCheck = 5 and initialSpacesToSkip = 1 would start checking at the second space in the direction.
     /// spacesBeforeFound returns 
     /// </summary>
@@ -280,15 +280,13 @@ public class Grip : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Square
+    public class Square : OrdinalContainer<Grip>
     {
-        public OrdinalContainer<Grip> grips;
-
         public bool IsEmpty
         {
             get
             {
-                if(grips.upLeft == null && grips.upRight == null && grips.downLeft == null && grips.downRight == null)
+                if(upLeft == null && upRight == null && downLeft == null && downRight == null)
                 {
                     return true;
                 }
@@ -308,7 +306,7 @@ public class Grip : MonoBehaviour
         {
             get
             {
-                if (grips.upRight != null || grips.downRight != null)
+                if (upRight != null || downRight != null)
                 {
                     return true;
                 }
@@ -320,7 +318,7 @@ public class Grip : MonoBehaviour
         {
             get
             {
-                if (grips.upRight != null && grips.downRight != null)
+                if (upRight != null && downRight != null)
                 {
                     return true;
                 }
@@ -332,7 +330,7 @@ public class Grip : MonoBehaviour
         {
             get
             {
-                if (grips.upLeft != null || grips.downLeft != null)
+                if (upLeft != null || downLeft != null)
                 {
                     return true;
                 }
@@ -344,7 +342,7 @@ public class Grip : MonoBehaviour
         {
             get
             {
-                if (grips.upLeft != null && grips.downLeft != null)
+                if (upLeft != null && downLeft != null)
                 {
                     return true;
                 }
@@ -356,7 +354,7 @@ public class Grip : MonoBehaviour
         {
             get
             {
-                if (grips.upLeft != null || grips.upRight != null)
+                if (upLeft != null || upRight != null)
                 {
                     return true;
                 }
@@ -368,7 +366,7 @@ public class Grip : MonoBehaviour
         {
             get
             {
-                if (grips.upLeft != null && grips.upRight != null)
+                if (upLeft != null && upRight != null)
                 {
                     return true;
                 }
@@ -380,7 +378,7 @@ public class Grip : MonoBehaviour
         {
             get
             {
-                if (grips.downLeft != null || grips.downRight != null)
+                if (downLeft != null || downRight != null)
                 {
                     return true;
                 }
@@ -392,7 +390,7 @@ public class Grip : MonoBehaviour
         {
             get
             {
-                if (grips.downLeft != null && grips.downRight != null)
+                if (downLeft != null && downRight != null)
                 {
                     return true;
                 }
@@ -413,19 +411,19 @@ public class Grip : MonoBehaviour
             get
             {
                 int count = 0;
-                if(grips.upLeft != null)
+                if(upLeft != null)
                 {
                     count++;
                 }
-                if(grips.upRight != null)
+                if(upRight != null)
                 {
                     count++;
                 }
-                if(grips.downLeft != null)
+                if(downLeft != null)
                 {
                     count++;
                 }
-                if(grips.downRight != null)
+                if(downRight != null)
                 {
                     count++;
                 }
@@ -438,21 +436,21 @@ public class Grip : MonoBehaviour
             get
             {
                 float centerOffset = WIDTH_BETWEEN_GRIPS / 2;
-                if(grips.upLeft != null)
+                if(upLeft != null)
                 {
-                    return (Vector2)grips.upLeft.transform.position + new Vector2(centerOffset, -centerOffset);
+                    return (Vector2)upLeft.transform.position + new Vector2(centerOffset, -centerOffset);
                 }
-                if (grips.upRight != null)
+                if (upRight != null)
                 {
-                    return (Vector2)grips.upRight.transform.position + new Vector2(-centerOffset, -centerOffset);
+                    return (Vector2)upRight.transform.position + new Vector2(-centerOffset, -centerOffset);
                 }
-                if (grips.downLeft != null)
+                if (downLeft != null)
                 {
-                    return (Vector2)grips.downLeft.transform.position + new Vector2(centerOffset, centerOffset);
+                    return (Vector2)downLeft.transform.position + new Vector2(centerOffset, centerOffset);
                 }
-                if (grips.downRight != null)
+                if (downRight != null)
                 {
-                    return (Vector2)grips.downRight.transform.position + new Vector2(-centerOffset, centerOffset);
+                    return (Vector2)downRight.transform.position + new Vector2(-centerOffset, centerOffset);
                 }
 
                 return Vector2.zero;
@@ -481,21 +479,21 @@ public class Grip : MonoBehaviour
         {
             float sideLength = 0.1f;
             float visibleTime = 1f;
-            if (grips.upLeft != null)
+            if (upLeft != null)
             {
-                SuperDebugger.DrawBoxAtPoint(grips.upLeft.transform.position, sideLength, Color.yellow, visibleTime);
+                SuperDebugger.DrawBoxAtPoint(upLeft.transform.position, sideLength, Color.yellow, visibleTime);
             }
-            if (grips.upRight != null)
+            if (upRight != null)
             {
-                SuperDebugger.DrawBoxAtPoint(grips.upRight.transform.position, sideLength, Color.magenta,  visibleTime);
+                SuperDebugger.DrawBoxAtPoint(upRight.transform.position, sideLength, Color.magenta,  visibleTime);
             }
-            if (grips.downLeft != null)
+            if (downLeft != null)
             {
-                SuperDebugger.DrawBoxAtPoint(grips.downLeft.transform.position, sideLength, Color.cyan, visibleTime);
+                SuperDebugger.DrawBoxAtPoint(downLeft.transform.position, sideLength, Color.cyan, visibleTime);
             }
-            if (grips.downRight != null)
+            if (downRight != null)
             {
-                SuperDebugger.DrawBoxAtPoint(grips.downRight.transform.position, sideLength, Color.white, visibleTime);
+                SuperDebugger.DrawBoxAtPoint(downRight.transform.position, sideLength, Color.white, visibleTime);
             }
         }
 
@@ -508,11 +506,10 @@ public class Grip : MonoBehaviour
         /// <param name="lowRight"></param>
         public Square(Grip upLeft, Grip upRight, Grip lowLeft, Grip lowRight)
         {
-            grips = new OrdinalContainer<Grip>();
-            grips.upLeft = upLeft;
-            grips.upRight = upRight;
-            grips.downLeft = lowLeft;
-            grips.downRight = lowRight;
+            upLeft = upLeft;
+            upRight = upRight;
+            downLeft = lowLeft;
+            downRight = lowRight;
         }
 
         /// <summary>
@@ -524,11 +521,10 @@ public class Grip : MonoBehaviour
         /// <param name="gripLayer"></param>
         public Square(Grip startGrip, Vector2 hDirection, Vector2 vDirection, LayerMask gripLayer)
         {
-            grips = new OrdinalContainer<Grip>();
-            grips.upLeft = null;
-            grips.upRight = null;
-            grips.downLeft = null;
-            grips.downRight = null;
+            upLeft = null;
+            upRight = null;
+            downLeft = null;
+            downRight = null;
 
             hDirection.Normalize();
             vDirection.Normalize();
@@ -563,35 +559,35 @@ public class Grip : MonoBehaviour
                 //Starting grip is on the top
                 if (verticalGripLocation.y < startGrip.transform.position.y)
                 {
-                    grips.upRight = startGrip;
+                    upRight = startGrip;
                     if (hCollider != null)
                     {
-                        grips.upLeft = hCollider.GetComponent<Grip>();
+                        upLeft = hCollider.GetComponent<Grip>();
                     }
                     if (vCollider != null)
                     {
-                        grips.downRight = vCollider.GetComponent<Grip>();
+                        downRight = vCollider.GetComponent<Grip>();
                     }
                     if (dCollider != null)
                     {
-                        grips.downLeft = dCollider.GetComponent<Grip>();
+                        downLeft = dCollider.GetComponent<Grip>();
                     }
                 }
                 //Starting grip is on the bottom
                 else
                 {
-                    grips.downRight = startGrip;
+                    downRight = startGrip;
                     if (hCollider != null)
                     {
-                        grips.downLeft = hCollider.GetComponent<Grip>();
+                        downLeft = hCollider.GetComponent<Grip>();
                     }
                     if (vCollider != null)
                     {
-                        grips.upRight = vCollider.GetComponent<Grip>();
+                        upRight = vCollider.GetComponent<Grip>();
                     }
                     if (dCollider != null)
                     {
-                        grips.upLeft = dCollider.GetComponent<Grip>();
+                        upLeft = dCollider.GetComponent<Grip>();
                     }
                 }
             }
@@ -601,35 +597,35 @@ public class Grip : MonoBehaviour
                 //Starting grip is on the top
                 if (verticalGripLocation.y < startGrip.transform.position.y)
                 {
-                    grips.upLeft = startGrip;
+                    upLeft = startGrip;
                     if (hCollider != null)
                     {
-                        grips.upRight = hCollider.GetComponent<Grip>();
+                        upRight = hCollider.GetComponent<Grip>();
                     }
                     if (vCollider != null)
                     {
-                        grips.downLeft = vCollider.GetComponent<Grip>();
+                        downLeft = vCollider.GetComponent<Grip>();
                     }
                     if (dCollider != null)
                     {
-                        grips.downRight = dCollider.GetComponent<Grip>();
+                        downRight = dCollider.GetComponent<Grip>();
                     }
                 }
                 //Starting grip is on the bottom
                 else
                 {
-                    grips.downLeft = startGrip;
+                    downLeft = startGrip;
                     if (hCollider != null)
                     {
-                        grips.downRight = hCollider.GetComponent<Grip>();
+                        downRight = hCollider.GetComponent<Grip>();
                     }
                     if (vCollider != null)
                     {
-                        grips.upLeft = vCollider.GetComponent<Grip>();
+                        upLeft = vCollider.GetComponent<Grip>();
                     }
                     if (dCollider != null)
                     {
-                        grips.upRight = dCollider.GetComponent<Grip>();
+                        upRight = dCollider.GetComponent<Grip>();
                     }
                 }
             }
@@ -644,24 +640,23 @@ public class Grip : MonoBehaviour
         /// <param name="grip2"></param>
         public Square(Grip grip1, Grip grip2, Vector2 movingDirection, LayerMask gripLayer)
         {
-            grips = new OrdinalContainer<Grip>();
             movingDirection.Normalize();
             if (movingDirection != Vector2.left && movingDirection != Vector2.right && movingDirection != Vector2.up && movingDirection != Vector2.down)
             {
                 Debug.LogWarning("Given direction must be a cardinal direction");
-                grips.upLeft = null;
-                grips.upRight = null;
-                grips.downLeft = null;
-                grips.downRight = null;
+                upLeft = null;
+                upRight = null;
+                downLeft = null;
+                downRight = null;
                 return;
             }
             if (!grip1.IsInSameSquareAs(grip2))
             {
                 Debug.LogWarning("Grips given for constructor are not in same square");
-                grips.upLeft = null;
-                grips.upRight = null;
-                grips.downLeft = null;
-                grips.downRight = null;
+                upLeft = null;
+                upRight = null;
+                downLeft = null;
+                downRight = null;
                 return;
             }
 
@@ -683,34 +678,34 @@ public class Grip : MonoBehaviour
             {
                 if(movingDirection == Vector2.up)
                 {
-                    grips.downRight = rightMost;
-                    grips.downLeft = (grip1 == rightMost) ? grip2 : grip1;
-                    grips.upRight = FindAdjacentTo(grips.downRight, Vector2.up, gripLayer);
-                    grips.upLeft = FindAdjacentTo(grips.downLeft, Vector2.up, gripLayer);
+                    downRight = rightMost;
+                    downLeft = (grip1 == rightMost) ? grip2 : grip1;
+                    upRight = FindAdjacentTo(downRight, Vector2.up, gripLayer);
+                    upLeft = FindAdjacentTo(downLeft, Vector2.up, gripLayer);
                 }
                 else
                 {
-                    grips.upRight = rightMost;
-                    grips.upLeft = (grip1 == rightMost) ? grip2 : grip1;
-                    grips.downRight = FindAdjacentTo(grips.upRight, Vector2.down, gripLayer);
-                    grips.downLeft = FindAdjacentTo(grips.upLeft, Vector2.down, gripLayer);
+                    upRight = rightMost;
+                    upLeft = (grip1 == rightMost) ? grip2 : grip1;
+                    downRight = FindAdjacentTo(upRight, Vector2.down, gripLayer);
+                    downLeft = FindAdjacentTo(upLeft, Vector2.down, gripLayer);
                 }
             }
             else if(verticallyInline)
             {
                 if(movingDirection == Vector2.right)
                 {
-                    grips.upLeft = topMost;
-                    grips.downLeft = (grip1 == topMost) ? grip2 : grip1;
-                    grips.upRight = FindAdjacentTo(grips.upLeft, Vector2.right, gripLayer);
-                    grips.downRight = FindAdjacentTo(grips.downLeft, Vector2.right, gripLayer);
+                    upLeft = topMost;
+                    downLeft = (grip1 == topMost) ? grip2 : grip1;
+                    upRight = FindAdjacentTo(upLeft, Vector2.right, gripLayer);
+                    downRight = FindAdjacentTo(downLeft, Vector2.right, gripLayer);
                 }
                 else
                 {
-                    grips.upRight = topMost;
-                    grips.downRight = (grip1 == topMost) ? grip2 : grip1;
-                    grips.upLeft = FindAdjacentTo(grips.upRight, Vector2.left, gripLayer);
-                    grips.downLeft = FindAdjacentTo(grips.downRight, Vector2.left, gripLayer);
+                    upRight = topMost;
+                    downRight = (grip1 == topMost) ? grip2 : grip1;
+                    upLeft = FindAdjacentTo(upRight, Vector2.left, gripLayer);
+                    downLeft = FindAdjacentTo(downRight, Vector2.left, gripLayer);
                 }
             }
             //Diagonal
@@ -718,17 +713,17 @@ public class Grip : MonoBehaviour
             {
                 if(topMost == rightMost)
                 {
-                    grips.upRight = topMost;
-                    grips.downLeft = (grip1 == topMost) ? grip2 : grip1;
-                    grips.upLeft = FindAdjacentTo(grips.upRight, Vector2.left, gripLayer);
-                    grips.downRight = FindAdjacentTo(grips.downLeft, Vector2.right, gripLayer);
+                    upRight = topMost;
+                    downLeft = (grip1 == topMost) ? grip2 : grip1;
+                    upLeft = FindAdjacentTo(upRight, Vector2.left, gripLayer);
+                    downRight = FindAdjacentTo(downLeft, Vector2.right, gripLayer);
                 }
                 else
                 {
-                    grips.upLeft = topMost;
-                    grips.downRight = (grip1 == topMost) ? grip2 : grip1;
-                    grips.upRight = FindAdjacentTo(grips.upLeft, Vector2.right, gripLayer);
-                    grips.downLeft = FindAdjacentTo(grips.downRight, Vector2.left, gripLayer);
+                    upLeft = topMost;
+                    downRight = (grip1 == topMost) ? grip2 : grip1;
+                    upRight = FindAdjacentTo(upLeft, Vector2.right, gripLayer);
+                    downLeft = FindAdjacentTo(downRight, Vector2.left, gripLayer);
                 }
             }
         }
@@ -754,46 +749,46 @@ public class Grip : MonoBehaviour
 
             if (direction == Vector2.up)
             {
-                if (grips.upLeft != null)
+                if (upLeft != null)
                 {
-                    foundSquare = new Square(grips.upLeft, Vector2.right, Vector2.up, gripLayer);
+                    foundSquare = new Square(upLeft, Vector2.right, Vector2.up, gripLayer);
                 }
-                else if (grips.upRight != null)
+                else if (upRight != null)
                 {
-                    foundSquare = new Square(grips.upRight, Vector2.left, Vector2.up, gripLayer);
+                    foundSquare = new Square(upRight, Vector2.left, Vector2.up, gripLayer);
                 }
             }
             else if (direction == Vector2.right)
             {
-                if (grips.upRight != null)
+                if (upRight != null)
                 {
-                    foundSquare = new Square(grips.upRight, Vector2.right, Vector2.down, gripLayer);
+                    foundSquare = new Square(upRight, Vector2.right, Vector2.down, gripLayer);
                 }
-                else if (grips.downRight != null)
+                else if (downRight != null)
                 {
-                    foundSquare = new Square(grips.downRight, Vector2.right, Vector2.up, gripLayer);
+                    foundSquare = new Square(downRight, Vector2.right, Vector2.up, gripLayer);
                 }
             }
             else if (direction == Vector2.down)
             {
-                if (grips.downRight != null)
+                if (downRight != null)
                 {
-                    foundSquare = new Square(grips.downRight, Vector2.left, Vector2.down, gripLayer);
+                    foundSquare = new Square(downRight, Vector2.left, Vector2.down, gripLayer);
                 }
-                else if (grips.downLeft != null)
+                else if (downLeft != null)
                 {
-                    foundSquare = new Square(grips.downLeft, Vector2.right, Vector2.down, gripLayer);
+                    foundSquare = new Square(downLeft, Vector2.right, Vector2.down, gripLayer);
                 }
             }
             else
             {
-                if (grips.downLeft != null)
+                if (downLeft != null)
                 {
-                    foundSquare = new Square(grips.downLeft, Vector2.left, Vector2.up, gripLayer);
+                    foundSquare = new Square(downLeft, Vector2.left, Vector2.up, gripLayer);
                 }
-                else if (grips.upLeft != null)
+                else if (upLeft != null)
                 {
-                    foundSquare = new Square(grips.upLeft, Vector2.left, Vector2.down, gripLayer);
+                    foundSquare = new Square(upLeft, Vector2.left, Vector2.down, gripLayer);
                 }
             }
 
@@ -811,19 +806,19 @@ public class Grip : MonoBehaviour
 
             if(direction == Vector2.up)
             {
-                return grips.upLeft;
+                return upLeft;
             }
             else if(direction == Vector2.right)
             {
-                return grips.upRight;
+                return upRight;
             }
             else if(direction == Vector2.down)
             {
-                return grips.downLeft;
+                return downLeft;
             }
             else
             {
-                return grips.downLeft;
+                return downLeft;
             }
         }
 
@@ -866,19 +861,19 @@ public class Grip : MonoBehaviour
 
             if (direction == Vector2.up)
             {
-                return grips.upRight;
+                return upRight;
             }
             else if (direction == Vector2.right)
             {
-                return grips.downRight;
+                return downRight;
             }
             else if (direction == Vector2.down)
             {
-                return grips.downRight;
+                return downRight;
             }
             else
             {
-                return grips.upLeft;
+                return upLeft;
             }
         }
 
@@ -1021,7 +1016,10 @@ public class Grip : MonoBehaviour
 
         public Square()
         {
-            grips = new OrdinalContainer<Grip>();
+            upRight = null;
+            downRight = null;
+            downLeft = null;
+            upLeft = null;
         }
     }
 }

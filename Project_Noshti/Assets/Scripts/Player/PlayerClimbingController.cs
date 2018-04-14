@@ -103,9 +103,13 @@ public class PlayerClimbingController : PlayerMovementController
         {
             MoveInLeaningDirectionIfPossible(true);
         }
-        else if(isLeaning && playerActions.Jump.WasPressed)
+        else if(isLeaning && playerActions.Jump.WasReleased)
         {
-
+            ProximalSquare potentialMovement = potentialMovements.Vector2ToObject(leaningDirection);
+            if (potentialMovement.foundSquare && potentialMovement.isJumpNecessary)
+            {
+                MoveToSquare(potentialMovement.square);
+            }
         }
     }
 
@@ -145,19 +149,28 @@ public class PlayerClimbingController : PlayerMovementController
             }
             
         }
-
-        
     }
 
     private ProximalSquare FindProximalSquareInDirection(Vector2 direction)
     {
         ProximalSquare pSquare = new ProximalSquare();
         pSquare.isJumpNecessary = false;
+        pSquare.foundSquare = false;
+
         pSquare.square = currentConnectedSquare.FindAdjacentSquareInDirection(direction, gripLayer, 2);
+
         if (pSquare.square.IsEmpty) 
         {
             pSquare.square = currentConnectedSquare.FindFirstSquareInDirection(direction, gripLayer, jumpDistance, minimumGripsForJumpSquare);
-            pSquare.isJumpNecessary = true;
+            if(!pSquare.square.IsEmpty)
+            {
+                pSquare.isJumpNecessary = true;
+                pSquare.foundSquare = true;
+            }
+        }
+        else
+        {
+            pSquare.foundSquare = true;
         }
         return pSquare;
     }
@@ -204,14 +217,14 @@ public class PlayerClimbingController : PlayerMovementController
             //is there a handhold in the chosen direction?
             if (rightGripWasChosen)
             {
-                if(newGripSquare.grips.upRight != null)
+                if(newGripSquare.upRight != null)
                 {
                     MoveToSquare(newGripSquare);
                 }
             }
             else
             {
-                if (newGripSquare.grips.upLeft != null)
+                if (newGripSquare.upLeft != null)
                 {
                     MoveToSquare(newGripSquare);
                 }
@@ -220,24 +233,24 @@ public class PlayerClimbingController : PlayerMovementController
         else if(direction == Vector2.right)
         {
             //Edge case for movement back and forth across a single column of Grips
-            if (newGripSquare.grips.downLeft != null && newGripSquare.grips.upLeft != null && !newGripSquare.HasGripOnRightSide) 
+            if (newGripSquare.downLeft != null && newGripSquare.upLeft != null && !newGripSquare.HasGripOnRightSide) 
             {
                 MoveToSquare(newGripSquare);
             }
             else if (rightGripWasChosen)
             {
-                if (newGripSquare.grips.downRight != null)
+                if (newGripSquare.downRight != null)
                 {
                     MoveToSquare(newGripSquare);
                 }
-                else if (newGripSquare.grips.downLeft != null && newGripSquare.grips.upLeft != null && newGripSquare.grips.upRight == null)
+                else if (newGripSquare.downLeft != null && newGripSquare.upLeft != null && newGripSquare.upRight == null)
                 {
                     MoveToSquare(newGripSquare);
                 }
             }
             else
             {
-                if(newGripSquare.grips.upRight != null)
+                if(newGripSquare.upRight != null)
                 {
                     MoveToSquare(newGripSquare);
                 }
@@ -246,20 +259,20 @@ public class PlayerClimbingController : PlayerMovementController
         else if(direction == Vector2.down)
         {
             //Edge case for movement down when there are no footholds
-            if (newGripSquare.grips.upLeft != null && newGripSquare.grips.upRight != null && !newGripSquare.HasGripOnBottomSide)
+            if (newGripSquare.upLeft != null && newGripSquare.upRight != null && !newGripSquare.HasGripOnBottomSide)
             {
                 MoveToSquare(newGripSquare);
             }
             else if (rightGripWasChosen)
             {
-                if(newGripSquare.grips.downRight != null)
+                if(newGripSquare.downRight != null)
                 {
                     MoveToSquare(newGripSquare);
                 }
             }
             else
             {
-                if(newGripSquare.grips.downLeft != null)
+                if(newGripSquare.downLeft != null)
                 {
                     MoveToSquare(newGripSquare);
                 }
@@ -268,20 +281,20 @@ public class PlayerClimbingController : PlayerMovementController
         else if(direction == Vector2.left)
         {
             //Edge case for movement down when there are no footholds
-            if (newGripSquare.grips.upRight != null && newGripSquare.grips.downRight != null && !newGripSquare.HasGripOnLeftSide)
+            if (newGripSquare.upRight != null && newGripSquare.downRight != null && !newGripSquare.HasGripOnLeftSide)
             {
                 MoveToSquare(newGripSquare);
             }
             else if (rightGripWasChosen)
             {
-                if(newGripSquare.grips.upLeft != null)
+                if(newGripSquare.upLeft != null)
                 {
                     MoveToSquare(newGripSquare);
                 }
             }
             else
             {
-                if(newGripSquare.grips.downLeft != null)
+                if(newGripSquare.downLeft != null)
                 {
                     MoveToSquare(newGripSquare);
                 }
@@ -309,6 +322,7 @@ public class PlayerClimbingController : PlayerMovementController
     {
         public Grip.Square square;
         public bool isJumpNecessary;
+        public bool foundSquare;
     }
 
 }

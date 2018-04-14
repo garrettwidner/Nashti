@@ -58,7 +58,7 @@ public class PlayerStateManager : MonoBehaviour
         //Also trigger jump if necessary.
         if(CurrentState == State.Climbing)
         {
-            if(playerActions.Jump.WasPressed)
+            if(playerActions.Action.WasPressed)
             {
                 SwitchToPlatforming();
             }

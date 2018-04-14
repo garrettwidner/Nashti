@@ -366,7 +366,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.0500002
+      value: -1.3000002
       objectReference: {fileID: 0}
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3763,7 +3763,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.8000002
+      value: -1.0500002
       objectReference: {fileID: 0}
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -15726,6 +15726,12 @@ MonoBehaviour:
   quality: 8
   type: 0
   boxCollider: {fileID: 0}
+--- !u!114 &1204124032 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114454140124886466, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 60693624}
+  m_Script: {fileID: 11500000, guid: ed5b0e3e753e3044a872caf9ee738eb3, type: 3}
 --- !u!1001 &1208307278
 Prefab:
   m_ObjectHideFlags: 0
@@ -19917,6 +19923,11 @@ MonoBehaviour:
   dualGrip2: {fileID: 510528651}
   movingDirection: 1
   startGrip: {fileID: 510528651}
+  startSquare:
+    upRight: {fileID: 2028338650}
+    downRight: {fileID: 1756904711}
+    downLeft: {fileID: 0}
+    upLeft: {fileID: 1204124032}
   maxSpacesToCheck: 10
   minimumGripsInSquare: 3
 --- !u!4 &1665803019
@@ -20562,6 +20573,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 1156950220}
+--- !u!114 &1756904711 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114454140124886466, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1782867727}
+  m_Script: {fileID: 11500000, guid: ed5b0e3e753e3044a872caf9ee738eb3, type: 3}
 --- !u!1 &1761915842
 GameObject:
   m_ObjectHideFlags: 0
@@ -21698,7 +21715,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.8000002
+      value: -1.0500002
       objectReference: {fileID: 0}
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -23877,7 +23894,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.3000002
+      value: -0.5500002
       objectReference: {fileID: 0}
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -24224,7 +24241,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.05000019
+      value: -0.3000002
       objectReference: {fileID: 0}
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -24398,6 +24415,12 @@ MonoBehaviour:
   quality: 8
   type: 0
   boxCollider: {fileID: 0}
+--- !u!114 &2028338650 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114454140124886466, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 435235356}
+  m_Script: {fileID: 11500000, guid: ed5b0e3e753e3044a872caf9ee738eb3, type: 3}
 --- !u!1001 &2035459798
 Prefab:
   m_ObjectHideFlags: 0
@@ -24590,7 +24613,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.3000002
+      value: -0.5500002
       objectReference: {fileID: 0}
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_LocalPosition.y

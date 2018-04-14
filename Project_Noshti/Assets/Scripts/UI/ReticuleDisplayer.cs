@@ -26,10 +26,10 @@ public class ReticuleDisplayer : MonoBehaviour
 
         if (climbingController.LeaningDirection == Vector2.up)
         {
-            if(!PotentialMovements.up.isJumpNecessary)
+            
+            if(!PotentialMovements.up.foundSquare || !PotentialMovements.up.isJumpNecessary)
             {
                 transform.position = new Vector3(0, distanceFromPlayer, 0) + playerTransform.position;
-                print("Up jump not necessary");
             }
             else
             {
@@ -40,7 +40,7 @@ public class ReticuleDisplayer : MonoBehaviour
         }
         else if (climbingController.LeaningDirection == Vector2.right)
         {
-            if (!PotentialMovements.right.isJumpNecessary)
+            if (!PotentialMovements.right.foundSquare || !PotentialMovements.right.isJumpNecessary)
             {
                 transform.position = new Vector3(distanceFromPlayer, 0 , 0) + playerTransform.position;
             }
@@ -53,7 +53,7 @@ public class ReticuleDisplayer : MonoBehaviour
         }
         else if (climbingController.LeaningDirection == Vector2.down)
         {
-            if (!PotentialMovements.down.isJumpNecessary)
+            if (!PotentialMovements.down.foundSquare || !PotentialMovements.down.isJumpNecessary)
             {
                 transform.position = new Vector3(0, -distanceFromPlayer, 0) + playerTransform.position;
             }
@@ -66,7 +66,7 @@ public class ReticuleDisplayer : MonoBehaviour
         }
         else if (climbingController.LeaningDirection == Vector2.left)
         {
-            if (!PotentialMovements.left.isJumpNecessary)
+            if (!PotentialMovements.down.foundSquare || !PotentialMovements.down.isJumpNecessary)
             {
                 transform.position = new Vector3(-distanceFromPlayer, 0, 0) + playerTransform.position;
             }

@@ -968,7 +968,7 @@ public class Grip : MonoBehaviour
 
                         if (leftFound)
                         {
-                            SuperDebugger.DrawPlus(leftFound.transform.position, Color.red, HALF_GRIP_WIDTH, .5f);
+                            SuperDebugger.DrawPlus(leftFound.transform.position, HALF_GRIP_WIDTH, Color.red, .5f);
                         }
 
                         return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, totalLeftSpacesSearched, totalRightSpacesSearched, minimumGripsInSquare);
@@ -991,7 +991,7 @@ public class Grip : MonoBehaviour
 
                         if (rightFound)
                         {
-                            SuperDebugger.DrawPlus(rightFound.transform.position, Color.green, HALF_GRIP_WIDTH, .5f);
+                            SuperDebugger.DrawPlus(rightFound.transform.position, HALF_GRIP_WIDTH, Color.green, .5f);
                         }
 
                         return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, totalLeftSpacesSearched, totalRightSpacesSearched, minimumGripsInSquare);

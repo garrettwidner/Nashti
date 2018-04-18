@@ -115,6 +115,7 @@ public class PlayerClimbingController : PlayerMovementController
 
     private void FindPotentialMovements()
     {
+        print("FindPotentialMovements called");
         ResetPotentialMovements();
 
         potentialMovements.up = FindProximalSquareInDirection(Vector2.up);
@@ -126,23 +127,24 @@ public class PlayerClimbingController : PlayerMovementController
         {
             print("------------");
             
-            if (potentialMovements.up.square.IsNotEmpty)
+            if (potentialMovements.up.foundSquare)
             {
-                print("Up square debugged");
+                print("Up square debugged at point: " + potentialMovements.up.square.Center);
                 potentialMovements.up.square.DebugSquare();
+                SuperDebugger.DrawBoxAtPoint(potentialMovements.up.square.Center, Grip.WIDTH_BETWEEN_GRIPS, Color.green, 2f);
             }
             
-            if (potentialMovements.right.square.IsNotEmpty)
+            if (potentialMovements.right.foundSquare)
             {
                 print("Right square debugged");
                 potentialMovements.right.square.DebugSquare();
             }
-            if (potentialMovements.down.square.IsNotEmpty)
+            if (potentialMovements.down.foundSquare)
             {
                 print("Down square debugged");
                 potentialMovements.down.square.DebugSquare();
             }
-            if (potentialMovements.left.square.IsNotEmpty)
+            if (potentialMovements.left.foundSquare)
             {
                 print("Left square debugged");
                 potentialMovements.left.square.DebugSquare();

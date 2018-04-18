@@ -125,8 +125,8 @@ public class GripSquareDebugger : MonoBehaviour
     private void CheckIfGripsInSameSquare()
     {
         print("Grips are in same grip square: " + grip1.IsInSameSquareAs(grip2));
-        SuperDebugger.DrawPlus(grip1.transform.position, Color.green, .2f, 3);
-        SuperDebugger.DrawPlus(grip2.transform.position, Color.red, .2f, 3);
+        SuperDebugger.DrawPlus(grip1.transform.position, .2f, Color.green, 3);
+        SuperDebugger.DrawPlus(grip2.transform.position, .2f, Color.red, 3);
     }
 
     private void CheckSingleGripBidirectionalConstructor()

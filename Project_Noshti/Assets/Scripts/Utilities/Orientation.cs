@@ -147,7 +147,6 @@ public class OrdinalContainer<T> : Orientation
             default:
                 Debug.LogWarning("Ordinal Containers only contian objects in ordinal directions. Returning upRight.");
                 return upRight;
-
         }
     }
 }

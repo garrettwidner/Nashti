@@ -9,8 +9,8 @@ public class PlayerClimbingController : PlayerMovementController
     [SerializeField] private Transform leftFootConnectionPoint;
     [SerializeField] private Transform rightFootConnectionPoint;
 
-    private CardinalContainer<ProximalSquare> potentialMovements;
-    public CardinalContainer<ProximalSquare> GetPotentialMovements
+    private CardinalContainer<Movement> potentialMovements;
+    public CardinalContainer<Movement> GetPotentialMovements
     {
         get
         {
@@ -42,7 +42,7 @@ public class PlayerClimbingController : PlayerMovementController
 
     private void Awake()
     {
-        potentialMovements = new CardinalContainer<ProximalSquare>();
+        potentialMovements = new CardinalContainer<Movement>();
         ResetPotentialMovements();
     }
     private void ResetPotentialMovements()
@@ -105,7 +105,7 @@ public class PlayerClimbingController : PlayerMovementController
         }
         else if(isLeaning && playerActions.Jump.WasReleased)
         {
-            ProximalSquare potentialMovement = potentialMovements.Vector2ToObject(leaningDirection);
+            Movement potentialMovement = potentialMovements.Vector2ToObject(leaningDirection);
             if (potentialMovement.foundSquare && potentialMovement.isJumpNecessary)
             {
                 MoveToSquare(potentialMovement.square);
@@ -132,8 +132,10 @@ public class PlayerClimbingController : PlayerMovementController
                 print("Up square debugged at point: " + potentialMovements.up.square.Center);
                 potentialMovements.up.square.DebugSquare();
                 SuperDebugger.DrawBoxAtPoint(potentialMovements.up.square.Center, Grip.WIDTH_BETWEEN_GRIPS, Color.green, 2f);
+                SuperDebugger.DrawPlus(potentialMovements.up.square.Center, Grip.WIDTH_BETWEEN_GRIPS, Color.green, 2f);
+
             }
-            
+
             if (potentialMovements.right.foundSquare)
             {
                 print("Right square debugged");
@@ -153,15 +155,15 @@ public class PlayerClimbingController : PlayerMovementController
         }
     }
 
-    private ProximalSquare FindProximalSquareInDirection(Vector2 direction)
+    private Movement FindProximalSquareInDirection(Vector2 direction)
     {
-        ProximalSquare pSquare = new ProximalSquare();
+        Movement pSquare = new Movement();
         pSquare.isJumpNecessary = false;
         pSquare.foundSquare = false;
 
         pSquare.square = currentConnectedSquare.FindAdjacentSquareInDirection(direction, gripLayer, 2);
 
-        if (pSquare.square.IsEmpty) 
+        if (pSquare.square.IsEmpty || pSquare.square.SideIsEmpty(direction)) 
         {
             pSquare.square = currentConnectedSquare.FindFirstSquareInDirection(direction, gripLayer, jumpDistance, minimumGripsForJumpSquare);
             if(!pSquare.square.IsEmpty)
@@ -209,6 +211,23 @@ public class PlayerClimbingController : PlayerMovementController
         }
     }
 
+    private void MoveInLeaningDirectionIfPossible(bool rightGripWasChosen)
+    {
+        Vector2 direction = leaningDirection;
+        Movement nextMovement = potentialMovements.Vector2ToObject(leaningDirection);
+        if(nextMovement.foundSquare)
+        {
+            Grip selectedGrip;
+            selectedGrip = rightGripWasChosen ? nextMovement.square.FindRightSelectingSquareGivenDirection(direction)
+                                                  : nextMovement.square.FindLeftSelectingSquareGivenDirection(direction);
+            if (selectedGrip != null && !selectedGrip.IsEmpty)
+            {
+                MoveToSquare(nextMovement.square);
+            }
+        }
+    }
+
+    /*
     private void MoveInLeaningDirectionIfPossible(bool rightGripWasChosen)
     {
         Vector2 direction = leaningDirection;
@@ -303,6 +322,7 @@ public class PlayerClimbingController : PlayerMovementController
             }
         }
     }
+    */
 
     private void MoveToSquare(Grip.Square newSquare)
     {
@@ -320,7 +340,7 @@ public class PlayerClimbingController : PlayerMovementController
         leaningDirection = Vector2.zero;
     }
 
-    public class ProximalSquare
+    public class Movement
     {
         public Grip.Square square;
         public bool isJumpNecessary;

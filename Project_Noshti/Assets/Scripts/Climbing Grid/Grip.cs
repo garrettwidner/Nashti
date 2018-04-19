@@ -302,100 +302,52 @@ public class Grip : MonoBehaviour
             }
         }
 
-        public bool HasGripOnRightSide
+        public bool SideIsEmpty(Direction side)
         {
-            get
+            switch(side)
             {
-                if (upRight != null || downRight != null)
-                {
+                case Direction.Up:
+                    return upRight == null && upLeft == null;
+                case Direction.Right:
+                    return upRight == null && downRight == null;
+                case Direction.Down:
+                    return downRight == null && downLeft == null;
+                case Direction.Left:
+                    return downLeft == null && upLeft == null;
+                default:
+                    Debug.LogWarning("Can only check whether cardinal directions are empty");
                     return true;
-                }
-                return false;
             }
         }
 
-        public bool HasFullRightSide
+        public bool SideIsEmpty(Vector2 side)
         {
-            get
+            Direction sideAsDirection = Vector2ToDirection(side);
+            return SideIsEmpty(sideAsDirection);
+        }
+
+        public bool SideIsFull(Direction side)
+        {
+            switch (side)
             {
-                if (upRight != null && downRight != null)
-                {
+                case Direction.Up:
+                    return upRight != null && upLeft != null;
+                case Direction.Right:
+                    return upRight != null && downRight != null;
+                case Direction.Down:
+                    return downRight != null && downLeft != null;
+                case Direction.Left:
+                    return downLeft != null && upLeft != null;
+                default:
+                    Debug.LogWarning("Can only check whether cardinal directions are empty");
                     return true;
-                }
-                return false;
             }
         }
 
-        public bool HasGripOnLeftSide
+        public bool SideIsFull(Vector2 side)
         {
-            get
-            {
-                if (upLeft != null || downLeft != null)
-                {
-                    return true;
-                }
-                return false;
-            }
-        }
-
-        public bool HasFullLeftSide
-        {
-            get
-            {
-                if (upLeft != null && downLeft != null)
-                {
-                    return true;
-                }
-                return false;
-            }
-        }
-
-        public bool HasGripOnTopSide
-        {
-            get
-            {
-                if (upLeft != null || upRight != null)
-                {
-                    return true;
-                }
-                return false;
-            }
-        }
-
-        public bool HasFullTopSide
-        {
-            get
-            {
-                if (upLeft != null && upRight != null)
-                {
-                    return true;
-                }
-                return false;
-            }
-        }
-
-        public bool HasGripOnBottomSide
-        {
-            get
-            {
-                if (downLeft != null || downRight != null)
-                {
-                    return true;
-                }
-                return false;
-            }
-        }
-
-        public bool HasFullBottomSide
-        {
-            get
-            {
-                if (downLeft != null && downRight != null)
-                {
-                    return true;
-                }
-                return false;
-            }
+            Direction sideAsDirection = Vector2ToDirection(side);
+            return SideIsFull(sideAsDirection);
         }
 
         public bool IsConnectible

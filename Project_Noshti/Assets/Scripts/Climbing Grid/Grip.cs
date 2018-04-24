@@ -302,6 +302,8 @@ public class Grip : MonoBehaviour
             }
         }
 
+
+
         public bool SideIsEmpty(Direction side)
         {
             switch(side)
@@ -452,14 +454,14 @@ public class Grip : MonoBehaviour
         /// <summary>
         /// Creates a Grip.Square with the given grips
         /// </summary>
-        /// <param name="upLeft"></param>
-        /// <param name="upRight"></param>
+        /// <param name="topLeft"></param>
+        /// <param name="topRight"></param>
         /// <param name="lowLeft"></param>
         /// <param name="lowRight"></param>
-        public Square(Grip upLeft, Grip upRight, Grip lowLeft, Grip lowRight)
+        public Square(Grip topLeft, Grip topRight, Grip lowLeft, Grip lowRight)
         {
-            upLeft = upLeft;
-            upRight = upRight;
+            upLeft = topLeft;
+            upRight = topRight;
             downLeft = lowLeft;
             downRight = lowRight;
         }
@@ -953,6 +955,7 @@ public class Grip : MonoBehaviour
             else
             {
                 //No grip found in specified bounds.
+                /*
                 if(leftFound == null)
                 {
                     print("RETURNING: Left grip not found within " + (spacesToCheck) + " spaces.");
@@ -961,6 +964,7 @@ public class Grip : MonoBehaviour
                 {
                     print("RETURNING: Right grip not found within " + (spacesToCheck) + " spaces.");
                 }
+                */
                 return new Square();
             }
 

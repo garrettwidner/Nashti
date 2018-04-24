@@ -77,6 +77,10 @@ public abstract class Orientation
         {
             return Direction.UpLeft;
         }
+        else if(v == Vector2.zero)
+        {
+            return Direction.Center;
+        }
 
         Debug.LogWarning("Passed in Vector2 must be a cardinal or ordinal direction");
         return Direction.Center;

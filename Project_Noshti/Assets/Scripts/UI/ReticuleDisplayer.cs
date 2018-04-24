@@ -14,14 +14,14 @@ public class ReticuleDisplayer : MonoBehaviour
     private void Update()
     {
         Vector2 vectorDirection = climbingController.LeaningDirection;
-        Orientation.Direction direction = Orientation.Vector2ToDirection(vectorDirection);
 
-        if(vectorDirection == Vector2.zero)
+        if (vectorDirection == Vector2.zero)
         {
             spriteRenderer.enabled = false;
             return;
         }
 
+        Orientation.Direction direction = Orientation.Vector2ToDirection(vectorDirection);
         PlayerClimbingController.Movement potentialMovement = climbingController.GetPotentialMovements.Vector2ToObject(climbingController.LeaningDirection);
 
         if (!potentialMovement.foundSquare)

@@ -23,6 +23,8 @@ public class PlayerClimbingController : PlayerMovementController
     [SerializeField] private bool canJump = true;
     [SerializeField] private int jumpDistance = 5;
 
+    private bool isConnectingAfterJump = false;
+
     [SerializeField] private LayerMask gripLayer;
     [SerializeField] private bool showDebug = true;
 
@@ -55,7 +57,9 @@ public class PlayerClimbingController : PlayerMovementController
 
     public bool ConnectAtHandsIfPossible(bool rightHandIsConnecting)
     {
-        if(rightHandIsConnecting)
+        isConnectingAfterJump = true;
+
+        if (rightHandIsConnecting)
         {
             Grip rightHand = Grip.CheckLocationForGrip(rightHandConnectionPoint.position, limbToGripConnectionProximity, gripLayer);
             if(rightHand != null)
@@ -95,14 +99,24 @@ public class PlayerClimbingController : PlayerMovementController
 
         UpdateLeaningStatus();
 
-        if(isLeaning && playerActions.GripLeft.WasPressed)
+        if(isLeaning && (playerActions.GripLeft.WasReleased || playerActions.GripRight.WasReleased))
         {
-            MoveInLeaningDirectionIfPossible(false);
+            if (isConnectingAfterJump)
+            {
+                isConnectingAfterJump = false;
+                return;
+            }
+            else if (playerActions.GripLeft.WasReleased)
+            {
+                MoveInLeaningDirectionIfPossible(false);
+            }
+            else if(playerActions.GripRight.WasReleased)
+            {
+                MoveInLeaningDirectionIfPossible(true);
+            }
         }
-        else if(isLeaning && playerActions.GripRight.WasPressed)
-        {
-            MoveInLeaningDirectionIfPossible(true);
-        }
+
+        /*
         else if(isLeaning && playerActions.Jump.WasReleased)
         {
             Movement potentialMovement = potentialMovements.Vector2ToObject(leaningDirection);
@@ -111,6 +125,7 @@ public class PlayerClimbingController : PlayerMovementController
                 MoveToSquare(potentialMovement.square);
             }
         }
+        */
     }
 
     private void FindPotentialMovements()

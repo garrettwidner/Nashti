@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class ReticuleDisplayer : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer spriteRenderer;
-
     [SerializeField] private PlayerClimbingController climbingController;
-
-    public float distanceFromPlayer = 0.3f;
+    public float distanceFromPlayer = 0.45f;
     public Transform playerTransform;
-    
+
+    [Header("Renderers")]
+    [SerializeField] private SpriteRenderer leftRenderer;
+    [SerializeField] private SpriteRenderer rightRenderer;
+
+    [Header("Sprites")]
+    [SerializeField] private ReticuleSprites leftSprites;
+    [SerializeField] private ReticuleSprites rightSprites;
+
+    private PlayerActions playerActions;
+
+    private void Start()
+    {
+        playerActions = PlayerActions.CreateWithDefaultBindings();
+    }
+
     private void Update()
     {
         Vector2 vectorDirection = climbingController.LeaningDirection;
 
         if (vectorDirection == Vector2.zero)
         {
-            spriteRenderer.enabled = false;
+            EnableRenderers(false);
             return;
         }
 
@@ -26,20 +38,36 @@ public class ReticuleDisplayer : MonoBehaviour
 
         if (!potentialMovement.foundSquare)
         {
-            spriteRenderer.enabled = false;
+            EnableRenderers(false);
             return;
         }
         else
         {
             if(potentialMovement.foundSquare)
             {
-                spriteRenderer.enabled = true;
+                EnableRenderers(true);
 
                 SetLocalScale(direction);
                 SetRotation(direction);
                 SetPosition(direction, potentialMovement);
+                SetSprite(direction, potentialMovement.square);
+
             }
 
+        }
+    }
+
+    private void EnableRenderers(bool enabled)
+    {
+        if(enabled)
+        {
+            leftRenderer.enabled = true;
+            rightRenderer.enabled = true;
+        }
+        else
+        {
+            leftRenderer.enabled = false;
+            rightRenderer.enabled = false;
         }
     }
 
@@ -61,6 +89,28 @@ public class ReticuleDisplayer : MonoBehaviour
                 return;
             default:
                 Debug.LogWarning("Local scale not set. Can only set local scale with a cardinal direction.");
+                return;
+        }
+    }
+
+    private void SetRotation(Orientation.Direction direction)
+    {
+        switch (direction)
+        {
+            case Orientation.Direction.Up:
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                return;
+            case Orientation.Direction.Right:
+                transform.rotation = Quaternion.Euler(0, 0, -90);
+                return;
+            case Orientation.Direction.Down:
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                return;
+            case Orientation.Direction.Left:
+                transform.rotation = Quaternion.Euler(0, 0, 90);
+                return;
+            default:
+                Debug.LogWarning("Rotation not set. Can only set rotation with a cardinal direction.");
                 return;
         }
     }
@@ -94,25 +144,53 @@ public class ReticuleDisplayer : MonoBehaviour
         }
     }
 
-    private void SetRotation(Orientation.Direction direction)
+    private void SetSprite(Orientation.Direction direction, Grip.Square square)
     {
-        switch (direction)
+        Grip leftGrip = square.FindLeftSelectingGripGivenDirection(Orientation.DirectionToVector2(direction));
+        bool leftExists = (leftGrip != null);
+        bool leftIsPressed = playerActions.GripLeft.IsPressed;
+        SetReticuleSprite(leftRenderer, leftExists, leftIsPressed, leftSprites);
+
+        Grip rightGrip = square.FindRightSelectingGripGivenDirection(Orientation.DirectionToVector2(direction));
+        bool rightExists = (rightGrip != null);
+        bool rightIsPressed = playerActions.GripRight.IsPressed;
+        SetReticuleSprite(rightRenderer, rightExists, rightIsPressed, rightSprites);
+    }
+
+    private void SetReticuleSprite(SpriteRenderer renderer, bool gripExists, bool gripIsPressed, ReticuleSprites sprites)
+    {
+        if(!gripExists)
         {
-            case Orientation.Direction.Up:
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                return;
-            case Orientation.Direction.Right:
-                transform.rotation = Quaternion.Euler(0, 0, -90);
-                return;
-            case Orientation.Direction.Down:
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                return;
-            case Orientation.Direction.Left:
-                transform.rotation = Quaternion.Euler(0, 0, 90);
-                return;
-            default:
-                Debug.LogWarning("Rotation not set. Can only set rotation with a cardinal direction.");
-                return;
+            if(gripIsPressed)
+            {
+                renderer.sprite = sprites.errored;
+            }
+            else
+            {
+                renderer.sprite = sprites.greyed;
+            }
+        }
+        else
+        {
+            if (gripIsPressed)
+            {
+                renderer.sprite = sprites.highlighted;
+            }
+            else
+            {
+                renderer.sprite = sprites.selected;
+            }
         }
     }
+
+    [System.Serializable]
+    private struct ReticuleSprites
+    {
+        public Sprite highlighted;
+        public Sprite selected;
+        public Sprite greyed;
+        public Sprite errored;
+    }
+
+
 }

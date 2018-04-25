@@ -749,7 +749,7 @@ public class Grip : MonoBehaviour
             return foundSquare.GripCount >= minimumGripCount ? foundSquare : new Square();
         }
 
-        public Grip FindLeftSelectingSquareGivenDirection(Vector2 direction)
+        public Grip FindLeftSelectingGripGivenDirection(Vector2 direction)
         {
             direction.Normalize();
             if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)
@@ -804,7 +804,7 @@ public class Grip : MonoBehaviour
         }
 
 
-        public Grip FindRightSelectingSquareGivenDirection(Vector2 direction)
+        public Grip FindRightSelectingGripGivenDirection(Vector2 direction)
         {
             direction.Normalize();
             if (direction != Vector2.left && direction != Vector2.right && direction != Vector2.up && direction != Vector2.down)

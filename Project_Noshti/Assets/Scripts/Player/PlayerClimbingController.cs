@@ -146,8 +146,8 @@ public class PlayerClimbingController : PlayerMovementController
             {
                 //print("Up square debugged at point: " + potentialMovements.up.square.Center);
                 potentialMovements.up.square.DebugSquare();
-                SuperDebugger.DrawBoxAtPoint(potentialMovements.up.square.Center, Grip.WIDTH_BETWEEN_GRIPS, Color.green, 2f);
-                SuperDebugger.DrawPlus(potentialMovements.up.square.Center, Grip.WIDTH_BETWEEN_GRIPS, Color.green, 2f);
+                //SuperDebugger.DrawBoxAtPoint(potentialMovements.up.square.Center, Grip.WIDTH_BETWEEN_GRIPS, Color.green, 2f);
+                //SuperDebugger.DrawPlus(potentialMovements.up.square.Center, Grip.WIDTH_BETWEEN_GRIPS, Color.green, 2f);
 
             }
 
@@ -233,8 +233,8 @@ public class PlayerClimbingController : PlayerMovementController
         if(nextMovement.foundSquare)
         {
             Grip selectedGrip;
-            selectedGrip = rightGripWasChosen ? nextMovement.square.FindRightSelectingSquareGivenDirection(direction)
-                                                  : nextMovement.square.FindLeftSelectingSquareGivenDirection(direction);
+            selectedGrip = rightGripWasChosen ? nextMovement.square.FindRightSelectingGripGivenDirection(direction)
+                                                  : nextMovement.square.FindLeftSelectingGripGivenDirection(direction);
             if (selectedGrip != null && !selectedGrip.IsEmpty)
             {
                 MoveToSquare(nextMovement.square);

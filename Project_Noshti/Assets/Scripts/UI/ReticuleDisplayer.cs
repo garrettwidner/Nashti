@@ -30,30 +30,17 @@ public class ReticuleDisplayer : MonoBehaviour
         if (vectorDirection == Vector2.zero)
         {
             EnableRenderers(false);
-            return;
-        }
-
-        Orientation.Direction direction = Orientation.Vector2ToDirection(vectorDirection);
-        PlayerClimbingController.Movement potentialMovement = climbingController.GetPotentialMovements.Vector2ToObject(climbingController.LeaningDirection);
-
-        if (!potentialMovement.foundSquare)
-        {
-            EnableRenderers(false);
-            return;
         }
         else
         {
-            if(potentialMovement.foundSquare)
-            {
-                EnableRenderers(true);
+            Orientation.Direction direction = Orientation.Vector2ToDirection(vectorDirection);
+            PlayerClimbingController.Movement potentialMovement = climbingController.GetPotentialMovements.Vector2ToObject(climbingController.LeaningDirection);
 
-                SetLocalScale(direction);
-                SetRotation(direction);
-                SetPosition(direction, potentialMovement);
-                SetSprite(direction, potentialMovement.square);
-
-            }
-
+            EnableRenderers(true);
+            SetLocalScale(direction);
+            SetRotation(direction);
+            SetPosition(direction, potentialMovement);
+            SetSprite(direction, potentialMovement.square);
         }
     }
 

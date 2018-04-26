@@ -24,6 +24,13 @@ public class PlayerClimbingController : PlayerMovementController
     [SerializeField] private int jumpDistance = 5;
 
     private bool isConnectingAfterJump = false;
+    public bool IsConnectingAfterJump
+    {
+        get
+        {
+            return isConnectingAfterJump;
+        }
+    }
 
     [SerializeField] private LayerMask gripLayer;
     [SerializeField] private bool showDebug = true;
@@ -99,6 +106,7 @@ public class PlayerClimbingController : PlayerMovementController
 
         UpdateLeaningStatus();
 
+        /*
         if(isLeaning && (playerActions.GripLeft.WasReleased || playerActions.GripRight.WasReleased))
         {
             if (isConnectingAfterJump)
@@ -115,6 +123,28 @@ public class PlayerClimbingController : PlayerMovementController
                 MoveInLeaningDirectionIfPossible(true);
             }
         }
+        */
+
+        if (playerActions.GripLeft.WasReleased || playerActions.GripRight.WasReleased)
+        {
+            if (isConnectingAfterJump)
+            {
+                isConnectingAfterJump = false;
+                return;
+            }
+            else
+            {
+                if (playerActions.GripLeft.WasReleased && isLeaning)
+                {
+                    MoveInLeaningDirectionIfPossible(false);
+                }
+                else if (playerActions.GripRight.WasReleased && isLeaning)
+                {
+                    MoveInLeaningDirectionIfPossible(true);
+                }
+            }
+        }
+        
 
         /*
         else if(isLeaning && playerActions.Jump.WasReleased)
@@ -146,9 +176,6 @@ public class PlayerClimbingController : PlayerMovementController
             {
                 //print("Up square debugged at point: " + potentialMovements.up.square.Center);
                 potentialMovements.up.square.DebugSquare();
-                //SuperDebugger.DrawBoxAtPoint(potentialMovements.up.square.Center, Grip.WIDTH_BETWEEN_GRIPS, Color.green, 2f);
-                //SuperDebugger.DrawPlus(potentialMovements.up.square.Center, Grip.WIDTH_BETWEEN_GRIPS, Color.green, 2f);
-
             }
 
             if (potentialMovements.right.foundSquare)

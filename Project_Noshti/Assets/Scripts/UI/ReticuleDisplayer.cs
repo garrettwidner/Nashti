@@ -25,6 +25,11 @@ public class ReticuleDisplayer : MonoBehaviour
 
     private void Update()
     {
+        if(climbingController.IsConnectingAfterJump)
+        {
+            return;
+        }
+
         Vector2 vectorDirection = climbingController.LeaningDirection;
 
         if (vectorDirection == Vector2.zero)

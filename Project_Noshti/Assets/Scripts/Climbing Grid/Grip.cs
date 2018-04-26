@@ -871,6 +871,7 @@ public class Grip : MonoBehaviour
             Grip leftFound = FindInDirection(leftStart, direction, gripLayer, spacesToCheck, out spacesBeforeLeftFound);
             Grip rightFound = FindInDirection(rightStart, direction, gripLayer, spacesToCheck, out spacesBeforeRightFound);
 
+            /*
             if (leftFound)
             {
                 SuperDebugger.DrawX(leftFound.transform.position, HALF_GRIP_WIDTH, Color.red, 1f);
@@ -879,6 +880,7 @@ public class Grip : MonoBehaviour
             {
                 SuperDebugger.DrawX(rightFound.transform.position, HALF_GRIP_WIDTH, Color.green, 1f);
             }
+            */
 
             return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, spacesBeforeLeftFound, spacesBeforeRightFound, minimumGrips);
         }
@@ -918,12 +920,11 @@ public class Grip : MonoBehaviour
                         print("Left grip is closest to start; iterating on left.");
                         print("Left spaces left to check: " + leftSpacesLeftToCheck);
                         print("Total left spaces searched CHANGED: " + totalLeftSpacesSearched);
-                        */
-
                         if (leftFound)
                         {
                             SuperDebugger.DrawPlus(leftFound.transform.position, HALF_GRIP_WIDTH, Color.red, .5f);
                         }
+                        */
 
                         return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, totalLeftSpacesSearched, totalRightSpacesSearched, minimumGripsInSquare);
                     }
@@ -941,12 +942,11 @@ public class Grip : MonoBehaviour
                         print("Right grip is closest to start; iterating on right");
                         print("Right spaces left to check: " + rightSpacesLeftToCheck);
                         print("Total right spaces searched CHANGED: " + totalRightSpacesSearched);
-                        */
-
                         if (rightFound)
                         {
                             SuperDebugger.DrawPlus(rightFound.transform.position, HALF_GRIP_WIDTH, Color.green, .5f);
                         }
+                        */
 
                         return CheckHandholdsAndIterate(direction, leftFound, rightFound, gripLayer, spacesToCheck, totalLeftSpacesSearched, totalRightSpacesSearched, minimumGripsInSquare);
                     }

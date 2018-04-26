@@ -14816,7 +14816,7 @@ MonoBehaviour:
   gripLayer:
     serializedVersion: 2
     m_Bits: 2048
-  showDebug: 1
+  showDebug: 0
 --- !u!114 &1054660859
 MonoBehaviour:
   m_ObjectHideFlags: 0

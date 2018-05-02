@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Responsible for deciding which movement state a player is in, 
@@ -15,6 +16,10 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] private PlayerPlatformingController platformingController;
     [SerializeField] private State startingState;
 
+    [SerializeField] private UnityEvent OnStateChangedToClimbing;
+    [SerializeField] private UnityEvent OnStateChangedToPlatforming;
+
+
     private State currentState = State.Platforming;
     public State CurrentState
     {
@@ -23,6 +28,7 @@ public class PlayerStateManager : MonoBehaviour
             return currentState;
         }
     }
+
 
     private PlayerActions playerActions;
 
@@ -90,6 +96,10 @@ public class PlayerStateManager : MonoBehaviour
         currentState = State.Climbing;
         climbingController.ReceiveControl();
         platformingController.LoseMovementControl();
+        if(OnStateChangedToClimbing != null)
+        {
+            OnStateChangedToClimbing.Invoke();
+        }
     }
 
     private void SwitchToPlatforming()
@@ -100,6 +110,11 @@ public class PlayerStateManager : MonoBehaviour
         platformingController.ReceiveControl();
 
         platformingController.JumpNextFrame();
+
+        if(OnStateChangedToPlatforming != null)
+        {
+            OnStateChangedToPlatforming.Invoke();
+        }
     }
 
 

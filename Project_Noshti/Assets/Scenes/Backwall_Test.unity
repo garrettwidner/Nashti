@@ -14659,6 +14659,7 @@ GameObject:
   - component: {fileID: 1054660855}
   - component: {fileID: 1054660854}
   - component: {fileID: 1054660853}
+  - component: {fileID: 1054660860}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -14831,6 +14832,49 @@ MonoBehaviour:
   climbingController: {fileID: 1054660858}
   platformingController: {fileID: 1054660855}
   startingState: 1
+  OnStateChangedToClimbing:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1054660860}
+        m_MethodName: ChangeStateToClimbing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnStateChangedToPlatforming:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1054660860}
+        m_MethodName: ChangeStateToPlatforming
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1054660860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054660852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346657dbe605cdb41b87c41d9c8090eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1058822324 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,

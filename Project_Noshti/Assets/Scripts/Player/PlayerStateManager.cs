@@ -19,7 +19,6 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] private UnityEvent OnStateChangedToClimbing;
     [SerializeField] private UnityEvent OnStateChangedToPlatforming;
 
-
     private State currentState = State.Platforming;
     public State CurrentState
     {
@@ -28,7 +27,6 @@ public class PlayerStateManager : MonoBehaviour
             return currentState;
         }
     }
-
 
     private PlayerActions playerActions;
 
@@ -116,7 +114,6 @@ public class PlayerStateManager : MonoBehaviour
             OnStateChangedToPlatforming.Invoke();
         }
     }
-
 
     public enum State
     {

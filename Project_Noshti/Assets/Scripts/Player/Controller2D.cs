@@ -6,7 +6,7 @@ public class Controller2D : RaycastController
 {
     private float maxClimbingAngle = 80.0f;
     private float maxDescendAngle = 75.0f;
-    private float minVelocityToBeConsideredMoving = 0.001f;
+    private float minVelocityToBeConsideredMoving = 0.01f;
 
     private Vector2 actualVelocity;
     public Vector2 ActualVelocity

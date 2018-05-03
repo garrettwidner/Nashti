@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerClimbingController : PlayerMovementController
 {
@@ -33,6 +34,7 @@ public class PlayerClimbingController : PlayerMovementController
     }
 
     [SerializeField] private LayerMask gripLayer;
+    [SerializeField] private MovementEvent OnMovementStarted;
     [SerializeField] private bool showDebug = true;
 
     private int minimumGripsForJumpSquare = 3;
@@ -233,6 +235,11 @@ public class PlayerClimbingController : PlayerMovementController
                                                   : nextMovement.square.FindLeftSelectingGripGivenDirection(direction);
             if (selectedGrip != null && !selectedGrip.IsEmpty)
             {
+                if(OnMovementStarted != null)
+                {
+                    OnMovementStarted.Invoke(rightGripWasChosen, leaningDirection, selectedGrip);
+                }
+
                 MoveToSquare(nextMovement.square);
             }
         }
@@ -245,6 +252,11 @@ public class PlayerClimbingController : PlayerMovementController
         currentConnectedSquare = newSquare;
 
         FindPotentialMovements();
+    }
+
+    private void MoveToSquare(bool isUsingRightGrip, Vector2 direction, Grip grabbedGrip)
+    {
+
     }
 
     public override void LoseMovementControl()
@@ -261,5 +273,10 @@ public class PlayerClimbingController : PlayerMovementController
         public bool foundSquare;
         public bool connectingGripIsLeft;
     }
+
+}
+
+public class MovementEvent: UnityEvent<bool, Vector2, Grip>
+{
 
 }

@@ -6,14 +6,57 @@ public class Controller2D : RaycastController
 {
     private float maxClimbingAngle = 80.0f;
     private float maxDescendAngle = 75.0f;
+    private float minVelocityToBeConsideredMoving = 0.001f;
+
+    private Vector2 actualVelocity;
+    public Vector2 ActualVelocity
+    {
+        get
+        {
+            return actualVelocity;
+        }
+    }
+
 
     public CollisionInfo collisions;
     [HideInInspector]public Vector2 playerInput;
 
+    public int FacingDirection
+    {
+        get
+        {
+            return collisions.facingDirection;
+        }
+    }
+
+    public bool IsMovingHorizontally
+    {
+        get
+        {
+            return Mathf.Abs(actualVelocity.x) > minVelocityToBeConsideredMoving;
+        }
+    }
+
+    public bool IsMovingVertically
+    {
+        get
+        {
+            return Mathf.Abs(actualVelocity.y) > minVelocityToBeConsideredMoving;
+        }
+    }
+
+    public bool IsGrounded
+    {
+        get
+        {
+            return collisions.below;
+        }
+    }
+
     public override void Start()
     {
         base.Start();
-        collisions.faceDir = 1;
+        collisions.facingDirection = 1;
     }
 
     public void Move(Vector3 velocity, bool standingOnPlatform = false)
@@ -31,7 +74,7 @@ public class Controller2D : RaycastController
 
         if (velocity.x != 0)
         {
-            collisions.faceDir = (int)Mathf.Sign(velocity.x);
+            collisions.facingDirection = (int)Mathf.Sign(velocity.x);
         }
 
         if (velocity.y < 0)
@@ -46,6 +89,7 @@ public class Controller2D : RaycastController
             VerticalCollisions(ref velocity);
         }
 
+        actualVelocity = velocity;
         transform.Translate(velocity);
 
         if (standingOnPlatform == true)
@@ -56,7 +100,7 @@ public class Controller2D : RaycastController
 
     private void HorizontalCollisions(ref Vector3 velocity)
     {
-        float directionX = collisions.faceDir;
+        float directionX = collisions.facingDirection;
         float rayLength = Mathf.Abs(velocity.x) + SkinWidth;
 
         if (Mathf.Abs(velocity.x) < SkinWidth)
@@ -275,7 +319,7 @@ public class Controller2D : RaycastController
         public bool descendingSlope;
         public float slopeAngle, slopeAngleOld;
         public Vector3 velocityOld;
-        public int faceDir;
+        public int facingDirection;
         public bool fallingThroughPlatform;
 
         public void Reset()

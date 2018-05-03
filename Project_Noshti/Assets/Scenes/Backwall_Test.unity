@@ -14877,6 +14877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1054660861}
+  platformingController: {fileID: 1054660853}
 --- !u!95 &1054660861
 Animator:
   serializedVersion: 3

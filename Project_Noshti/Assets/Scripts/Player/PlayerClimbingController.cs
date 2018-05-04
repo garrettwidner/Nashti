@@ -276,6 +276,7 @@ public class PlayerClimbingController : PlayerMovementController
 
 }
 
+[System.Serializable]
 public class MovementEvent: UnityEvent<bool, Vector2, Grip>
 {
 

@@ -20,7 +20,6 @@ public class PlayerAnimator : MonoBehaviour
     {
         animator.SetBool("IsPlatforming", true);
         animator.SetBool("IsClimbing", false);
-
     }
 
     public void ClimbMovementHappened(bool rightGripWasChosen, Vector2 direction, Grip grabbedGrip)
@@ -28,11 +27,12 @@ public class PlayerAnimator : MonoBehaviour
         int vertMoveDirection = direction.y == 0 ? 0 : (int)Mathf.Sign(direction.y);
         int horMoveDirection = direction.x == 0 ? 0 : (int)Mathf.Sign(direction.x);
         string gripTrigger = rightGripWasChosen ? "moveWithRightGrip" : "moveWithLeftGrip";
-        
+
         animator.SetInteger("vertMoveDirection", vertMoveDirection);
         animator.SetInteger("horMoveDirection", horMoveDirection);
         animator.SetTrigger(gripTrigger);
 
+        //print(gripTrigger + "( " + horMoveDirection + " , " + vertMoveDirection + ")");
 
     }
 

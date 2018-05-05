@@ -139,7 +139,7 @@ TextureImporter:
       name: ClimbCharacterAnimation 0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 224
         width: 32
         height: 32

@@ -9,6 +9,10 @@ public class PlayerAnimator : MonoBehaviour
 
     private int facingDirection = 1;
 
+    private void Start()
+    {
+        ChangeStateToPlatforming();
+    }
 
     public void ChangeStateToClimbing()
     {

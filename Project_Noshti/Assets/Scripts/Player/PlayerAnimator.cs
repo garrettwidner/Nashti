@@ -56,6 +56,8 @@ public class PlayerAnimator : MonoBehaviour
         {
             animator.SetBool("IsMoving", false);
         }
+
+        animator.SetBool("IsGrounded", platformingController.IsGrounded);
     }
 
 }

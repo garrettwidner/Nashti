@@ -10844,7 +10844,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: 6865e30ac6aadfe44984d51586c00e01, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.60784316}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -14858,7 +14858,7 @@ MonoBehaviour:
     m_TypeName: MovementEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   showDebug: 0
-  climbMoveSpeed: 4.5
+  climbMoveSpeed: 3
 --- !u!114 &1054660859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17379,7 +17379,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dce6f0c0e5444174f83f4c84be84bdb0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.691}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -24479,7 +24479,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300006, guid: 6865e30ac6aadfe44984d51586c00e01, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.60784316}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

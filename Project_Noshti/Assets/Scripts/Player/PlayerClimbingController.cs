@@ -39,6 +39,12 @@ public class PlayerClimbingController : PlayerMovementController
 
     private int minimumGripsForJumpSquare = 3;
 
+    private bool isMoving = false;
+    [SerializeField] private float climbMoveSpeed = 4.5f;
+    private float t = 0.0f;
+    private Vector2 lerpStart;
+    private Vector2 lerpEnd;
+
     private Grip.Square currentConnectedSquare;
 
     private bool isLeaning = false;
@@ -76,8 +82,7 @@ public class PlayerClimbingController : PlayerMovementController
                 Grip.Square foundSquare = new Grip.Square(rightHand, Vector2.left, Vector2.down, gripLayer);
                 if (foundSquare.GripCount >= 2)
                 {
-                    MoveToSquare(foundSquare);
-
+                    MoveToSquareImmediate(foundSquare);
                     return true;
                 }
             }
@@ -90,7 +95,7 @@ public class PlayerClimbingController : PlayerMovementController
                 Grip.Square foundSquare = new Grip.Square(leftHand, Vector2.right, Vector2.down, gripLayer);
                 if(foundSquare.GripCount >= 2)
                 {
-                    MoveToSquare(foundSquare);
+                    MoveToSquareImmediate(foundSquare);
                     return true;
                 }
             }
@@ -106,27 +111,41 @@ public class PlayerClimbingController : PlayerMovementController
             return;
         }
 
-        UpdateLeaningStatus();
-
-        if (playerActions.GripLeft.WasReleased || playerActions.GripRight.WasReleased)
+        if(!isMoving)
         {
-            if (isConnectingAfterJump)
+            UpdateLeaningStatus();
+
+            if (playerActions.GripLeft.WasReleased || playerActions.GripRight.WasReleased)
             {
-                isConnectingAfterJump = false;
-                return;
-            }
-            else
-            {
-                if (playerActions.GripLeft.WasReleased && isLeaning)
+                if (isConnectingAfterJump)
                 {
-                    MoveInLeaningDirectionIfPossible(false);
+                    isConnectingAfterJump = false;
+                    return;
                 }
-                else if (playerActions.GripRight.WasReleased && isLeaning)
+                else
                 {
-                    MoveInLeaningDirectionIfPossible(true);
+                    if (playerActions.GripLeft.WasReleased && isLeaning)
+                    {
+                        MoveInLeaningDirectionIfPossible(false);
+                    }
+                    else if (playerActions.GripRight.WasReleased && isLeaning)
+                    {
+                        MoveInLeaningDirectionIfPossible(true);
+                    }
                 }
             }
         }
+        else
+        {
+            transform.position = Vector2.Lerp(lerpStart, lerpEnd, t);
+            t += Time.deltaTime * climbMoveSpeed;
+
+            if(t >= 1)
+            {
+                EndMovement();
+            }
+        }
+        
     }
 
     private void FindPotentialMovements()
@@ -247,16 +266,30 @@ public class PlayerClimbingController : PlayerMovementController
 
     private void MoveToSquare(Grip.Square newSquare)
     {
+        print("Lerp to square");
+        lerpStart = transform.position;
+        lerpEnd = newSquare.Center;
+        t = 0.0f;
+        isMoving = true;
+
+        currentConnectedSquare = newSquare;
+    }
+
+    private void EndMovement()
+    {
+        isMoving = false;
+        FindPotentialMovements();
+        transform.position = lerpEnd;
+    }
+
+    private void MoveToSquareImmediate(Grip.Square newSquare)
+    {
+        print("Jump to square");
         //newSquare.DebugSquare();
         transform.position = newSquare.Center;
         currentConnectedSquare = newSquare;
 
         FindPotentialMovements();
-    }
-
-    private void MoveToSquare(bool isUsingRightGrip, Vector2 direction, Grip grabbedGrip)
-    {
-
     }
 
     public override void LoseMovementControl()

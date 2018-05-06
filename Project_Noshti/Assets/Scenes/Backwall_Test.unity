@@ -14858,6 +14858,7 @@ MonoBehaviour:
     m_TypeName: MovementEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   showDebug: 0
+  climbMoveSpeed: 4.5
 --- !u!114 &1054660859
 MonoBehaviour:
   m_ObjectHideFlags: 0

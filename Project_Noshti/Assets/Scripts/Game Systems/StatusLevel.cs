@@ -43,20 +43,19 @@ public class StatusLevel : MonoBehaviour
         statusLevel = startingLevel > maxLevel ? maxLevel : startingLevel;
     }
 
-    public void RapidIncrement(float increment)
+    public void StartRapidIncrement(float increment)
     {
         rapidIncrementPool += increment;
-        KeepStatusLevelWithinBounds();
-
+        KeepStatusBetweenBounds();
     }
 
-    public void SlowIncrement(float increment)
+    public void StartSlowIncrement(float increment)
     {
         slowIncrementPool += increment;
-        KeepStatusLevelWithinBounds();
+        KeepStatusBetweenBounds();
     }
 
-    public void ImmediateIncrement(float increment)
+    public void StartImmediateIncrement(float increment)
     {
         statusLevel += increment;
     }
@@ -77,9 +76,7 @@ public class StatusLevel : MonoBehaviour
                 RunIncrement(ref rapidIncrementPool, rapidIncrementSpeed);
             }
 
-            KeepStatusLevelWithinBounds();
-            StabilizeIncrement(ref rapidIncrementPool);
-            StabilizeIncrement(ref slowIncrementPool);
+            KeepStatusBetweenBounds();
         }
     }
 
@@ -87,19 +84,25 @@ public class StatusLevel : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            RapidIncrement(TEST_RAPID_INCREMENT);
+            StartRapidIncrement(TEST_RAPID_INCREMENT);
             print("---------- Set to increment " + TEST_RAPID_INCREMENT + " rapidly.");
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            SlowIncrement(TEST_SLOW_INCREMENT);
+            StartSlowIncrement(TEST_SLOW_INCREMENT);
             print("---------- Set to increment " + TEST_SLOW_INCREMENT + " slowly.");
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            ImmediateIncrement(TEST_IMMEDIATE_INCREMENT);
-            print("---------- Set to increment " + TEST_IMMEDIATE_INCREMENT + " rapidly.");
+            StartImmediateIncrement(TEST_IMMEDIATE_INCREMENT);
+            print("---------- Set to increment " + TEST_IMMEDIATE_INCREMENT + " immediately.");
             print(statusLevel);
+        }
+        else if(Input.GetKeyDown(KeyCode.N))
+        {
+            print("slow pool: " + slowIncrementPool.ToString("F4"));
+            print("rapid pool: " + rapidIncrementPool.ToString("F4"));
+            print("Current status level: " + statusLevel);
         }
     }
 
@@ -111,6 +114,7 @@ public class StatusLevel : MonoBehaviour
         {
             framewiseIncrement = incrementPool;
             incrementIsEnding = true;
+            //print("Increment ended explicitly.");
         }
         incrementPool -= framewiseIncrement;
         statusLevel += framewiseIncrement;
@@ -125,47 +129,61 @@ public class StatusLevel : MonoBehaviour
 
     private void KeepStatusLevelClean()
     {
-        //TODO:-----------------------Check for opposite way, say if it settles on 39.9998
-        int statusInt = (int)statusLevel;
-        float statusDecimal = statusLevel - statusInt;
+        int statusInt = Mathf.Abs((int)statusLevel);
+        float statusDecimal = Mathf.Abs(statusLevel) - statusInt;
+
+        //print("Status decimal: " + statusDecimal.ToString("F5"));
+        //print("Status Int: " + statusInt.ToString("F5"));
 
         if(statusDecimal < minimumAllowedError)
         {
             statusLevel = statusInt;
+            //print("Status decimal less than " + minimumAllowedError + ". Setting to integer.");
+        }
+        else if((1 - statusDecimal) < minimumAllowedError)
+        {
+            statusLevel = statusInt + 1;
+            //print("Status decimal less than " + minimumAllowedError + ". Setting to integer.");
         }
     }
 
-    private void KeepStatusLevelWithinBounds()
+    private void KeepStatusBetweenBounds()
     {
         if(statusLevel <= 0)
         {
             statusLevel = 0;
-            print("Status level below zero. Incrementing stopped");
+            //print("Status level below zero. Incrementing stopped");
             ResetIncrements();
         }
         if(statusLevel > maxLevel)
         {
             statusLevel = maxLevel;
-            print("Status level above maximum. Incrementing stopped");
-            //TODO: What if we want a timed heal effect that will last through damage done?
-            //like healing on a timer that heals a certain amount every frame no matter what else changes
+            //print("Status level above maximum. Incrementing stopped");
             ResetIncrements();
         }
     }
 
-    private void StabilizeIncrement(ref float increment)
+    /*
+    private void CheckForZeroingIncrement(ref float increment)
     {
         if(Mathf.Abs(increment) <= minimumAllowedError)
         {
             increment = 0;
         }
     }
+    */
 
     private void ResetIncrements()
     {
         //TODO------------------: Only reset increments if they're not going in opposite directions.
         //If we reach the top with speedy healing and we're in poison we don't want to stop the poison.
         //Brings up: How do we deal with constant drains like poison? We need to be able to start and stop it.
+        //Can just detract each frame. Easy. We add another function. But how to turn off?
+        //Perhaps create an instance of a ConstantDecrement class which will go in an array and be 
+        //called on every turn. Can search for the instance of the class (provided on creation) in order to destroy it.
+        //Or class can have a name like 'poison' for ease of recovery.
+        //Add timed increments (heal x amount every frame for p seconds)
+        //Add constant increments (heal x amount every frame until told to stop) (StartConstantIncrement() StopConstantIncrement())
         rapidIncrementPool = 0;
         slowIncrementPool = 0;
     }

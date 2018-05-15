@@ -22,8 +22,8 @@ public class StatusLevel : MonoBehaviour
     private float slowGoal;
     private float rapidGoal;
 
-    public float TEST_RAPID_INCREMENT = 30f;
-    public float TEST_SLOW_INCREMENT = 30f;
+    public float J_TEST_RAPID_INCREMENT = 30f;
+    public float K_TEST_SLOW_INCREMENT = 30f;
     public float TEST_IMMEDIATE_INCREMENT = 30f;
 
     public bool IsIncrementing
@@ -84,13 +84,13 @@ public class StatusLevel : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            StartRapidIncrement(TEST_RAPID_INCREMENT);
-            print("---------- Set to increment " + TEST_RAPID_INCREMENT + " rapidly.");
+            StartRapidIncrement(J_TEST_RAPID_INCREMENT);
+            print("---------- Set to increment " + J_TEST_RAPID_INCREMENT + " rapidly.");
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
-            StartSlowIncrement(TEST_SLOW_INCREMENT);
-            print("---------- Set to increment " + TEST_SLOW_INCREMENT + " slowly.");
+            StartSlowIncrement(K_TEST_SLOW_INCREMENT);
+            print("---------- Set to increment " + K_TEST_SLOW_INCREMENT + " slowly.");
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
@@ -153,13 +153,13 @@ public class StatusLevel : MonoBehaviour
         {
             statusLevel = 0;
             //print("Status level below zero. Incrementing stopped");
-            ResetIncrements();
+            ResetIncrements(false);
         }
         if(statusLevel > maxLevel)
         {
             statusLevel = maxLevel;
             //print("Status level above maximum. Incrementing stopped");
-            ResetIncrements();
+            ResetIncrements(true);
         }
     }
 
@@ -173,10 +173,8 @@ public class StatusLevel : MonoBehaviour
     }
     */
 
-    private void ResetIncrements()
+    private void ResetIncrements(bool resetIncreasing)
     {
-        //TODO------------------: Only reset increments if they're not going in opposite directions.
-        //If we reach the top with speedy healing and we're in poison we don't want to stop the poison.
         //Brings up: How do we deal with constant drains like poison? We need to be able to start and stop it.
         //Can just detract each frame. Easy. We add another function. But how to turn off?
         //Perhaps create an instance of a ConstantDecrement class which will go in an array and be 
@@ -184,7 +182,32 @@ public class StatusLevel : MonoBehaviour
         //Or class can have a name like 'poison' for ease of recovery.
         //Add timed increments (heal x amount every frame for p seconds)
         //Add constant increments (heal x amount every frame until told to stop) (StartConstantIncrement() StopConstantIncrement())
-        rapidIncrementPool = 0;
-        slowIncrementPool = 0;
+
+        if (resetIncreasing)
+        {
+            if (rapidIncrementPool >= 0)
+            {
+                rapidIncrementPool = 0;
+                //print("Still increasing. RAPID pool cleared.");
+            }
+            if (slowIncrementPool >= 0)
+            {
+                slowIncrementPool = 0;
+                //print("Still increasing. SLOW pool cleared.");
+            }
+        }
+        else
+        {
+            if (rapidIncrementPool <= 0)
+            {
+                rapidIncrementPool = 0;
+                //print("Still decreasing. RAPID pool cleared.");
+            }
+            if (slowIncrementPool <= 0)
+            {
+                slowIncrementPool = 0;
+                //print("Still decreasing. SLOW pool cleared.");
+            }
+        }
     }
 }

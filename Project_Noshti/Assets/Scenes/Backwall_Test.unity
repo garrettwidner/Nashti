@@ -25090,12 +25090,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76425a22d4f1754f87925c2c5a1c637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 100
+  startingLevel: 90
   maxLevel: 100
   rapidIncrementSpeed: 17.6
   slowIncrementSpeed: 1
-  TEST_RAPID_INCREMENT: -30
-  TEST_SLOW_INCREMENT: -5
+  J_TEST_RAPID_INCREMENT: 30
+  K_TEST_SLOW_INCREMENT: -5
   TEST_IMMEDIATE_INCREMENT: -30
 --- !u!4 &1965065929
 Transform:

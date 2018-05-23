@@ -26,6 +26,22 @@ public class StatusLevel : MonoBehaviour
     public float K_TEST_SLOW_INCREMENT = 30f;
     public float TEST_IMMEDIATE_INCREMENT = 30f;
 
+    public float MaxLevel
+    {
+        get
+        {
+            return maxLevel;
+        }
+    }
+
+    public float CurrentLevel
+    {
+        get
+        {
+            return statusLevel;
+        }
+    }
+
     public bool IsIncrementing
     {
         get

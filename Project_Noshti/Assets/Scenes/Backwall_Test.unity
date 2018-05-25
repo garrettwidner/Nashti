@@ -15088,6 +15088,7 @@ GameObject:
   - component: {fileID: 1054660853}
   - component: {fileID: 1054660860}
   - component: {fileID: 1054660861}
+  - component: {fileID: 1054660862}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -15262,6 +15263,11 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: MovementEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  OnMoveEnded:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MovementEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   showDebug: 0
   climbMoveSpeed: 4
 --- !u!114 &1054660859
@@ -15341,6 +15347,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1054660862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054660852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b04db0e4afaa6f446bcee5d049467911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingLevel: 100
+  maxLevel: 100
+  rapidIncrementSpeed: 0
+  slowIncrementSpeed: 0
 --- !u!4 &1058822324 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -25440,9 +25461,6 @@ MonoBehaviour:
   maxLevel: 100
   rapidIncrementSpeed: 17.6
   slowIncrementSpeed: 20
-  J_TEST_RAPID_INCREMENT: 30
-  K_TEST_SLOW_INCREMENT: -10
-  TEST_IMMEDIATE_INCREMENT: -30
 --- !u!4 &1965065929
 Transform:
   m_ObjectHideFlags: 0

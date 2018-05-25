@@ -45,7 +45,7 @@ public class ReticuleDisplayer : MonoBehaviour
             SetLocalScale(direction);
             SetRotation(direction);
             SetPosition(direction, potentialMovement);
-            SetSprite(direction, potentialMovement.square);
+            SetSprite(direction, potentialMovement.newSquare);
         }
     }
 
@@ -111,7 +111,7 @@ public class ReticuleDisplayer : MonoBehaviour
     {
         if (potentialMovement.isJumpNecessary)
         {
-            transform.position = potentialMovement.square.Center + (Orientation.DirectionToVector2(direction) * Grip.WIDTH_BETWEEN_GRIPS / 2);
+            transform.position = potentialMovement.newSquare.Center + (Orientation.DirectionToVector2(direction) * Grip.WIDTH_BETWEEN_GRIPS / 2);
         }
         else
         {

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Exposes a single floating point variable and provides a number of functions to modify it over time.
+/// </summary>
 public class StatusLevel : MonoBehaviour
 {
     [SerializeField] private int startingLevel = 100;
@@ -15,16 +18,16 @@ public class StatusLevel : MonoBehaviour
 
     private float minimumAllowedError = 0.01f;
 
-    private float statusLevel;
+    protected float statusLevel;
     private float slowIncrementPool;
     private float rapidIncrementPool;
 
     private float slowGoal;
     private float rapidGoal;
 
-    public float J_TEST_RAPID_INCREMENT = 30f;
-    public float K_TEST_SLOW_INCREMENT = 30f;
-    public float TEST_IMMEDIATE_INCREMENT = 30f;
+    //public float J_TEST_RAPID_INCREMENT = 30f;
+    //public float K_TEST_SLOW_INCREMENT = 30f;
+    //public float TEST_IMMEDIATE_INCREMENT = 30f;
 
     public float MaxLevel
     {
@@ -78,7 +81,7 @@ public class StatusLevel : MonoBehaviour
 
     private void Update()
     { 
-        RunTest();
+        //RunTest();
 
         if(statusLevel != 0)
         {
@@ -96,6 +99,7 @@ public class StatusLevel : MonoBehaviour
         }
     }
 
+    /*
     private void RunTest()
     {
         if (Input.GetKeyDown(KeyCode.J))
@@ -121,6 +125,7 @@ public class StatusLevel : MonoBehaviour
             print("Current status level: " + statusLevel);
         }
     }
+    */
 
     private void RunIncrement(ref float incrementPool, float incrementSpeed)
     {
@@ -178,16 +183,6 @@ public class StatusLevel : MonoBehaviour
             ResetIncrements(true);
         }
     }
-
-    /*
-    private void CheckForZeroingIncrement(ref float increment)
-    {
-        if(Mathf.Abs(increment) <= minimumAllowedError)
-        {
-            increment = 0;
-        }
-    }
-    */
 
     private void ResetIncrements(bool resetIncreasing)
     {

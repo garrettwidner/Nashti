@@ -34,7 +34,10 @@ public class PlayerClimbingController : PlayerMovementController
     }
 
     [SerializeField] private LayerMask gripLayer;
+
     [SerializeField] private MovementEvent OnMovementStarted;
+    [SerializeField] private MovementEvent OnMoveEnded;
+
     [SerializeField] private bool showDebug = true;
 
     private int minimumGripsForJumpSquare = 3;
@@ -46,6 +49,7 @@ public class PlayerClimbingController : PlayerMovementController
     private Vector2 lerpEnd;
 
     private Grip.Square currentConnectedSquare;
+    private Movement previousMovement;
 
     private bool isLeaning = false;
     private Vector2 leaningDirection;
@@ -56,6 +60,7 @@ public class PlayerClimbingController : PlayerMovementController
             return leaningDirection;
         }
     }
+
 
     private void Awake()
     {
@@ -162,26 +167,26 @@ public class PlayerClimbingController : PlayerMovementController
         {
             //print("------------");
             
-            if (potentialMovements.up.foundSquare)
+            if (potentialMovements.up.newSquareWasFound)
             {
                 //print("Up square debugged at point: " + potentialMovements.up.square.Center);
-                potentialMovements.up.square.DebugSquare();
+                potentialMovements.up.newSquare.DebugSquare();
             }
 
-            if (potentialMovements.right.foundSquare)
+            if (potentialMovements.right.newSquareWasFound)
             {
                 //print("Right square debugged");
-                potentialMovements.right.square.DebugSquare();
+                potentialMovements.right.newSquare.DebugSquare();
             }
-            if (potentialMovements.down.foundSquare)
+            if (potentialMovements.down.newSquareWasFound)
             {
                 //print("Down square debugged");
-                potentialMovements.down.square.DebugSquare();
+                potentialMovements.down.newSquare.DebugSquare();
             }
-            if (potentialMovements.left.foundSquare)
+            if (potentialMovements.left.newSquareWasFound)
             {
                 //print("Left square debugged");
-                potentialMovements.left.square.DebugSquare();
+                potentialMovements.left.newSquare.DebugSquare();
             }
             
         }
@@ -191,22 +196,22 @@ public class PlayerClimbingController : PlayerMovementController
     {
         Movement pSquare = new Movement();
         pSquare.isJumpNecessary = false;
-        pSquare.foundSquare = false;
+        pSquare.newSquareWasFound = false;
 
-        pSquare.square = currentConnectedSquare.FindAdjacentSquareInDirection(direction, gripLayer, 2);
+        pSquare.newSquare = currentConnectedSquare.FindAdjacentSquareInDirection(direction, gripLayer, 2);
 
-        if (pSquare.square.IsEmpty || pSquare.square.SideIsEmpty(direction)) 
+        if (pSquare.newSquare.IsEmpty || pSquare.newSquare.SideIsEmpty(direction)) 
         {
-            pSquare.square = currentConnectedSquare.FindFirstSquareInDirection(direction, gripLayer, jumpDistance, minimumGripsForJumpSquare);
-            if(!pSquare.square.IsEmpty)
+            pSquare.newSquare = currentConnectedSquare.FindFirstSquareInDirection(direction, gripLayer, jumpDistance, minimumGripsForJumpSquare);
+            if(!pSquare.newSquare.IsEmpty)
             {
                 pSquare.isJumpNecessary = true;
-                pSquare.foundSquare = true;
+                pSquare.newSquareWasFound = true;
             }
         }
         else
         {
-            pSquare.foundSquare = true;
+            pSquare.newSquareWasFound = true;
         }
         return pSquare;
     }
@@ -247,26 +252,27 @@ public class PlayerClimbingController : PlayerMovementController
     {
         Vector2 direction = leaningDirection;
         Movement nextMovement = potentialMovements.Vector2ToObject(leaningDirection);
-        if(nextMovement.foundSquare)
+        if(nextMovement.newSquareWasFound)
         {
             Grip selectedGrip;
-            selectedGrip = rightGripWasChosen ? nextMovement.square.FindRightSelectingGripGivenDirection(direction)
-                                                  : nextMovement.square.FindLeftSelectingGripGivenDirection(direction);
+            selectedGrip = rightGripWasChosen ? nextMovement.newSquare.FindRightSelectingGripGivenDirection(direction)
+                                                  : nextMovement.newSquare.FindLeftSelectingGripGivenDirection(direction);
             if (selectedGrip != null && !selectedGrip.IsEmpty)
             {
                 if(OnMovementStarted != null)
                 {
-                    OnMovementStarted.Invoke(rightGripWasChosen, leaningDirection, selectedGrip);
+                    OnMovementStarted.Invoke(rightGripWasChosen, nextMovement.isJumpNecessary, leaningDirection, selectedGrip);
                 }
 
-                MoveToSquare(nextMovement.square);
+                previousMovement = nextMovement;
+                MoveToSquare(nextMovement.newSquare);
             }
         }
     }
 
     private void MoveToSquare(Grip.Square newSquare)
     {
-        print("Lerp to square");
+        //print("Lerp to square");
         lerpStart = transform.position;
         lerpEnd = newSquare.Center;
         t = 0.0f;
@@ -280,11 +286,16 @@ public class PlayerClimbingController : PlayerMovementController
         isMoving = false;
         FindPotentialMovements();
         transform.position = lerpEnd;
+
+        if(OnMoveEnded != null)
+        {
+            //OnMoveEnded()
+        }
     }
 
     private void MoveToSquareImmediate(Grip.Square newSquare)
     {
-        print("Jump to square");
+        //print("Jump to square");
         //newSquare.DebugSquare();
         transform.position = newSquare.Center;
         currentConnectedSquare = newSquare;
@@ -301,16 +312,38 @@ public class PlayerClimbingController : PlayerMovementController
 
     public class Movement
     {
-        public Grip.Square square;
+        public Grip.Square newSquare;
         public bool isJumpNecessary;
-        public bool foundSquare;
-        public bool connectingGripIsLeft;
+        public bool newSquareWasFound;
+        public bool connectedThroughLeftGrip;
+        //The ideas in GripConnection below can be 
+        //inferred from the information contained
+        //within this class already. Create a set
+        //of properties to access these instead of
+        //adding the overhead necessary to 
+        //provide them all.
+
+        //newSquareWasFound can be inferred as well, so
+        //only 3 of the pieces of data need to be provided.
+    }
+
+    public class GripConnection
+    {
+        public bool rightMostGripWasChosen;
+        public bool isJumpNecessary;
+        public Vector2 movementDirection;
+        public Grip connectingGrip;
+        public Grip.Square newSquare;
     }
 
 }
 
+//Needs to communicate whether the rightmost grip was chosen, 
+//                     whether a jump was necessary, 
+//                     the direction, and 
+//                     the connecting grip itself.
 [System.Serializable]
-public class MovementEvent: UnityEvent<bool, Vector2, Grip>
+public class MovementEvent: UnityEvent<bool, bool, Vector2, Grip>
 {
 
 }

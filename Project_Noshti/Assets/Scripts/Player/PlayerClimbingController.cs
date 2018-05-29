@@ -77,7 +77,8 @@ public class PlayerClimbingController : PlayerMovementController
 
     public bool ConnectAtHandsIfPossible(bool rightHandIsConnecting)
     {
-        isConnectingAfterJump = true;
+        //Makes it so that first move after jump doesn't happen
+        //isConnectingAfterJump = true;
 
         if (rightHandIsConnecting)
         {
@@ -120,7 +121,7 @@ public class PlayerClimbingController : PlayerMovementController
         {
             UpdateLeaningStatus();
 
-            if (playerActions.GripLeft.WasReleased || playerActions.GripRight.WasReleased)
+            if (playerActions.GripLeft.WasPressed || playerActions.GripRight.WasPressed)
             {
                 if (isConnectingAfterJump)
                 {
@@ -129,11 +130,11 @@ public class PlayerClimbingController : PlayerMovementController
                 }
                 else
                 {
-                    if (playerActions.GripLeft.WasReleased && isLeaning)
+                    if (playerActions.GripLeft.WasPressed && isLeaning)
                     {
                         MoveInLeaningDirectionIfPossible(false);
                     }
-                    else if (playerActions.GripRight.WasReleased && isLeaning)
+                    else if (playerActions.GripRight.WasPressed && isLeaning)
                     {
                         MoveInLeaningDirectionIfPossible(true);
                     }
@@ -325,6 +326,16 @@ public class PlayerClimbingController : PlayerMovementController
 
         //newSquareWasFound can be inferred as well, so
         //only 3 of the pieces of data need to be provided.
+
+
+
+    }
+
+    public class Move
+    {
+        public Grip.Square newSquare;
+        public bool isJumpNecessary;
+        public bool connectedThroughLeftGrip;
     }
 
     public class GripConnection

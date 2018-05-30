@@ -333,18 +333,90 @@ public class PlayerClimbingController : PlayerMovementController
 
     public class Move
     {
-        public Grip.Square newSquare;
-        public bool isJumpNecessary;
-        public bool connectedThroughLeftGrip;
-    }
+        private Grip.Square newSquare;
+        private bool isJumpNecessary;
+        private bool connectedThroughLeftGrip;
+        private Vector2 movementDirection;
 
-    public class GripConnection
-    {
-        public bool rightMostGripWasChosen;
-        public bool isJumpNecessary;
-        public Vector2 movementDirection;
-        public Grip connectingGrip;
-        public Grip.Square newSquare;
+        public Move(Grip.Square nextSquare, bool jumpIsNecessary, bool leftGripUsedToConnect, Vector2 moveDirection)
+        {
+            newSquare = nextSquare;
+            isJumpNecessary = jumpIsNecessary;
+            connectedThroughLeftGrip = leftGripUsedToConnect;
+            movementDirection = moveDirection; 
+        }
+
+        public Grip.Square NewSquare
+        {
+            get
+            {
+                return newSquare;
+            }
+        }
+
+        public bool IsJumpNecessary
+        {
+            get
+            {
+                return isJumpNecessary;
+            }
+        }
+
+        public bool NewSquareWasFound
+        {
+            get
+            {
+                return !newSquare.IsEmpty;
+            }
+        }
+
+        public bool ConnectedThroughRightGrip
+        {
+            get
+            {
+                return !connectedThroughLeftGrip;
+            }
+        }
+
+        public bool ConnectedThroughLeftGrip
+        {
+            get
+            {
+                return connectedThroughLeftGrip;
+            }
+        }
+
+        public Vector2 MovementDirection
+        {
+            get
+            {
+                return movementDirection;
+            }
+        }
+
+        public Grip ConnectingGrip
+        {
+            get
+            {
+                if(connectedThroughLeftGrip)
+                {
+                    return newSquare.FindLeftSelectingGripGivenDirection(MovementDirection);
+                }
+                return newSquare.FindRightSelectingGripGivenDirection(MovementDirection);
+            }
+        }
+
+        public Grip NonConnectingGrip
+        {
+            get
+            {
+                if (connectedThroughLeftGrip)
+                {
+                    return newSquare.FindRightSelectingGripGivenDirection(MovementDirection);
+                }
+                return newSquare.FindLeftSelectingGripGivenDirection(MovementDirection);
+            }
+        }
     }
 
 }

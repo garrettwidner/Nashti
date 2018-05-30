@@ -169,6 +169,62 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &15454868
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 178
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (112)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &15530423 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -669,6 +725,62 @@ MonoBehaviour:
   quality: 2
   type: 0
   boxCollider: {fileID: 0}
+--- !u!1001 &84551447
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 163
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (94)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &87333122
 Prefab:
   m_ObjectHideFlags: 0
@@ -1180,6 +1292,62 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 491163447}
+--- !u!1001 &113831964
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.6999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.54999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 179
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (120)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &114082523 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -1253,6 +1421,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 119716739}
+--- !u!4 &120826109 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 15454868}
 --- !u!1001 &133255440
 Prefab:
   m_ObjectHideFlags: 0
@@ -1324,6 +1497,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &139819148 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 390522296}
 --- !u!4 &142717714 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -1462,6 +1640,62 @@ MonoBehaviour:
   quality: 8
   type: 0
   boxCollider: {fileID: 0}
+--- !u!1001 &145589781
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (84)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &154302823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,6 +1824,62 @@ MonoBehaviour:
   quality: 2
   type: 0
   boxCollider: {fileID: 0}
+--- !u!1001 &155032338
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 161
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (87)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &155811810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,6 +2333,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed96dd5509fcb840977c65e7ad13210, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &207407028 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 749077263}
 --- !u!1001 &208354353
 Prefab:
   m_ObjectHideFlags: 0
@@ -2141,6 +2436,62 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &213541507
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 155
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (81)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &214644227
 Prefab:
   m_ObjectHideFlags: 0
@@ -2202,11 +2553,72 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 214644227}
+--- !u!1001 &223149296
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 166
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (97)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &224868832 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 4513519}
+--- !u!4 &228247777 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1717834329}
 --- !u!1 &231563815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,6 +2834,11 @@ MonoBehaviour:
   quality: 8
   type: 0
   boxCollider: {fileID: 0}
+--- !u!4 &235303748 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1484406962}
 --- !u!1 &244125201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,6 +2967,11 @@ MonoBehaviour:
   quality: 8
   type: 0
   boxCollider: {fileID: 0}
+--- !u!4 &244273551 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1237896656}
 --- !u!1 &246694545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2578,6 +3000,62 @@ Transform:
   m_Father: {fileID: 1054660857}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &247853514
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.79999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (102)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &259653096
 Prefab:
   m_ObjectHideFlags: 0
@@ -3071,6 +3549,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 212113517653579244, guid: 557dc23a635dd054bbf952599d848a7c,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212113517653579244, guid: 557dc23a635dd054bbf952599d848a7c,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 557dc23a635dd054bbf952599d848a7c, type: 2}
   m_IsPrefabParent: 0
@@ -3319,6 +3807,62 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 60693624}
+--- !u!1001 &313427903
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.6999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 156
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (82)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &330120877 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4083954999336116, guid: fed96dd5509fcb840977c65e7ad13210,
@@ -3960,11 +4504,123 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &359537834
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.54999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 171
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (103)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &378513118 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 1564606124}
+--- !u!1001 &390522296
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 162
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (89)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &404308942
 GameObject:
   m_ObjectHideFlags: 0
@@ -4378,11 +5034,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &437900048 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1831696665}
 --- !u!4 &438042799 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4083954999336116, guid: fed96dd5509fcb840977c65e7ad13210,
     type: 2}
   m_PrefabInternal: {fileID: 1997881707}
+--- !u!4 &438319794 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 223149296}
 --- !u!1001 &445465508
 Prefab:
   m_ObjectHideFlags: 0
@@ -4439,6 +5105,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &475365076 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1314207389}
 --- !u!1001 &478452834
 Prefab:
   m_ObjectHideFlags: 0
@@ -5287,6 +5958,62 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 347815420}
+--- !u!1001 &516583400
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 173
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (105)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &522186386 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -5481,6 +6208,11 @@ MonoBehaviour:
   quality: 8
   type: 0
   boxCollider: {fileID: 0}
+--- !u!4 &563109148 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 2088796060}
 --- !u!1 &564006538
 GameObject:
   m_ObjectHideFlags: 0
@@ -11337,11 +12069,72 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 626953111}
   m_Script: {fileID: 11500000, guid: ed5b0e3e753e3044a872caf9ee738eb3, type: 3}
+--- !u!1001 &630178910
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (96)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &648264112 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4143780391869712, guid: 557dc23a635dd054bbf952599d848a7c,
     type: 2}
   m_PrefabInternal: {fileID: 1607790968}
+--- !u!4 &652510907 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 359537834}
 --- !u!1 &657429917
 GameObject:
   m_ObjectHideFlags: 0
@@ -11421,6 +12214,62 @@ Transform:
   m_PrefabParentObject: {fileID: 4143780391869712, guid: 557dc23a635dd054bbf952599d848a7c,
     type: 2}
   m_PrefabInternal: {fileID: 195895710}
+--- !u!1001 &669861529
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.049999952
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (107)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &674317902
 Prefab:
   m_ObjectHideFlags: 0
@@ -11666,6 +12515,62 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 676721800}
+--- !u!1001 &677825924
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.6999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 159
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (85)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &684275928
 GameObject:
   m_ObjectHideFlags: 0
@@ -11971,6 +12876,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4143780391869712, guid: 557dc23a635dd054bbf952599d848a7c,
     type: 2}
   m_PrefabInternal: {fileID: 307299079}
+--- !u!4 &707144563 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1255179280}
 --- !u!1001 &711273150
 Prefab:
   m_ObjectHideFlags: 0
@@ -12069,6 +12979,16 @@ Prefab:
     - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_Name
       value: Med Grip (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
@@ -12295,6 +13215,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212499046583638602, guid: fed96dd5509fcb840977c65e7ad13210,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212499046583638602, guid: fed96dd5509fcb840977c65e7ad13210,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed96dd5509fcb840977c65e7ad13210, type: 2}
   m_IsPrefabParent: 0
@@ -12353,6 +13283,62 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 557dc23a635dd054bbf952599d848a7c, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &749077263
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 167
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (98)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &750297728
 GameObject:
@@ -13776,6 +14762,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4083954999336116, guid: fed96dd5509fcb840977c65e7ad13210,
     type: 2}
   m_PrefabInternal: {fileID: 1049297843}
+--- !u!4 &858697924 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1128102613}
 --- !u!1001 &873039977
 Prefab:
   m_ObjectHideFlags: 0
@@ -14022,6 +15013,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &906292035 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1329394858}
 --- !u!1 &919555027
 GameObject:
   m_ObjectHideFlags: 0
@@ -14660,6 +15656,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &969027027 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 313427903}
 --- !u!1 &972054701
 GameObject:
   m_ObjectHideFlags: 0
@@ -15933,6 +16934,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4083954999336116, guid: fed96dd5509fcb840977c65e7ad13210,
     type: 2}
   m_PrefabInternal: {fileID: 201037956}
+--- !u!4 &1074521810 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 213541507}
 --- !u!4 &1075531436 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -16431,6 +17437,62 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 1125588922}
+--- !u!1001 &1128102613
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.79999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 169
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (100)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1129216395 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -17736,6 +18798,33 @@ Transform:
   - {fileID: 536603829}
   - {fileID: 1899115689}
   - {fileID: 516207434}
+  - {fileID: 1074521810}
+  - {fileID: 969027027}
+  - {fileID: 437900048}
+  - {fileID: 1755638799}
+  - {fileID: 1268143320}
+  - {fileID: 563109148}
+  - {fileID: 1462021497}
+  - {fileID: 139819148}
+  - {fileID: 1856018848}
+  - {fileID: 1757663280}
+  - {fileID: 1548630431}
+  - {fileID: 438319794}
+  - {fileID: 207407028}
+  - {fileID: 244273551}
+  - {fileID: 858697924}
+  - {fileID: 1696497296}
+  - {fileID: 652510907}
+  - {fileID: 235303748}
+  - {fileID: 1426095308}
+  - {fileID: 1653876141}
+  - {fileID: 2029651464}
+  - {fileID: 228247777}
+  - {fileID: 475365076}
+  - {fileID: 120826109}
+  - {fileID: 1556425231}
+  - {fileID: 906292035}
+  - {fileID: 707144563}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17856,6 +18945,62 @@ Transform:
   m_PrefabParentObject: {fileID: 4083954999336116, guid: fed96dd5509fcb840977c65e7ad13210,
     type: 2}
   m_PrefabInternal: {fileID: 423207473}
+--- !u!1001 &1237896656
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 168
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (99)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1239566487 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4143780391869712, guid: 557dc23a635dd054bbf952599d848a7c,
@@ -17922,6 +19067,62 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 1240781800}
+--- !u!1001 &1255179280
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.9499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.79999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 181
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (141)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1264374650
 Prefab:
   m_ObjectHideFlags: 0
@@ -17978,6 +19179,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed96dd5509fcb840977c65e7ad13210, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1268143320 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 677825924}
 --- !u!1001 &1270125632
 Prefab:
   m_ObjectHideFlags: 0
@@ -18652,6 +19858,62 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 557dc23a635dd054bbf952599d848a7c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1314207389
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 177
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (109)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1321527615
 GameObject:
   m_ObjectHideFlags: 0
@@ -18836,6 +20098,62 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed96dd5509fcb840977c65e7ad13210, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1329394858
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.9499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.54999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (121)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1331766246
 Prefab:
   m_ObjectHideFlags: 0
@@ -18874,6 +20192,16 @@ Prefab:
     - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
@@ -19186,6 +20514,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1361354132
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 164
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (95)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1362369681 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4083954999336116, guid: fed96dd5509fcb840977c65e7ad13210,
@@ -19578,6 +20962,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed96dd5509fcb840977c65e7ad13210, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1426095308 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 516583400}
 --- !u!4 &1431124772 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4083954999336116, guid: fed96dd5509fcb840977c65e7ad13210,
@@ -19961,6 +21350,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4083954999336116, guid: fed96dd5509fcb840977c65e7ad13210,
     type: 2}
   m_PrefabInternal: {fileID: 2035459798}
+--- !u!4 &1462021497 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 155032338}
 --- !u!4 &1469328552 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -20278,6 +21672,62 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1484406962
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.54999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 172
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (104)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
@@ -20603,6 +22053,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 1673500403}
+--- !u!4 &1548630431 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 630178910}
 --- !u!4 &1551662546 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -20797,6 +22252,11 @@ MonoBehaviour:
   quality: 8
   type: 0
   boxCollider: {fileID: 0}
+--- !u!4 &1556425231 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 113831964}
 --- !u!1 &1558280122
 GameObject:
   m_ObjectHideFlags: 0
@@ -21805,6 +23265,11 @@ MonoBehaviour:
   quality: 2
   type: 0
   boxCollider: {fileID: 0}
+--- !u!4 &1653876141 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 2035048322}
 --- !u!4 &1655001473 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -22246,6 +23711,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4143780391869712, guid: 557dc23a635dd054bbf952599d848a7c,
     type: 2}
   m_PrefabInternal: {fileID: 1436311576}
+--- !u!4 &1696497296 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 247853514}
 --- !u!1 &1715525197
 GameObject:
   m_ObjectHideFlags: 0
@@ -22374,6 +23844,62 @@ MonoBehaviour:
   quality: 2
   type: 0
   boxCollider: {fileID: 0}
+--- !u!1001 &1717834329
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.049999952
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 176
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (108)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1723432768
 Prefab:
   m_ObjectHideFlags: 0
@@ -22694,12 +24220,22 @@ Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 1156950220}
+--- !u!4 &1755638799 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 145589781}
 --- !u!114 &1756904711 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114454140124886466, guid: 7931520db9a0d2b4ea780a028306780f,
     type: 2}
   m_PrefabInternal: {fileID: 1782867727}
   m_Script: {fileID: 11500000, guid: ed5b0e3e753e3044a872caf9ee738eb3, type: 3}
+--- !u!4 &1757663280 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1361354132}
 --- !u!1 &1761915842
 GameObject:
   m_ObjectHideFlags: 0
@@ -24623,6 +26159,62 @@ MonoBehaviour:
   quality: 2
   type: 0
   boxCollider: {fileID: 0}
+--- !u!1001 &1831696665
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.6999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (83)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1837562325 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4083954999336116, guid: fed96dd5509fcb840977c65e7ad13210,
@@ -25041,6 +26633,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1856018848 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 84551447}
 --- !u!1 &1857843637
 GameObject:
   m_ObjectHideFlags: 0
@@ -26614,6 +28211,67 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 435235356}
   m_Script: {fileID: 11500000, guid: ed5b0e3e753e3044a872caf9ee738eb3, type: 3}
+--- !u!4 &2029651464 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
+    type: 2}
+  m_PrefabInternal: {fileID: 669861529}
+--- !u!1001 &2035048322
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.1999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 174
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (106)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &2035459798
 Prefab:
   m_ObjectHideFlags: 0
@@ -27538,6 +29196,62 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 557dc23a635dd054bbf952599d848a7c, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &2088796060
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1220506339}
+    m_Modifications:
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12924173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_RootOrder
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611998753315236, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
+      propertyPath: m_Name
+      value: Med Grip (86)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 275102237
+      objectReference: {fileID: 0}
+    - target: {fileID: 212177016683941782, guid: 7931520db9a0d2b4ea780a028306780f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: -4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7931520db9a0d2b4ea780a028306780f, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &2100798553 stripped
 Transform:

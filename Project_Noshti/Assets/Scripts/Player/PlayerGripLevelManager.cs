@@ -27,9 +27,14 @@ public class PlayerGripLevelManager : StatusLevel
         }
     }
 
-    public void MoveWasTaken(PlayerClimbingController.Movement move)
+    public void MoveWasTaken(PlayerClimbingController.Move move)
     {
-        print("Move taken");
+        //print("Move taken");
+    }
+
+    public void MoveEnded(PlayerClimbingController.Move move)
+    {
+        //print("Move ended ----");
     }
 
 

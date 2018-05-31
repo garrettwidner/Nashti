@@ -39,13 +39,14 @@ public class ReticuleDisplayer : MonoBehaviour
         else
         {
             Orientation.Direction direction = Orientation.Vector2ToDirection(vectorDirection);
-            PlayerClimbingController.Movement potentialMovement = climbingController.GetPotentialMovements.Vector2ToObject(climbingController.LeaningDirection);
+            //PlayerClimbingController.Movement potentialMovement = climbingController.GetPotentialMovements.Vector2ToObject(climbingController.LeaningDirection);
+            PlayerClimbingController.PotentialMove potentialMove = climbingController.GetPotentialMoves.Vector2ToObject(climbingController.LeaningDirection);
 
             EnableRenderers(true);
             SetLocalScale(direction);
             SetRotation(direction);
-            SetPosition(direction, potentialMovement);
-            SetSprite(direction, potentialMovement.newSquare);
+            SetPosition(direction, potentialMove);
+            SetSprite(direction, potentialMove.NewSquare);
         }
     }
 
@@ -107,11 +108,11 @@ public class ReticuleDisplayer : MonoBehaviour
         }
     }
 
-    private void SetPosition(Orientation.Direction direction, PlayerClimbingController.Movement potentialMovement)
+    private void SetPosition(Orientation.Direction direction, PlayerClimbingController.PotentialMove potentialMove)
     {
-        if (potentialMovement.isJumpNecessary)
+        if (potentialMove.IsJumpNecessary)
         {
-            transform.position = potentialMovement.newSquare.Center + (Orientation.DirectionToVector2(direction) * Grip.WIDTH_BETWEEN_GRIPS / 2);
+            transform.position = potentialMove.NewSquare.Center + (Orientation.DirectionToVector2(direction) * Grip.WIDTH_BETWEEN_GRIPS / 2);
         }
         else
         {

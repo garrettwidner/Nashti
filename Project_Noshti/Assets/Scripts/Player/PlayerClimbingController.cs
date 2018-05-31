@@ -10,12 +10,23 @@ public class PlayerClimbingController : PlayerMovementController
     [SerializeField] private Transform leftFootConnectionPoint;
     [SerializeField] private Transform rightFootConnectionPoint;
 
+    /*
     private CardinalContainer<Movement> potentialMovements;
     public CardinalContainer<Movement> GetPotentialMovements
     {
         get
         {
             return potentialMovements;
+        }
+    }
+    */
+
+    private CardinalContainer<PotentialMove> potentialMoves;
+    public CardinalContainer<PotentialMove> GetPotentialMoves
+    {
+        get
+        {
+            return potentialMoves;
         }
     }
 
@@ -49,7 +60,8 @@ public class PlayerClimbingController : PlayerMovementController
     private Vector2 lerpEnd;
 
     private Grip.Square currentConnectedSquare;
-    private Movement previousMovement;
+    //private Movement previousMovement;
+    private Move previousMove;
 
     private bool isLeaning = false;
     private Vector2 leaningDirection;
@@ -64,9 +76,13 @@ public class PlayerClimbingController : PlayerMovementController
 
     private void Awake()
     {
-        potentialMovements = new CardinalContainer<Movement>();
-        ResetPotentialMovements();
+        //potentialMovements = new CardinalContainer<Movement>();
+        potentialMoves = new CardinalContainer<PotentialMove>();
+        //ResetPotentialMovements();
+        ResetPotentialMoves();
     }
+
+    /*
     private void ResetPotentialMovements()
     {
         potentialMovements.up = null;
@@ -74,8 +90,8 @@ public class PlayerClimbingController : PlayerMovementController
         potentialMovements.down = null;
         potentialMovements.left = null;
     }
-
-    /*
+    */
+    
     private void ResetPotentialMoves()
     {
         potentialMoves.up = null;
@@ -83,7 +99,6 @@ public class PlayerClimbingController : PlayerMovementController
         potentialMoves.down = null;
         potentialMoves.left = null;
     }
-    */
 
     public bool ConnectAtHandsIfPossible(bool rightHandIsConnecting)
     {
@@ -142,11 +157,13 @@ public class PlayerClimbingController : PlayerMovementController
                 {
                     if (playerActions.GripLeft.WasPressed && isLeaning)
                     {
-                        MoveInLeaningDirectionIfPossible(false);
+                        //MoveInLeaningDirectionIfPossible(false);
+                        MakeMoveIfPossible(false);
                     }
                     else if (playerActions.GripRight.WasPressed && isLeaning)
                     {
-                        MoveInLeaningDirectionIfPossible(true);
+                        //MoveInLeaningDirectionIfPossible(true);
+                        MakeMoveIfPossible(true);
                     }
                 }
             }
@@ -164,6 +181,7 @@ public class PlayerClimbingController : PlayerMovementController
         
     }
 
+    /*
     private void FindPotentialMovements()
     {
         //print("FindPotentialMovements called");
@@ -202,7 +220,17 @@ public class PlayerClimbingController : PlayerMovementController
             
         }
     }
+    */
 
+    private void FindPotentialMoves()
+    {
+        potentialMoves.up = FindPotentialMoveInDirection(Vector2.up);
+        potentialMoves.right = FindPotentialMoveInDirection(Vector2.right);
+        potentialMoves.down = FindPotentialMoveInDirection(Vector2.down);
+        potentialMoves.left = FindPotentialMoveInDirection(Vector2.left);
+    }
+
+    /*
     private Movement FindProximalSquareInDirection(Vector2 direction)
     {
         Movement pSquare = new Movement();
@@ -226,7 +254,24 @@ public class PlayerClimbingController : PlayerMovementController
         }
         return pSquare;
     }
+    */
 
+    private PotentialMove FindPotentialMoveInDirection(Vector2 direction)
+    {
+        Grip.Square newSquare = currentConnectedSquare.FindAdjacentSquareInDirection(direction, gripLayer, 2);
+        bool isJumpNecessary = false;
+
+        if(newSquare.IsEmpty || newSquare.SideIsEmpty(direction))
+        {
+            newSquare = currentConnectedSquare.FindFirstSquareInDirection(direction, gripLayer, jumpDistance, minimumGripsForJumpSquare);
+            if(!newSquare.IsEmpty)
+            {
+                isJumpNecessary = true;
+            }
+        }
+
+        return new PotentialMove(newSquare, isJumpNecessary, direction);
+    }
 
     private void UpdateLeaningStatus()
     {
@@ -260,6 +305,7 @@ public class PlayerClimbingController : PlayerMovementController
         }
     }
 
+    /*
     private void MoveInLeaningDirectionIfPossible(bool rightGripWasChosen)
     {
         Vector2 direction = leaningDirection;
@@ -281,6 +327,28 @@ public class PlayerClimbingController : PlayerMovementController
             }
         }
     }
+    */
+
+    private void MakeMoveIfPossible(bool rightGripWasChosen)
+    {
+        Vector2 direction = leaningDirection;
+        Move nextMove = new Move(potentialMoves.Vector2ToObject(leaningDirection), !rightGripWasChosen);
+        if(nextMove.NewSquareWasFound)
+        {
+            Grip selectedGrip = nextMove.ConnectingGrip;
+
+            if(selectedGrip != null && !selectedGrip.IsEmpty)
+            {
+                if(OnMovementStarted != null)
+                {
+                    OnMovementStarted.Invoke(rightGripWasChosen, nextMove.IsJumpNecessary, leaningDirection, selectedGrip);
+                }
+
+                previousMove = nextMove;
+                MoveToSquare(nextMove.NewSquare);
+            }
+        }
+    }
 
     private void MoveToSquare(Grip.Square newSquare)
     {
@@ -296,7 +364,8 @@ public class PlayerClimbingController : PlayerMovementController
     private void EndMovement()
     {
         isMoving = false;
-        FindPotentialMovements();
+        //FindPotentialMovements();
+        FindPotentialMoves();
         transform.position = lerpEnd;
 
         if(OnMoveEnded != null)
@@ -312,7 +381,8 @@ public class PlayerClimbingController : PlayerMovementController
         transform.position = newSquare.Center;
         currentConnectedSquare = newSquare;
 
-        FindPotentialMovements();
+        //FindPotentialMovements();
+        FindPotentialMoves();
     }
 
     public override void LoseMovementControl()
@@ -337,9 +407,6 @@ public class PlayerClimbingController : PlayerMovementController
 
         //newSquareWasFound can be inferred as well, so
         //only 3 of the pieces of data need to be provided.
-
-
-
     }
 
     public class PotentialMove
@@ -395,11 +462,11 @@ public class PlayerClimbingController : PlayerMovementController
         }
     }
 
-    public class FullMove : PotentialMove
+    public class Move : PotentialMove
     {
         protected bool connectedThroughLeftGrip;
 
-        public FullMove(PotentialMove move, bool leftGripUsed) 
+        public Move(PotentialMove move, bool leftGripUsed) 
         {
             newSquare = move.NewSquare;
             isJumpNecessary = move.IsJumpNecessary;
@@ -407,7 +474,7 @@ public class PlayerClimbingController : PlayerMovementController
             movementDirection = move.MovementDirection;
         }
 
-        public FullMove(Grip.Square nextSquare, bool jumpIsNecessary, Vector2 moveDirection, bool leftGripUsed) : base(nextSquare, jumpIsNecessary, moveDirection)
+        public Move(Grip.Square nextSquare, bool jumpIsNecessary, Vector2 moveDirection, bool leftGripUsed) : base(nextSquare, jumpIsNecessary, moveDirection)
         {
             connectedThroughLeftGrip = leftGripUsed;
         }

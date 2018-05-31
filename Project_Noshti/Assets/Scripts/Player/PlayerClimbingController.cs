@@ -75,6 +75,16 @@ public class PlayerClimbingController : PlayerMovementController
         potentialMovements.left = null;
     }
 
+    /*
+    private void ResetPotentialMoves()
+    {
+        potentialMoves.up = null;
+        potentialMoves.right = null;
+        potentialMoves.down = null;
+        potentialMoves.left = null;
+    }
+    */
+
     public bool ConnectAtHandsIfPossible(bool rightHandIsConnecting)
     {
         //Makes it so that first move after jump doesn't happen
@@ -217,6 +227,7 @@ public class PlayerClimbingController : PlayerMovementController
         return pSquare;
     }
 
+
     private void UpdateLeaningStatus()
     {
         Vector2 cardinalInput = new Vector2(playerActions.Move.X, playerActions.Move.Y).ClosestCardinalDirection();
@@ -331,19 +342,24 @@ public class PlayerClimbingController : PlayerMovementController
 
     }
 
-    public class Move
+    public class PotentialMove
     {
-        private Grip.Square newSquare;
-        private bool isJumpNecessary;
-        private bool connectedThroughLeftGrip;
-        private Vector2 movementDirection;
+        protected Grip.Square newSquare;
+        protected bool isJumpNecessary;
+        protected Vector2 movementDirection;
 
-        public Move(Grip.Square nextSquare, bool jumpIsNecessary, bool leftGripUsedToConnect, Vector2 moveDirection)
+        public PotentialMove()
+        {
+            newSquare = new Grip.Square();
+            isJumpNecessary = false;
+            movementDirection = Vector2.zero;
+        }
+
+        public PotentialMove(Grip.Square nextSquare, bool jumpIsNecessary, Vector2 moveDirection)
         {
             newSquare = nextSquare;
             isJumpNecessary = jumpIsNecessary;
-            connectedThroughLeftGrip = leftGripUsedToConnect;
-            movementDirection = moveDirection; 
+            movementDirection = moveDirection;
         }
 
         public Grip.Square NewSquare
@@ -370,22 +386,6 @@ public class PlayerClimbingController : PlayerMovementController
             }
         }
 
-        public bool ConnectedThroughRightGrip
-        {
-            get
-            {
-                return !connectedThroughLeftGrip;
-            }
-        }
-
-        public bool ConnectedThroughLeftGrip
-        {
-            get
-            {
-                return connectedThroughLeftGrip;
-            }
-        }
-
         public Vector2 MovementDirection
         {
             get
@@ -393,12 +393,30 @@ public class PlayerClimbingController : PlayerMovementController
                 return movementDirection;
             }
         }
+    }
 
+    public class FullMove : PotentialMove
+    {
+        protected bool connectedThroughLeftGrip;
+
+        public FullMove(PotentialMove move, bool leftGripUsed) 
+        {
+            newSquare = move.NewSquare;
+            isJumpNecessary = move.IsJumpNecessary;
+            connectedThroughLeftGrip = leftGripUsed;
+            movementDirection = move.MovementDirection;
+        }
+
+        public FullMove(Grip.Square nextSquare, bool jumpIsNecessary, Vector2 moveDirection, bool leftGripUsed) : base(nextSquare, jumpIsNecessary, moveDirection)
+        {
+            connectedThroughLeftGrip = leftGripUsed;
+        }
+        
         public Grip ConnectingGrip
         {
             get
             {
-                if(connectedThroughLeftGrip)
+                if (connectedThroughLeftGrip)
                 {
                     return newSquare.FindLeftSelectingGripGivenDirection(MovementDirection);
                 }
@@ -417,8 +435,23 @@ public class PlayerClimbingController : PlayerMovementController
                 return newSquare.FindLeftSelectingGripGivenDirection(MovementDirection);
             }
         }
-    }
 
+        public bool ConnectedThroughRightGrip
+        {
+            get
+            {
+                return !connectedThroughLeftGrip;
+            }
+        }
+
+        public bool ConnectedThroughLeftGrip
+        {
+            get
+            {
+                return connectedThroughLeftGrip;
+            }
+        }
+    }
 }
 
 //Needs to communicate whether the rightmost grip was chosen, 

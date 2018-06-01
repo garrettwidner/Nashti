@@ -19,6 +19,30 @@ public class Grip : MonoBehaviour
         Ladder
     };
 
+    public int Quality
+    {
+        get
+        {
+            return quality;
+        }
+    }
+
+    public Type GripType
+    {
+        get
+        {
+            return type;
+        }
+    }
+
+    public BoxCollider2D Collider
+    {
+        get
+        {
+            return boxCollider;
+        }
+    }
+
     public bool IsEmpty
     {
         get

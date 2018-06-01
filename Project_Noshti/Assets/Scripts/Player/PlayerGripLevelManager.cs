@@ -7,35 +7,51 @@ using UnityEngine;
 /// </summary>
 public class PlayerGripLevelManager : StatusLevel
 {
+    [SerializeField] private float staticDrainPerSecond;
+    [SerializeField] private float moveDrainModifier;
+    [SerializeField] private float timeBetweenMoveAndGripDrain;
+    [SerializeField] private PlayerStateManager stateManager;
+
+    private bool isStationary = true;
+    private float nextGripDrain;
+
     public float GripLevel
     {
         get
         {
-            return gripLevel;
+            return StatLevel;
         }
     }
 
-    private float gripLevel
+    public void Update()
     {
-        get
+        /*
+        if(isStationary && stateManager.CurrentState == PlayerStateManager.State.Climbing)
         {
-            return statusLevel;
+            StartImmediateIncrement(-staticDrainPerSecond * Time.deltaTime);
         }
-        set
-        {
-            statusLevel = value;
-        }
+        */
     }
 
     public void MoveWasTaken(PlayerClimbingController.Move move)
     {
-        //print("Move taken");
+        isStationary = false;
+        int gripQuality = move.ConnectingGrip.Quality;
+        nextGripDrain = -gripQuality * moveDrainModifier;
+        Invoke("DrainGrip", timeBetweenMoveAndGripDrain);
+    }
+
+    private void DrainGrip()
+    {
+        print("Grip drained for " + nextGripDrain + " ------------------");
+        StartRapidIncrement(nextGripDrain);
     }
 
     public void MoveEnded(PlayerClimbingController.Move move)
     {
-        //print("Move ended ----");
+        isStationary = true;
     }
+
 
 
 

@@ -18,7 +18,14 @@ public class StatusLevel : MonoBehaviour
 
     private float minimumAllowedError = 0.01f;
 
-    protected float statusLevel;
+    public float StatLevel
+    {
+        get
+        {
+            return statusLevel;
+        }
+    }
+    private float statusLevel;
     private float slowIncrementPool;
     private float rapidIncrementPool;
 

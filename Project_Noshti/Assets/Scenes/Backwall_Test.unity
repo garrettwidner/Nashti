@@ -16187,7 +16187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66de835743391b84c9b3fa7eca3ad4ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusLevel: {fileID: 1965065928}
+  statusLevel: {fileID: 1054660862}
   bar: {fileID: 1019118175}
   fill: {fileID: 119716740}
 --- !u!1 &1024249064
@@ -16884,10 +16884,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04db0e4afaa6f446bcee5d049467911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 100
+  startingLevel: 80
   maxLevel: 100
   rapidIncrementSpeed: 0
   slowIncrementSpeed: 0
+  staticDrainPerSecond: 0
+  moveDrainModifier: 1
+  timeBetweenMoveAndGripDrain: 0.05
+  stateManager: {fileID: 1054660859}
 --- !u!4 &1058822324 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035404056389982, guid: 7931520db9a0d2b4ea780a028306780f,
@@ -23376,7 +23380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1665803018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27782,7 +27786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1965065928
 MonoBehaviour:
   m_ObjectHideFlags: 0

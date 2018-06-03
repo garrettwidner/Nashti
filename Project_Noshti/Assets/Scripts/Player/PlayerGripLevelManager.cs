@@ -23,14 +23,15 @@ public class PlayerGripLevelManager : StatusLevel
         }
     }
 
-    public void Update()
+    protected override void Update()
     {
-        /*
+        base.Update();
+        
         if(isStationary && stateManager.CurrentState == PlayerStateManager.State.Climbing)
         {
             StartImmediateIncrement(-staticDrainPerSecond * Time.deltaTime);
         }
-        */
+        
     }
 
     public void MoveWasTaken(PlayerClimbingController.Move move)
@@ -43,7 +44,6 @@ public class PlayerGripLevelManager : StatusLevel
 
     private void DrainGrip()
     {
-        print("Grip drained for " + nextGripDrain + " ------------------");
         StartRapidIncrement(nextGripDrain);
     }
 

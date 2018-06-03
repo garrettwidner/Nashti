@@ -11,10 +11,10 @@ public class StatusLevel : MonoBehaviour
     [SerializeField] private int maxLevel = 100;
     [Range(0, 50)]
     [Tooltip("Represents a percentage of the status bar per second")]
-    [SerializeField] private float rapidIncrementSpeed;
+    [SerializeField] private float rapidIncrementSpeed = 17;
     [Range(0,20)]
     [Tooltip("Represents a percentage of the status bar per second")]
-    [SerializeField] private float slowIncrementSpeed;
+    [SerializeField] private float slowIncrementSpeed = 5;
 
     private float minimumAllowedError = 0.01f;
 
@@ -86,7 +86,7 @@ public class StatusLevel : MonoBehaviour
         statusLevel += increment;
     }
 
-    private void Update()
+    protected virtual void Update()
     { 
         //RunTest();
 
@@ -144,6 +144,7 @@ public class StatusLevel : MonoBehaviour
             incrementIsEnding = true;
             //print("Increment ended explicitly.");
         }
+        
         incrementPool -= framewiseIncrement;
         statusLevel += framewiseIncrement;
 
@@ -151,8 +152,6 @@ public class StatusLevel : MonoBehaviour
         {
             KeepStatusLevelClean();
         }
-
-        print(statusLevel);
     }
 
     private void KeepStatusLevelClean()

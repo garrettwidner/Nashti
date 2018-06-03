@@ -16886,9 +16886,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingLevel: 80
   maxLevel: 100
-  rapidIncrementSpeed: 0
-  slowIncrementSpeed: 0
-  staticDrainPerSecond: 0
+  rapidIncrementSpeed: 20
+  slowIncrementSpeed: 5
+  staticDrainPerSecond: 0.5
   moveDrainModifier: 1
   timeBetweenMoveAndGripDrain: 0.05
   stateManager: {fileID: 1054660859}
@@ -27801,7 +27801,7 @@ MonoBehaviour:
   startingLevel: 100
   maxLevel: 100
   rapidIncrementSpeed: 17.6
-  slowIncrementSpeed: 20
+  slowIncrementSpeed: 6.98
 --- !u!4 &1965065929
 Transform:
   m_ObjectHideFlags: 0

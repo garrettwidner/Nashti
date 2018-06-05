@@ -1385,8 +1385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0014983}
-  m_SizeDelta: {x: 88.44, y: 31.593}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 172.24, y: 31.59}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &119716741
 MonoBehaviour:
@@ -5450,8 +5450,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0.0000052452}
-  m_SizeDelta: {x: 88.44, y: 31.59}
+  m_AnchoredPosition: {x: 0.0008955002, y: 0}
+  m_SizeDelta: {x: 172.24, y: 31.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493584592
 MonoBehaviour:
@@ -16140,8 +16140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -195.6, y: 111.9}
-  m_SizeDelta: {x: 88.44, y: 31.59}
+  m_AnchoredPosition: {x: -153.69, y: 111.9}
+  m_SizeDelta: {x: 172.24, y: 31.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1019118176
 MonoBehaviour:
@@ -16810,6 +16810,7 @@ MonoBehaviour:
   climbingController: {fileID: 1054660858}
   platformingController: {fileID: 1054660855}
   startingState: 1
+  gripManager: {fileID: 1054660862}
   OnStateChangedToClimbing:
     m_PersistentCalls:
       m_Calls:
@@ -16884,10 +16885,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04db0e4afaa6f446bcee5d049467911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 80
+  startingLevel: 100
   maxLevel: 100
   rapidIncrementSpeed: 20
   slowIncrementSpeed: 5
+  OnLevelDepleted:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnLevelMaxed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   staticDrainPerSecond: 0.5
   moveDrainModifier: 1
   timeBetweenMoveAndGripDrain: 0.05
@@ -27802,6 +27813,16 @@ MonoBehaviour:
   maxLevel: 100
   rapidIncrementSpeed: 17.6
   slowIncrementSpeed: 6.98
+  OnLevelDepleted:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnLevelMaxed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!4 &1965065929
 Transform:
   m_ObjectHideFlags: 0

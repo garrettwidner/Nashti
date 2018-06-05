@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Exposes a single floating point variable and provides a number of functions to modify it over time.
@@ -15,6 +16,9 @@ public class StatusLevel : MonoBehaviour
     [Range(0,20)]
     [Tooltip("Represents a percentage of the status bar per second")]
     [SerializeField] private float slowIncrementSpeed = 5;
+
+    [SerializeField] protected UnityEvent OnLevelDepleted;
+    [SerializeField] protected UnityEvent OnLevelMaxed;
 
     private float minimumAllowedError = 0.01f;
 
@@ -41,6 +45,18 @@ public class StatusLevel : MonoBehaviour
         get
         {
             return maxLevel;
+        }
+    }
+
+    public bool IsEmpty
+    {
+        get
+        {
+            if(statusLevel <= 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 
@@ -180,12 +196,24 @@ public class StatusLevel : MonoBehaviour
         {
             statusLevel = 0;
             //print("Status level below zero. Incrementing stopped");
+
+            if(OnLevelDepleted != null)
+            {
+                OnLevelDepleted.Invoke();
+            }
+
             ResetIncrements(false);
         }
         if(statusLevel > maxLevel)
         {
             statusLevel = maxLevel;
             //print("Status level above maximum. Incrementing stopped");
+
+            if(OnLevelMaxed != null)
+            {
+                OnLevelMaxed.Invoke();
+            }
+
             ResetIncrements(true);
         }
     }

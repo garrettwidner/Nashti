@@ -15,6 +15,7 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] private PlayerClimbingController climbingController;
     [SerializeField] private PlayerPlatformingController platformingController;
     [SerializeField] private State startingState;
+    [SerializeField] private PlayerGripLevelManager gripManager;
 
     [SerializeField] private UnityEvent OnStateChangedToClimbing;
     [SerializeField] private UnityEvent OnStateChangedToPlatforming;
@@ -64,25 +65,33 @@ public class PlayerStateManager : MonoBehaviour
         {
             if(playerActions.Jump.WasPressed)
             {
-                SwitchToPlatforming();
+                SwitchToPlatforming(true);
             }
+            else if(gripManager.GripLevel <= 0)
+            {
+                SwitchToPlatforming(false);
+            }
+            
         }
 
         //Switch from platform to climb if grip is pressed near a valid grip area.
         if(CurrentState == State.Platforming)
         {
-            if (playerActions.GripRight.IsPressed)
+            if(!gripManager.IsEmpty)
             {
-                if (climbingController.ConnectAtHandsIfPossible(true))
+                if (playerActions.GripRight.IsPressed)
                 {
-                    SwitchToClimbing();
+                    if (climbingController.ConnectAtHandsIfPossible(true))
+                    {
+                        SwitchToClimbing();
+                    }
                 }
-            }
-            if (playerActions.GripLeft.IsPressed)
-            {
-                if (climbingController.ConnectAtHandsIfPossible(false))
+                if (playerActions.GripLeft.IsPressed)
                 {
-                    SwitchToClimbing();
+                    if (climbingController.ConnectAtHandsIfPossible(false))
+                    {
+                        SwitchToClimbing();
+                    }
                 }
             }
         }
@@ -100,16 +109,19 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
 
-    private void SwitchToPlatforming()
+    private void SwitchToPlatforming(bool shouldJump)
     {
         //print("PlayerStateManager Switched to PLATFORMING state");
         currentState = State.Platforming;
         climbingController.LoseMovementControl();
         platformingController.ReceiveControl();
 
-        platformingController.JumpNextFrame();
+        if(shouldJump)
+        {
+            platformingController.JumpNextFrame();
+        }
 
-        if(OnStateChangedToPlatforming != null)
+        if (OnStateChangedToPlatforming != null)
         {
             OnStateChangedToPlatforming.Invoke();
         }

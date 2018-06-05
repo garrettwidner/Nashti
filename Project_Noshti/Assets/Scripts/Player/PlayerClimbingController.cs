@@ -39,6 +39,7 @@ public class PlayerClimbingController : PlayerMovementController
 
     [SerializeField] private MoveEvent OnMoveStarted;
     [SerializeField] private MoveEvent OnMoveEnded;
+    [SerializeField] private MoveEvent OnJumpConnectionHappened;
 
     private int minimumGripsForJumpSquare = 3;
     private bool isMoving = false;
@@ -87,6 +88,12 @@ public class PlayerClimbingController : PlayerMovementController
                 if (foundSquare.GripCount >= 2)
                 {
                     MoveToSquareImmediate(foundSquare);
+
+                    if(OnJumpConnectionHappened != null)
+                    {
+                        Move connection = new Move(foundSquare, false);
+                        OnJumpConnectionHappened.Invoke(connection);
+                    }
                     return true;
                 }
             }
@@ -100,6 +107,12 @@ public class PlayerClimbingController : PlayerMovementController
                 if(foundSquare.GripCount >= 2)
                 {
                     MoveToSquareImmediate(foundSquare);
+
+                    if (OnJumpConnectionHappened != null)
+                    {
+                        Move connection = new Move(foundSquare, true);
+                        OnJumpConnectionHappened.Invoke(connection);
+                    }
                     return true;
                 }
             }
@@ -292,6 +305,13 @@ public class PlayerClimbingController : PlayerMovementController
             direction = moveDirection;
         }
 
+        public PotentialMove(Grip.Square nextSquare, bool jumpIsNecessary)
+        {
+            newSquare = nextSquare;
+            isJumpNecessary = jumpIsNecessary;
+            direction = Vector2.up;
+        }
+
         public Grip.Square NewSquare
         {
             get
@@ -340,6 +360,14 @@ public class PlayerClimbingController : PlayerMovementController
         public Move(Grip.Square nextSquare, bool jumpIsNecessary, Vector2 moveDirection, bool leftGripUsed) : base(nextSquare, jumpIsNecessary, moveDirection)
         {
             connectedThroughLeftGrip = leftGripUsed;
+        }
+
+        public Move(Grip.Square nextSquare, bool leftGripUsed)
+        {
+            newSquare = nextSquare;
+            isJumpNecessary = false;
+            connectedThroughLeftGrip = leftGripUsed;
+            direction = Vector2.up;
         }
         
         public Grip ConnectingGrip

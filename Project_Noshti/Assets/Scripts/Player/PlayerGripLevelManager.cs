@@ -9,6 +9,7 @@ public class PlayerGripLevelManager : StatusLevel
 {
     [SerializeField] private float staticDrainPerSecond;
     [SerializeField] private float moveDrainModifier;
+    [SerializeField] private float jumpConnectionModifier;
     [SerializeField] private float timeBetweenMoveAndGripDrain;
     [SerializeField] private PlayerStateManager stateManager;
 
@@ -38,8 +39,16 @@ public class PlayerGripLevelManager : StatusLevel
     {
         isStationary = false;
         int gripQuality = move.ConnectingGrip.Quality;
-        nextGripDrain = -gripQuality * moveDrainModifier;
+        float drainModifier = move.IsJumpNecessary ? jumpConnectionModifier : moveDrainModifier;
+        nextGripDrain = -gripQuality * drainModifier;
         Invoke("DrainGrip", timeBetweenMoveAndGripDrain);
+    }
+
+    public void JumpConnectionHappened(PlayerClimbingController.Move connection)
+    {
+        int gripQuality = connection.ConnectingGrip.Quality;
+        nextGripDrain = -gripQuality * jumpConnectionModifier;
+        Invoke("DrainGrip", 0.0f);
     }
 
     private void DrainGrip()

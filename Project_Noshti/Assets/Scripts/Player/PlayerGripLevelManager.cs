@@ -61,7 +61,17 @@ public class PlayerGripLevelManager : StatusLevel
         isStationary = true;
     }
 
-
+    public void MaduPickedUp(float madu)
+    {
+        if(madu > 1)
+        {
+            StartRapidIncrement(madu);
+        }
+        else
+        {
+            StartImmediateIncrement(madu);
+        }
+    }
 
 
 }

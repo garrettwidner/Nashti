@@ -14,6 +14,7 @@ public class PlayerMaduTracker : MonoBehaviour
 
     [SerializeField] private MaduEvent OnMaduUtilized;
 
+
     public MaduObject CurrentEdible
     {
         get

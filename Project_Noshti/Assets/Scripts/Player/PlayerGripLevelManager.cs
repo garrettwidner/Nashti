@@ -15,6 +15,8 @@ public class PlayerGripLevelManager : StatusLevel
 
     private bool isStationary = true;
     private float nextGripDrain;
+    private float maxForImmediateMaduDrain = 0.2f;
+
 
     public float GripLevel
     {
@@ -64,7 +66,7 @@ public class PlayerGripLevelManager : StatusLevel
 
     public void MaduPickedUp(float madu)
     {
-        if(madu > 1)
+        if(madu > maxForImmediateMaduDrain)
         {
             StartRapidIncrement(madu);
         }

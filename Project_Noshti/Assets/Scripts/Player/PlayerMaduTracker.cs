@@ -25,6 +25,10 @@ public class PlayerMaduTracker : MonoBehaviour
     private bool isChecking;
     private MaduObject currentEdible;
 
+    private void Start()
+    {
+        isChecking = true;
+    }
 
     private void Update()
     {
@@ -38,15 +42,19 @@ public class PlayerMaduTracker : MonoBehaviour
     private void CheckForEdible()
     {
         Collider2D foundCollider = Physics2D.OverlapBox(checkableArea.bounds.center, checkableArea.bounds.size, 0f, edibleMaduLayer);
-        MaduObject foundEdible = foundCollider.GetComponent<MaduObject>();
-        if(foundEdible != null && foundEdible.IsEdible)
+        if(foundCollider != null)
         {
-            currentEdible = foundEdible;
+            MaduObject foundEdible = foundCollider.GetComponent<MaduObject>();
+            if (foundEdible != null && foundEdible.IsEdible)
+            {
+                currentEdible = foundEdible;
+            }
+            else
+            {
+                currentEdible = null;
+            }
         }
-        else
-        {
-            currentEdible = null;
-        }
+        
     }
 
     private void EatCurrentEdible()
@@ -65,12 +73,24 @@ public class PlayerMaduTracker : MonoBehaviour
     private void CheckForTouchable()
     {
         Collider2D foundCollider = Physics2D.OverlapBox(checkableArea.bounds.center, checkableArea.bounds.size, 0f, touchableMaduLayer);
-        MaduObject foundTouchable = foundCollider.GetComponent<MaduObject>();
-        if(foundTouchable != null && !foundTouchable.IsEdible)
+        if(foundCollider != null)
         {
-            if(OnMaduUtilized != null)
+            MaduObject foundTouchable = foundCollider.GetComponent<MaduObject>();
+            if (foundTouchable != null && !foundTouchable.IsEdible)
             {
-                OnMaduUtilized.Invoke(foundTouchable.Madu);
+                if (OnMaduUtilized != null)
+                {
+                    if (foundTouchable.IsDestroyedAfterUse)
+                    {
+                        OnMaduUtilized.Invoke(foundTouchable.Madu);
+                        foundTouchable.DestroySelf();
+                    }
+                    else
+                    {
+                        OnMaduUtilized.Invoke(foundTouchable.Madu * Time.deltaTime);
+                    }
+                }
+
             }
         }
     }

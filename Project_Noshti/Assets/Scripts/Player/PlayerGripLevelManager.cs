@@ -38,7 +38,7 @@ public class PlayerGripLevelManager : StatusLevel
     public void MoveWasTaken(PlayerClimbingController.Move move)
     {
         isStationary = false;
-        int gripQuality = move.ConnectingGrip.Quality;
+        int gripQuality = 10 - move.ConnectingGrip.Quality;
         float drainModifier = move.IsJumpNecessary ? jumpConnectionModifier : moveDrainModifier;
         nextGripDrain = -gripQuality * drainModifier;
         Invoke("DrainGrip", timeBetweenMoveAndGripDrain);
@@ -46,7 +46,7 @@ public class PlayerGripLevelManager : StatusLevel
 
     public void JumpConnectionHappened(PlayerClimbingController.Move connection)
     {
-        int gripQuality = connection.ConnectingGrip.Quality;
+        int gripQuality = 10 - connection.ConnectingGrip.Quality;
         nextGripDrain = -gripQuality * jumpConnectionModifier;
         Invoke("DrainGrip", 0.0f);
     }
@@ -54,6 +54,7 @@ public class PlayerGripLevelManager : StatusLevel
     private void DrainGrip()
     {
         StartRapidIncrement(nextGripDrain);
+        print("Grip drained for " + nextGripDrain);
     }
 
     public void MoveEnded(PlayerClimbingController.Move move)

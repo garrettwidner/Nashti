@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
-
+/*
 public class SpriteTexturePostProcessor : AssetPostprocessor 
 {
 	// This will be called whenever a texture2D is processed in some way.
@@ -31,3 +31,5 @@ public class SpriteTexturePostProcessor : AssetPostprocessor
 	}
 
 }
+
+    */

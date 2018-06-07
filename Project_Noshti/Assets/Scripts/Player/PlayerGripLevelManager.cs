@@ -15,7 +15,7 @@ public class PlayerGripLevelManager : StatusLevel
 
     private bool isStationary = true;
     private float nextGripDrain;
-    private float maxForImmediateMaduDrain = 0.2f;
+    private float maxForImmediateMaduDrain = 1f;
 
 
     public float GripLevel

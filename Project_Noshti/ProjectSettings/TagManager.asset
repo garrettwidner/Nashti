@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Cloud
+    uniqueID: 2138231011
+    locked: 0
+  - name: Backwall
+    uniqueID: 775580413
+    locked: 0
   - name: Background 2
     uniqueID: 3708910501
     locked: 0

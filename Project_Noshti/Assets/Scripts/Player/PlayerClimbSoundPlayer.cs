@@ -29,18 +29,14 @@ public class PlayerClimbSoundPlayer : MonoBehaviour
         if (gripQuality <= smallGripQuality)
         {
             PlaySound(smallGripSound);
-            print("Played small");
         }
         else if (gripQuality <= mediumGripQuality)
         {
             PlaySound(mediumGripSound);
-            print("Played medium");
         }
         else if (gripQuality <= largeGripQuality)
         {
             PlaySound(largeGripSound);
-            print("Played large");
-
         }
     }
 

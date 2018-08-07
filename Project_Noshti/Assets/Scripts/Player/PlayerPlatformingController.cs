@@ -59,6 +59,7 @@ public class PlayerPlatformingController : PlayerMovementController
         }
 
         Vector2 input = new Vector2(playerActions.Move.X, playerActions.Move.Y);
+        input = input.ClosestCardinalDirection();
         //print(input.ToString("f4"));
 
         int wallDirX = (controller.collisions.left) ? -1 : 1;

@@ -56,7 +56,7 @@ public class PlayerGripLevelManager : StatusLevel
     private void DrainGrip()
     {
         StartRapidIncrement(nextGripDrain);
-        print("Grip drained for " + nextGripDrain);
+        //print("Grip drained for " + nextGripDrain);
     }
 
     public void MoveEnded(PlayerClimbingController.Move move)
